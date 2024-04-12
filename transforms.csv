@@ -1,0 +1,10 @@
+Owner,Author,Disclaimer,Description,Version,Name,UIName,URL,entityName,oAuthSettingId,transformSettingIDs,seedIDs,outputEntities
+CloakNDagger,Mike,,Return data collected from pages for given Hunchly case name,0.1,getcasedata,Get Pages Data [Hunchly],gossip.monster\run\getcasedata,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyPageData
+CloakNDagger,Mike,,Return photos collected from pages for given Hunchly case name,0.1,getcasephoto,Get Case Photos [Hunchly],gossip.monster\run\getcasephoto,cnd.HunchlyCase,,global#hunchly_api_path,demo,maltego.Images
+CloakNDagger,Mike,,Return selectors collected from pages for given Hunchly case name,0.1,getcaseselectors,Get Case Selectors [Hunchly],gossip.monster\run\getcaseselectors,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlySelector
+CloakNDagger,Mike,,Return tags collected from pages for given Hunchly case name,0.1,getcasetags,Get Case Tags [Hunchly],gossip.monster\run\getcasetags,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyTag
+CloakNDagger,Mike,,Return pages data for given Hunchly Webpage,0.1,getpagedata,Get Page Data [Hunchly],gossip.monster\run\getpagedata,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlyPageData
+CloakNDagger,Mike,,Return photos for given Hunchly Webpage,0.1,getpagephoto,Get Page Photos [Hunchly],gossip.monster\run\getpagephoto,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,maltego.Image
+CloakNDagger,Mike,,Return selectors for given Hunchly Webpage,0.1,getpageselectors,Get Page Selectors [Hunchly],gossip.monster\run\getpageselectors,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlySelector
+CloakNDagger,Mike,,Return tags for given Hunchly Webpage,0.1,getpagetags,Get Page Tags [Hunchly],gossip.monster\run\getpagetags,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlyTag
+CloakNDagger,Mike,,Return captured pages for given Hunchly case name,0.1,getpages,Get Pages [Hunchly],gossip.monster\run\getpages,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyWebpage
