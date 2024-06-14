@@ -13,4 +13,6 @@ registry.write_settings_config()
 registry.write_local_mtz(command=r'C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Scripts\python')
 
 if __name__ == '__main__':
+    # debug
+    # handle_run(__name__, ['python','local'], application)
     handle_run(__name__, sys.argv, application)

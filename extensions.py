@@ -1,5 +1,5 @@
 from maltego_trx.decorator_registry import TransformRegistry
-from settings import hunchly_api_path
+
 
 registry = TransformRegistry(
         owner="CloakNDagger",
@@ -12,4 +12,4 @@ registry = TransformRegistry(
 registry.version = "0.1"
 
 #settings
-registry.global_settings = [hunchly_api_path]
+# registry.global_settings = [hunchly_api_path]

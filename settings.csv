@@ -1,2 +1,1 @@
 Name,Type,Display,DefaultValue,Optional,Popup
-global#hunchly_api_path,string,Hunchly api path,,False,No

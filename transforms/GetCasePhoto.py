@@ -2,15 +2,19 @@ from maltego_trx.transform import DiscoverableTransform
 from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 
 from extensions import registry
+from modules.hunchly.models import Case
+from settings import hunchly_transformset
 from modules.hunchly.api import get_case_photo
-from utils import create_entity_from_model
+from tools.base import ENTITIES_TYPE_NAMES
+from tools.maltego import create_entity_from_model, model_from_maltego_request
 
 
 @registry.register_transform(
-    display_name="Get Case Photos [Hunchly]",
-    input_entity="cnd.HunchlyCase",
+    display_name="Get Case HunchlyPhotos [Hunchly]",
+    input_entity=ENTITIES_TYPE_NAMES.CASE,
     description="Return photos collected from pages for given Hunchly case name",
-    output_entities=['maltego.Images'],
+    output_entities=[ENTITIES_TYPE_NAMES.PHOTO],
+    transform_set=hunchly_transformset
 
 )
 class GetCasePhoto(DiscoverableTransform):
@@ -26,13 +30,14 @@ class GetCasePhoto(DiscoverableTransform):
         # TODO: implement slidebar
 
         # case data
-        case_name = request.Value
-        case = get_case_photo(case_name)
+        case = model_from_maltego_request(request=request, model=Case)
+        items = get_case_photo(case.name)
 
         # generating of pages
-        for item in case.photos:
+        for item in items.data:
             create_entity_from_model(item, response)
 
-        response.addUIMessage(f"Case contain {case.number_of_results} pages")
+        response.addUIMessage(f"Case contain {items.results} pages")
+
 
 

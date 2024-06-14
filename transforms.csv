@@ -1,10 +1,14 @@
 Owner,Author,Disclaimer,Description,Version,Name,UIName,URL,entityName,oAuthSettingId,transformSettingIDs,seedIDs,outputEntities
-CloakNDagger,Mike,,Return data collected from pages for given Hunchly case name,0.1,getcasedata,Get Pages Data [Hunchly],gossip.monster\run\getcasedata,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyPageData
-CloakNDagger,Mike,,Return photos collected from pages for given Hunchly case name,0.1,getcasephoto,Get Case Photos [Hunchly],gossip.monster\run\getcasephoto,cnd.HunchlyCase,,global#hunchly_api_path,demo,maltego.Images
-CloakNDagger,Mike,,Return selectors collected from pages for given Hunchly case name,0.1,getcaseselectors,Get Case Selectors [Hunchly],gossip.monster\run\getcaseselectors,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlySelector
-CloakNDagger,Mike,,Return tags collected from pages for given Hunchly case name,0.1,getcasetags,Get Case Tags [Hunchly],gossip.monster\run\getcasetags,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyTag
-CloakNDagger,Mike,,Return pages data for given Hunchly Webpage,0.1,getpagedata,Get Page Data [Hunchly],gossip.monster\run\getpagedata,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlyPageData
-CloakNDagger,Mike,,Return photos for given Hunchly Webpage,0.1,getpagephoto,Get Page Photos [Hunchly],gossip.monster\run\getpagephoto,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,maltego.Image
-CloakNDagger,Mike,,Return selectors for given Hunchly Webpage,0.1,getpageselectors,Get Page Selectors [Hunchly],gossip.monster\run\getpageselectors,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlySelector
-CloakNDagger,Mike,,Return tags for given Hunchly Webpage,0.1,getpagetags,Get Page Tags [Hunchly],gossip.monster\run\getpagetags,cnd.HunchlyWebpage,,global#hunchly_api_path,demo,cnd.HunchlyTag
-CloakNDagger,Mike,,Return captured pages for given Hunchly case name,0.1,getpages,Get Pages [Hunchly],gossip.monster\run\getpages,cnd.HunchlyCase,,global#hunchly_api_path,demo,cnd.HunchlyWebpage
+CloakNDagger,Mike,,Search web profiles by username,0.1,aliastowebprofile,Search profiles by username [WhatsMyNameApp],gossip.monster\run\aliastowebprofile,cnd.Alias,,,demo,cnd.UserProfile
+CloakNDagger,Mike,,Get starting entity,0.1,cndgetentity,Get CND strarting Entity [CloakNDagger],gossip.monster\run\cndgetentity,cnd.CloakNDagger,,,demo,cnd.HunchlyCase;cnd.Alias;cnd.Tavily
+CloakNDagger,Mike,,Return data collected from pages for given Hunchly case name or case id,0.1,getcasedata,Get HunchlyPages Data [Hunchly],gossip.monster\run\getcasedata,cnd.HunchlyCase,,,demo,cnd.HunchlyPageData
+CloakNDagger,Mike,,Return captured pages for given Hunchly case name,0.1,getcasepages,Get HunchlyPages [Hunchly],gossip.monster\run\getcasepages,cnd.HunchlyCase,,,demo,cnd.Webpage
+CloakNDagger,Mike,,Return photos collected from pages for given Hunchly case name,0.1,getcasephoto,Get Case HunchlyPhotos [Hunchly],gossip.monster\run\getcasephoto,cnd.HunchlyCase,,,demo,cnd.Image
+CloakNDagger,Mike,,Return selectors collected from pages for given Hunchly case name,0.1,getcaseselectors,Get Case Selectors [Hunchly],gossip.monster\run\getcaseselectors,cnd.HunchlyCase,,,demo,cnd.Selector
+CloakNDagger,Mike,,Return tags collected from pages for given Hunchly case name,0.1,getcasetags,Get Case Tags [Hunchly],gossip.monster\run\getcasetags,cnd.HunchlyCase,,,demo,cnd.Tag
+CloakNDagger,Mike,,Return Hunchly Cases if no case name or id is provided,0.1,getcases,Get Hunchly Cases [Hunchly],gossip.monster\run\getcases,cnd.HunchlyCase,,,demo,cnd.HunchlyCase
+CloakNDagger,Mike,,Return pages data for given Hunchly Webpage,0.1,getpagedata,Get Page Data [Hunchly],gossip.monster\run\getpagedata,cnd.Webpage,,,demo,cnd.HunchlyPageData
+CloakNDagger,Mike,,Return photos for given Hunchly Webpage,0.1,getpagephoto,Get Page HunchlyPhotos [Hunchly],gossip.monster\run\getpagephoto,cnd.Webpage,,,demo,cnd.Image
+CloakNDagger,Mike,,Return selectors for given Hunchly Webpage,0.1,getpageselectors,Get Page Selectors [Hunchly],gossip.monster\run\getpageselectors,cnd.Webpage,,,demo,cnd.Selector
+CloakNDagger,Mike,,Return tags for given Hunchly Webpage,0.1,getpagetags,Get Page Tags [Hunchly],gossip.monster\run\getpagetags,cnd.Webpage,,,demo,cnd.Tag
+CloakNDagger,Mike,,Get starting entity,0.1,tavilysearch,Query web resources [Tavili],gossip.monster\run\tavilysearch,cnd.Tavily,,,demo,cnd.Webpage;cnd.Image
