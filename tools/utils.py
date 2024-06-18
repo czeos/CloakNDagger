@@ -2,10 +2,12 @@ import hashlib
 import json
 from pathlib import Path
 import base64
+from typing import Any
+
 import envtoml
 import httpx
 import json
-
+from pydantic import BaseModel
 from tldextract import tldextract
 
 
@@ -61,3 +63,8 @@ def extract_domain(uri: str) -> tuple[str, str, str]:
     """
     tld = tldextract.extract(uri)
     return tld.subdomain, tld.domain, tld.suffix
+
+
+class DummyRequest(BaseModel):
+    Value: Any
+    Properties: dict = {}

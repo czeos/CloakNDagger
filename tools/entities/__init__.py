@@ -119,6 +119,7 @@ class Selector(BaseEntity):
                                                          match='strict'))
     name: str
     icon: str = TARGET
+    uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
 class Tag(BaseEntity):
@@ -127,6 +128,7 @@ class Tag(BaseEntity):
                                                          match='strict'))
     name: str
     icon: str = TAG
+    uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
 class Username(BaseEntity):

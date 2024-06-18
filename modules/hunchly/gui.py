@@ -1,3 +1,4 @@
+
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QLabel, QLineEdit, QComboBox, QPushButton, QHBoxLayout, QErrorMessage
 )
@@ -8,22 +9,11 @@ from datetime import datetime
 import sys
 
 
-class HunchlyPage(BaseModel):
-    id: int
-    case_id: int
-    url: AnyUrl
-    title: str
-
-
-class HunchlyPages(BaseModel):
-    results: int = Field(alias='number_of_results')
-    data: List[HunchlyPage] = Field(alias='pages', default_factory=list)
-
-    def get_page_by_id(self, id: int) -> HunchlyPage:
-        for page in self.data:
-            if page.id == id:
-                return page
-        raise ValueError(f'Page id {id} not found')
+class CheckBoxAppOutput(BaseModel):
+    case_name: str | None = Field(default=None)
+    case_id: int | None = Field(default=None)
+    title: str | None = Field(default=None)
+    id: int | None = Field(default=None)
 
 
 class CheckBoxApp(QWidget):
@@ -118,7 +108,7 @@ class CheckBoxApp(QWidget):
         case_id_text = self.case_id_combo.currentText()
         if case_id_text:
             case_id = int(case_id_text)
-            self.hunchly_pages = self.api_function(case_id)
+            self.hunchly_pages = self.api_function(case_id_text)
             self.populatePageFields()
         else:
             error_dialog = QErrorMessage(self)
@@ -159,36 +149,19 @@ class CheckBoxApp(QWidget):
         self.close()
 
     def getSelectedData(self):
-        return {
+        return CheckBoxAppOutput(**{
             'case_name': self.case_name_combo.currentText(),
             'case_id': self.case_id_combo.currentText(),
-            'selected_page_title': self.selected_page_title,
-            'selected_page_id': self.selected_page_id
-        }
+            'title': self.selected_page_title,
+            'id': self.selected_page_id
+        })
 
 
+# TODO: change to decorator
 def check_box_form(title, description, case_names, case_ids, api_function):
     app = QApplication(sys.argv)
     ex = CheckBoxApp(title, description, case_names, case_ids, api_function)
     ex.show()
     app.exec()
     return ex.getSelectedData()
-
-
-# Example usage
-def example_api(case_id: int) -> HunchlyPages:
-    pages = [
-        HunchlyPage(id=1, case_id=case_id, created=datetime.now(), updated=datetime.now(), url="http://example.com",
-                    title="Page 1", hash="abc123"),
-        HunchlyPage(id=2, case_id=case_id, created=datetime.now(), updated=datetime.now(), url="http://example.com",
-                    title="Page 2", hash="def456")
-    ]
-    return HunchlyPages(number_of_results=2, pages=pages)
-
-
-if __name__ == '__main__':
-    case_names = ["Case A", "Case B"]
-    case_ids = [100, 101]
-
-    result = check_box_form("Sample Title", "Sample Description", case_names, case_ids, example_api)
-    print(result)
+# TODO:Generlized

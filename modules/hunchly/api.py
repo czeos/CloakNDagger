@@ -21,7 +21,9 @@ def set_api(params: List[str], model: Type[BaseModel], var: Optional[Union[int, 
     return call_api(params=params + [var], model=model)
 
 get_cases = partial(set_api, [config.hunchly.api_path, "case", "get"], HunchlyCases)
-get_case_pages = partial(set_api, [config.hunchly.api_path, "page", "list", "-n"], HunchlyPages)
+get_case_pages_by_case_name = partial(set_api, [config.hunchly.api_path, "page", "list", "-n"], HunchlyPages)
+get_case_pages_by_case_id = partial(set_api, [config.hunchly.api_path, "page", "list", "-c"], HunchlyPages)
+get_case_page = partial(set_api, [config.hunchly.api_path, "page", "list", "-p"], HunchlyPages)
 get_case_data = partial(set_api, [config.hunchly.api_path, "caseData", "-n"], HunchlyPageDatas)
 get_page_data = partial(set_api, [config.hunchly.api_path, "caseData", "-p"], HunchlyPageDatas)
 get_page_photo = partial(set_api, [config.hunchly.api_path, "photo", "get", "-p"], HunchlyPhotos)
@@ -34,7 +36,7 @@ get_case_tags = partial(set_api, [config.hunchly.api_path, "tag", "get", "-n"], 
 
 if __name__ == '__main__':
     # c = get_cases(' ')
-    # c = get_case_pages(' ')
+    c = get_case_pages_by_case_name('Dmitri Sytyi')
     # a = get_case_data("RusPhone 12")
     # get_page_data('429')
     # aa = get_case_photo('sshr')
@@ -44,5 +46,5 @@ if __name__ == '__main__':
     # aa = get_case_tags('sshr')
     # a = get_page_tags('453')
     # a = get_page_tags('446')
-    a = get_cases()
-    pass
+    # # a = get_cases()
+    # c.get_page_by_id(38)

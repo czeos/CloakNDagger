@@ -1,5 +1,5 @@
 import sys
-
+from config import config
 import transforms
 from extensions import registry
 from maltego_trx.handler import handle_run
@@ -10,7 +10,7 @@ register_transform_classes(transforms)
 
 registry.write_transforms_config(include_output_entities=True)
 registry.write_settings_config()
-registry.write_local_mtz(command=r'C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Scripts\python')
+registry.write_local_mtz(command=config.cnd.python_path)
 
 if __name__ == '__main__':
     # debug

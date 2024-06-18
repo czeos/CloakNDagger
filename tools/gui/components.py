@@ -170,10 +170,47 @@ class MultiSelectorMenu:
     def get_selected_values(self):
         return self.selected_values
 
-if __name__ == '__main__':
-    default_option, options, label = 'options1', ['option1', 'options2', 'option3'] , 'Test widget'
 
-    with MultiSelectorMenu(options=options, label=label ) as app:
-        app.root.mainloop()
-        selected_option = app.get_selected_values()
-        pass
+
+
+import sys
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
+from PyQt6.QtCore import pyqtSlot
+
+class MessageBox(QWidget):
+    def __init__(self, message, title, description):
+        super().__init__()
+        self.initUI(message, title, description)
+
+    def initUI(self, message, title, description):
+        layout = QVBoxLayout()
+
+        # Set window title
+        self.setWindowTitle(title)
+
+        # Add message label
+        message_label = QLabel(message, self)
+        layout.addWidget(message_label)
+
+        # Add description label
+        description_label = QLabel(description, self)
+        layout.addWidget(description_label)
+
+        # Add submit button
+        submit_button = QPushButton('OK', self)
+        submit_button.clicked.connect(self.onSubmit)
+        layout.addWidget(submit_button)
+
+        self.setLayout(layout)
+        self.show()
+
+    @pyqtSlot()
+    def onSubmit(self):
+        self.close()
+
+
+def message_box(message, title, description):
+    app = QApplication(sys.argv)
+    ex = MessageBox(message, title, description)
+    ex.show()
+    app.exec()

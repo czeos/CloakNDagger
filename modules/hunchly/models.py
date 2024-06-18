@@ -20,6 +20,20 @@ class HunchlyCases(BaseEntityStack):
     results: int = Field(validation_alias='number_of_results')
     data: List[HunchlyCase] = Field(validation_alias='cases', default_factory=list)
 
+    def get_item_by(self, name: str, value) -> HunchlyCase:
+        for item in self.data:
+            if item.__getattribute__(name) == value:
+                return item
+
+    def get_case_by_id(self, id: int) -> HunchlyCase:
+        return self.get_item_by(name='id', value=id)
+
+    def get_case_by_name(self, name: str) -> HunchlyCase:
+        return self.get_item_by(name='name', value=name)
+
+    def get_list_of_item_values(self, name):
+        return [item.__getattribute__(name) for item in self.data]
+
 
 class HunchlyPage(Page):
     id: int
@@ -35,6 +49,11 @@ class HunchlyPages(BaseEntityStack):
     results: int = Field(validation_alias='number_of_results')
     data: List[HunchlyPage] = Field(validation_alias='pages', default_factory=list)
 
+    def get_page_by_id(self, id: int) -> HunchlyPage:
+        for page in self.data:
+            if page.id == id:
+                return page
+        raise ValueError(f'Page id {id} not found')
 
 class HunchlyEmail(Email):
     type: str = Field(validation_alias='data_type')

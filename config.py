@@ -8,9 +8,11 @@ from tools.base import BaseRegisterFactory
 
 BASE_PATH = Path(__file__).resolve().parent
 
+
 class CND(BaseModel):
     debug: bool = Field(default=True, description='Set debug mode')
     community: bool = Field(default=True, description='Is community')
+    python_path: str = Field(default='', description="Path to python interpreter")
 
 
 class Database(BaseModel, ABC):
