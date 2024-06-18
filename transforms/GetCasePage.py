@@ -52,8 +52,9 @@ class GetCasePage(DiscoverableTransform):
         if not output.id:
             message_box(message='Page doesnt found', title='CloakNDagger MessageBox', description='')
         else:
-            page = get_case_page(str(output.id))
-            # create_entity_from_model(page, response)
+            items = get_case_page(str(output.id))
+            for item in items.data:
+                create_entity_from_model(item, response)
             message_box(message='Page created', title='CloakNDagger MessageBox', description='')
 
 if  __name__ == "__main__":

@@ -3,6 +3,8 @@
     debug = true
     # Is comunity
     community = true
+    # path to env
+    python_path =  'C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Scripts\python'
 
 
 [hunchly]

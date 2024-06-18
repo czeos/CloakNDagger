@@ -7,7 +7,7 @@ from settings import hunchly_transformset
 from modules.hunchly.api import get_case_data, get_cases
 from modules.hunchly.models import Case, HUNCHLY_DATA_TYPES
 from tools.maltego import create_entity_from_model, model_from_maltego_request
-from tools.gui.components import MultiSelectorMenu
+from tools.gui.components import MultiSelectorMenu, message_box
 from tools.entities import ENTITIES_TYPE_NAMES
 
 @registry.register_transform(
@@ -63,6 +63,7 @@ class GetCaseData(DiscoverableTransform):
         for item in items.data:
             create_entity_from_model(item, response)
 
+        message_box(message=f"Case contain {items.results} items", title='CloakNDagger MessageBox', description='')
         response.addUIMessage(f"Case contain {items.results} items")
 
 

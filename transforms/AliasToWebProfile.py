@@ -6,6 +6,7 @@ from settings import whatsmynameapp_transformset
 from modules.whatsmynameapp.api import get_site_dat, check_all_sites, HEADERS
 from modules.whatsmynameapp.models import UserProfiles
 from config import config
+from tools.gui.components import message_box
 from tools.maltego import create_entity_from_model, model_from_maltego_request
 from tools.dbs import TiDBCache
 from tools.entities import ENTITIES_TYPE_NAMES, Alias, entity_register
@@ -51,5 +52,7 @@ class AliasToWebProfile(DiscoverableTransform):
         for item in items.data:
             create_entity_from_model(item, response)
 
+        message_box(message=f"On WhatsMyNameApp were found profiles for username {username.alias}. "
+                              f"In cache {items.results} left", title='CloakNDagger MessageBox', description='')
         response.addUIMessage(f"On WhatsMyNameApp were found profiles for username {username.alias}. "
                               f"In cache {items.results} left")

@@ -5,9 +5,10 @@ from extensions import registry
 from modules.hunchly.models import Case
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_pages_by_case_name
+from tools.gui.components import message_box
 from tools.maltego import create_entity_from_model, model_from_maltego_request
 from tools.entities import ENTITIES_TYPE_NAMES
-from modules.hunchly.gui import me
+
 
 @registry.register_transform(
     display_name="Get HunchlyPages [Hunchly]",
@@ -34,6 +35,8 @@ class GetCasePages(DiscoverableTransform):
         # generating of pages
         for item in items.data:
             create_entity_from_model(item, response)
+
+        message_box(message=f"Case contain {items.results} pages", title='CloakNDagger MessageBox', description='')
         response.addUIMessage(f"Case contain {items.results} pages")
 
 
