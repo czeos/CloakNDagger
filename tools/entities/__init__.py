@@ -24,7 +24,7 @@ ENTITIES_TYPE_NAMES.register(name='ALIAS', item='cnd.Alias')
 ENTITIES_TYPE_NAMES.register(name='CLOAK_N_DAGGER', item='cnd.CloakNDagger')
 ENTITIES_TYPE_NAMES.register(name='TEXT', item='cnd.Text')
 ENTITIES_TYPE_NAMES.register(name='TAVILY', item='cnd.Tavily')
-
+ENTITIES_TYPE_NAMES.register(name='COMPANY', item='maltego.Company')
 
 class Case(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.CASE,
@@ -166,18 +166,11 @@ class Text(BaseEntity):
         return data
 
 
-class Text(BaseEntity):
+class Company(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.COMPANY,
-                                                         main_attribute='text',
+                                                         main_attribute='name',
                                                          match='strict'))
-    text: str = Field(default='')
-    icon: str = COMMENT
-
-    @model_validator(mode='before')
-    @classmethod
-    def set_note(cls, data):
-        data['note'] = data['text']
-        return data
+    name: str = Field(default='')
 
 
 
@@ -198,3 +191,4 @@ entity_register.register(name=ENTITIES_TYPE_NAMES.USERNAME, item=Username)
 entity_register.register(name=ENTITIES_TYPE_NAMES.ALIAS, item=Alias)
 entity_register.register(name=ENTITIES_TYPE_NAMES.CLOAK_N_DAGGER, item=CloakNDagger)
 entity_register.register(name=ENTITIES_TYPE_NAMES.TEXT, item=Text)
+entity_register.register(name=ENTITIES_TYPE_NAMES.COMPANY, item=Company)
