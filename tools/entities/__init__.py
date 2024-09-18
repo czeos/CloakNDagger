@@ -166,6 +166,20 @@ class Text(BaseEntity):
         return data
 
 
+class Text(BaseEntity):
+    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.COMPANY,
+                                                         main_attribute='text',
+                                                         match='strict'))
+    text: str = Field(default='')
+    icon: str = COMMENT
+
+    @model_validator(mode='before')
+    @classmethod
+    def set_note(cls, data):
+        data['note'] = data['text']
+        return data
+
+
 
 
 entity_register.register(name=ENTITIES_TYPE_NAMES.CASE, item=Case)

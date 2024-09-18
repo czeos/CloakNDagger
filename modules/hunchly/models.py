@@ -160,7 +160,6 @@ class HunchlySelectors(BaseEntityStack):
     data: List[HunchlySelector] = Field(validation_alias='selectors', default_factory=list)
 
 
-
 class HunchlyTag(Tag):
     id: int = Field(validation_alias='id')
     name: str = Field(validation_alias='tag_name')
