@@ -4,8 +4,10 @@ from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET,
 from tools.base import entity_register, ENTITIES_TYPE_NAMES
 
 #todo: change loction of hunchly case
-
-
+#todo: refctor regiter
+#todo: add base entiies: person, address, ico
+#todo: create ico as matego entity in appliction and crete configurtion, add iconto tools/icon
+#todo: refactor as module
 
 ENTITIES_TYPE_NAMES.register(name='CASE', item='cnd.HunchlyCase')
 ENTITIES_TYPE_NAMES.register(name='PAGE', item='cnd.Webpage')
