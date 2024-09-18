@@ -1,6 +1,5 @@
 from modules.ares.models import Company
 
-#todo: api call to ARES
-#todo: fucntion input is api call properties
+#TODO: add the real implementation
 def serch_by_name(name: str):
     return Company(name='success')
