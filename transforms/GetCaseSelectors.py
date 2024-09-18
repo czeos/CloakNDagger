@@ -4,7 +4,7 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from modules.hunchly.models import Case
 from settings import hunchly_transformset
-from modules.hunchly.api import get_case_selectors
+from modules.hunchly.api import get_case_selectors_by_case_name
 from tools.base import ENTITIES_TYPE_NAMES
 from tools.maltego import create_entity_from_model, model_from_maltego_request
 
@@ -31,7 +31,7 @@ class GetCaseSelectors(DiscoverableTransform):
 
         # case data
         case = model_from_maltego_request(request=request, model=Case)
-        items = get_case_selectors(case.name)
+        items = get_case_selectors_by_case_name(case.name)
 
         # generating of pages
         for item in items.data:

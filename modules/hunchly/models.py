@@ -149,6 +149,12 @@ class HunchlySelector(Selector):
     name: str = Field(validation_alias='selector')
 
 
+class HunchlySelectorWithHits(Selector):
+    id: int = Field(validation_alias='selector_id')
+    name: str = Field(validation_alias='selector')
+    hits: List[HunchlyPage]
+
+
 class HunchlySelectors(BaseEntityStack):
     results: int = Field(validation_alias='number_of_results')
     data: List[HunchlySelector] = Field(validation_alias='selectors', default_factory=list)

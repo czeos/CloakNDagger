@@ -12,17 +12,18 @@ class EntitySetting(BaseModel):
     match: Literal['strict', 'loose']
 
 
-class BaseEntity(BaseModel, ABC):
+class BaseEntity(BaseModel):
     """
     Base entity / inheritance and template type
 
     """
     _internal_fields: List[str] = ['setting', 'icon', 'display_info', 'note']
-    setting: EntitySetting
+    setting: EntitySetting = Field(..., exclude=True)
     uuid: str = Field(default_factory=lambda: str(uuid4()))
-    icon: str = Field(default='')
-    display_info: str = Field(default='')
-    note: str = Field(default='')
+    icon: str = Field(default='', exclude=True)
+    display_info: str = Field(default='', exclude=True)
+    note: str = Field(default='', exclude=True)
+
 
     @property
     def property_fields(self) -> List[str]:

@@ -4,7 +4,8 @@ from subprocess import Popen, PIPE
 from typing import List, Type, Union, Optional
 
 from config import config
-from modules.hunchly.models import HunchlyPageDatas, HunchlyPages, HunchlyPhotos, HunchlySelectors, HunchlyTags, HunchlyCases
+from modules.hunchly.models import (HunchlyPageDatas, HunchlyPages, HunchlyPhotos, HunchlySelectors, HunchlyTags,
+                                    HunchlyCases, HunchlySelectorWithHits)
 from pydantic import BaseModel
 
 
@@ -29,7 +30,8 @@ get_page_data = partial(set_api, [config.hunchly.api_path, "caseData", "-p"], Hu
 get_page_photo = partial(set_api, [config.hunchly.api_path, "photo", "get", "-p"], HunchlyPhotos)
 get_case_photo = partial(set_api, [config.hunchly.api_path, "photo", "get", "-n"], HunchlyPhotos)
 get_page_selectors = partial(set_api, [config.hunchly.api_path, "selector", "get", "-p"], HunchlySelectors)
-get_case_selectors = partial(set_api, [config.hunchly.api_path, "selector", "get", "-n"], HunchlySelectors)
+get_case_selectors_by_case_name = partial(set_api, [config.hunchly.api_path, "selector", "get", "-n"], HunchlySelectors)
+get_case_selectors_by_case_id = partial(set_api, [config.hunchly.api_path, "selector", "get", "-c"], HunchlySelectorWithHits)
 get_page_tags = partial(set_api, [config.hunchly.api_path, "tag", "get", "-p"], HunchlyTags)
 get_case_tags = partial(set_api, [config.hunchly.api_path, "tag", "get", "-n"], HunchlyTags)
 
@@ -48,3 +50,5 @@ if __name__ == '__main__':
     # a = get_page_tags('446')
     # # a = get_cases()
     # c.get_page_by_id(38)
+    a = get_case_selectors_by_case_id('2')
+    pass
