@@ -11,3 +11,6 @@ whatsmynameapp_transformset = TransformSet(name="WhatsMyNameApp",
 
 tavily_transformset = TransformSet(name="Tavily",
                                            description="Search with Tavily")
+
+ares_transformset = TransformSet(name="Ares",
+                                           description="Search legal info from ARES (CZE)")
