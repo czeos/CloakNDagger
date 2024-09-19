@@ -7,6 +7,9 @@ from typing import List, Optional, Callable
 from datetime import datetime
 import sys
 
+from modules.ares.api import serch_ares
+from modules.ares.models import RequestEkonomickySubjekt
+
 
 class HunchlyPage(BaseModel):
     id: int
@@ -187,8 +190,11 @@ def example_api(case_id: int) -> HunchlyPages:
 
 
 if __name__ == '__main__':
-    case_names = ["Case A", "Case B"]
+
+    c = serch_ares(RequestEkonomickySubjekt(obchodniJmeno="svagr"))
+    print(c)
+"""     case_names = ["Case A", "Case B"]
     case_ids = [100, 101]
 
     result = check_box_form("Sample Title", "Sample Description", case_names, case_ids, example_api)
-    print(result)
+    print(result) """
