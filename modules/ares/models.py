@@ -15,8 +15,8 @@ class Sidlo(BaseModel):
 class RequestEkonomickySubjekt(BaseModel):
     start : int = 0
     pocet: int = 10
-    ico: List[str] = None
-    obchodniJmeno: str
+    ico: Optional[List[str]] = None
+    obchodniJmeno: str = Field(validation_alias ='name')
     sidlo: Optional[Sidlo] = None
 
 class AdresaDorucovaci(BaseModel):
@@ -81,7 +81,7 @@ class PravnickaOsoba(Company,EkonomickySubjekt):
 ]
 
 class FyzickaOsoba(Person,EkonomickySubjekt):
-    name: str = Field(validation_alias='obchodniJmeno')
+    fullname: str = Field(validation_alias='obchodniJmeno')
     pravniForma: Literal['101', '102', '105','106','107','108','109','110']
 
 class Root(BaseModel):

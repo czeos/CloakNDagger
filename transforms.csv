@@ -1,6 +1,6 @@
 Owner,Author,Disclaimer,Description,Version,Name,UIName,URL,entityName,oAuthSettingId,transformSettingIDs,seedIDs,outputEntities
 CloakNDagger,Mike,,Search web profiles by username,0.1,aliastowebprofile,Search profiles by username [WhatsMyNameApp],gossip.monster\run\aliastowebprofile,cnd.Alias,,,demo,cnd.UserProfile
-CloakNDagger,Mike,,Get legal info from ARES (CZE) for given company name,0.1,aresgetrecordscompany,Get legal info from ARES,gossip.monster\run\aresgetrecordscompany,maltego.Company,,,demo,maltego.Company
+CloakNDagger,Mike,,Get legal info from ARES (CZE) for given company name,0.1,aresgetrecordscompany,Get legal info from ARES,gossip.monster\run\aresgetrecordscompany,maltego.Company,,,demo,maltego.Company;maltego.Person
 CloakNDagger,Mike,,Get starting entity,0.1,cndgetentity,Get CND strarting Entity [CloakNDagger],gossip.monster\run\cndgetentity,cnd.CloakNDagger,,,demo,cnd.HunchlyCase;cnd.Alias;cnd.Tavily
 CloakNDagger,Mike,,Return data collected from pages for given Hunchly case name or case id,0.1,getcasedata,Get HunchlyPages Data [Hunchly],gossip.monster\run\getcasedata,cnd.HunchlyCase,,,demo,cnd.HunchlyPageData
 CloakNDagger,Mike,,Return captured pages for given Hunchly case name,0.1,getcasepage,Get HunchlyPage [Hunchly],gossip.monster\run\getcasepage,cnd.HunchlyCase,,,demo,cnd.Webpage

@@ -176,11 +176,12 @@ class Company(BaseEntity):
                                                          match='strict'))
     name: str = Field(default='')
 
+
 class Person(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.COMPANY,
-                                                         main_attribute='name',
+    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.PERSON,
+                                                         main_attribute='fullname',
                                                          match='strict'))
-    name: str = Field(default='')
+    fullname: str = Field(default='')
 
 
 
