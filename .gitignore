@@ -30,8 +30,6 @@ tools/gui/__pycache__/__init__.cpython-310.pyc
 tools/gui/__pycache__/components.cpython-310.pyc
 tools/icons/__pycache__/__init__.cpython-310.pyc
 modules/__pycache__/__init__.cpython-310.pyc
-modules/ares/api.py
-modules/ares/models.py
 modules/ares/__pycache__/__init__.cpython-310.pyc
 modules/ares/__pycache__/api.cpython-310.pyc
 modules/ares/__pycache__/models.cpython-310.pyc
@@ -48,3 +46,5 @@ modules/tavily/__pycache__/models.cpython-310.pyc
 modules/whatsmynameapp/__pycache__/__init__.cpython-310.pyc
 modules/whatsmynameapp/__pycache__/api.cpython-310.pyc
 modules/whatsmynameapp/__pycache__/models.cpython-310.pyc
+/.idea/
+/db/db.json

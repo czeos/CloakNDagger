@@ -1,10 +1,12 @@
+from modules.ares.models import Company
+from modules.ares import ares_logger
 from typing import Any, Dict
 import requests
 from modules.ares.models import RequestEkonomickySubjekt,Root
 
 #TODO: add the real implementation
 def serch_ares(payload: RequestEkonomickySubjekt):
-    
+    ares_logger.debug('logger test')
     root = make_request(payload)
     while root and root.pocetCelkem > payload.start:
         payload.start += 10
