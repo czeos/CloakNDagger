@@ -7,6 +7,10 @@ from tools.utils import hash_fn
 
 
 class EntitySetting(BaseModel):
+    """
+
+
+    """
     type: str
     main_attribute: str
     match: Literal['strict', 'loose']
@@ -68,7 +72,6 @@ class BaseRegisterFactory(BaseModel):
         if item is not None:
             return item
 
-
 class EntityRegister(BaseRegisterFactory):
     pass
 
@@ -87,3 +90,6 @@ class EntitiesTypeNames(BaseRegisterFactory):
 
 global ENTITIES_TYPE_NAMES
 ENTITIES_TYPE_NAMES = EntitiesTypeNames()
+
+# class NewEntityRegister(cls):
+#     pass

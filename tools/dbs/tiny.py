@@ -106,21 +106,3 @@ class TiDBCache(BaseModel):
 
     def insert_one_to_table(self, table: str, item: BaseEntity) -> None:
         self.db.table(table).insert(item.dict())
-
-
-
-if __name__ == '__main__':
-    from modules.hunchly.models import HunchlyFacebookPixel, HunchlyCase, HunchlyPageDatas
-    from tools.entities import entity_register
-
-
-    f1 = HunchlyFacebookPixel(data_record='a', data_extractor='Facebook Tracking Pixel ID', data_type='type')
-    f2 = HunchlyFacebookPixel(data_record='b', data_extractor='Facebook Tracking Pixel ID', data_type='type')
-    c = HunchlyCase(id=20, name='test')
-    d = HunchlyPageDatas(number_of_results=2, data=[f1,f2])
-
-    cache = TiDBCache(db_path=config.db.db_path, entity_register=entity_register)
-    cache.save_to_cache(query=c, stack=d)
-    cached_entities = cache(query=c)
-
-    pass

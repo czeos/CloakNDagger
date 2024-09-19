@@ -28,6 +28,7 @@ ENTITIES_TYPE_NAMES.register(name='TEXT', item='cnd.Text')
 ENTITIES_TYPE_NAMES.register(name='TAVILY', item='cnd.Tavily')
 ENTITIES_TYPE_NAMES.register(name='COMPANY', item='maltego.Company')
 
+
 class Case(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.CASE,
                                                          main_attribute='name',
