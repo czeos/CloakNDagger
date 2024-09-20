@@ -1,5 +1,7 @@
+from typing import Type
+
 from pydantic import Field, AnyUrl, model_validator
-from tools.base import BaseEntity, EntitySetting
+from tools.base import BaseEntity, EntitySetting, RegisterMeta
 from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR
 from tools.base import entity_register, ENTITIES_TYPE_NAMES
 
@@ -204,3 +206,33 @@ entity_register.register(name=ENTITIES_TYPE_NAMES.CLOAK_N_DAGGER, item=CloakNDag
 entity_register.register(name=ENTITIES_TYPE_NAMES.TEXT, item=Text)
 entity_register.register(name=ENTITIES_TYPE_NAMES.COMPANY, item=Company)
 entity_register.register(name=ENTITIES_TYPE_NAMES.PERSON, item=Person)
+
+
+# Define the Register class using the dynamic metaclass
+class Register(metaclass=RegisterMeta):
+    """
+    All entities are registered here
+    Entities are registered dynamically and wrapped in EntityWrapper
+    attributes:
+        entity_class: class of entity
+        entity_type: type of entity i.e. return value of entity.setting.type
+    """
+    CASE: Type[BaseEntity] = Case
+    PAGE: Type[BaseEntity] = Page
+    EMAIL: Type[BaseEntity] = Email
+    IPV4: Type[BaseEntity] = IPV4
+    IPV6: Type[BaseEntity] = IPV6
+    GOOGLE_ANALYTICS: Type[BaseEntity] = GoogleAnalytics
+    FACEBOOK_PIXEL: Type[BaseEntity] = FacebookPixel
+    TOR_SERVICE: Type[BaseEntity] = TorService
+    SOCIAL_MEDIA_ACCOUNT: Type[BaseEntity] = SocialMediaProfile
+    PHOTO: Type[BaseEntity] = Photo
+    SELECTOR: Type[BaseEntity] = Selector
+    TAG: Type[BaseEntity] = Tag
+    USERNAME: Type[BaseEntity] = Username
+    ALIAS: Type[BaseEntity] = Alias
+    CLOAK_N_DAGGER: Type[BaseEntity] = CloakNDagger
+    TEXT: Type[BaseEntity] = Text
+    COMPANY: Type[BaseEntity] = Company
+    PERSON: Type[BaseEntity] = Person
+

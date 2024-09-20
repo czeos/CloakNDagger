@@ -1,15 +1,33 @@
 from abc import ABC
-from typing import Callable, Union, Dict, List, Type, Literal
+from typing import Callable, Union, Dict, List, Type, Literal,Protocol
 from uuid import uuid4
-from pydantic import BaseModel, Field
-
+from pydantic import BaseModel, Field, field_validator, model_validator
 from tools.utils import hash_fn
+
+
+class EntityStackProtocol(Protocol):
+    results: int
+    data: list[BaseModel]
+
+
+class RegisterProtocol(Protocol):
+
+    def register(self, name: str, item: Union[BaseModel, Callable, str]) -> None:
+        ...
+
+    def get_item(self, name: str) -> Union[BaseModel, Callable]:
+        ...
+
+    def get_list_of_names(self) -> List[str]:
+        ...
 
 
 class EntitySetting(BaseModel):
     """
-
-
+    Setting to generate mltego entity
+    type: maltego type name e.g. "cnd.Entity"
+    main_attribute: main attribute that will be displayed in the maltego entity as primary field
+    match: strict or loose
     """
     type: str
     main_attribute: str
@@ -54,7 +72,6 @@ class BaseEntityStack(BaseModel, ABC):
         else:
             return filtered
 
-
 class BaseRegisterFactory(BaseModel):
     items: Dict[str, Union[BaseModel, Callable, str]] = Field(default_factory=dict)
 
@@ -72,9 +89,38 @@ class BaseRegisterFactory(BaseModel):
         if item is not None:
             return item
 
+## Register entities
+# Helper class to wrap the entity class and its type
+class EntityWrapper:
+    def __init__(self, entity_class: Type[BaseEntity]):
+        self.entity_class = entity_class
+        self.entity_type = entity_class.model_fields['setting'].default.type
+
+    def __repr__(self):
+        return f"<EntityWrapper: {self.entity_type}>"
+
+# Define the metaclass to dynamically register the entities
+class RegisterMeta(type):
+    def __new__(cls, name, bases, class_dict):
+        # Create the new class (like Register)
+        new_cls = super().__new__(cls, name, bases, class_dict)
+
+        # Initialize a registry to store entity information
+        new_cls._entity_registry: Dict[str, EntityWrapper] = {}
+
+        # Iterate through the class attributes and register any BaseModel subclasses
+        for attr_name, attr_value in class_dict.items():
+            if isinstance(attr_value, type) and issubclass(attr_value, BaseModel):
+                # Register entity dynamically
+                new_cls._entity_registry[attr_name] = EntityWrapper(entity_class=attr_value)
+                # Also set it as an attribute of the class
+                setattr(new_cls, attr_name, EntityWrapper(attr_value))
+
+        return new_cls
+
+
 class EntityRegister(BaseRegisterFactory):
     pass
-
 
 global entity_register
 entity_register = EntityRegister()
@@ -90,6 +136,3 @@ class EntitiesTypeNames(BaseRegisterFactory):
 
 global ENTITIES_TYPE_NAMES
 ENTITIES_TYPE_NAMES = EntitiesTypeNames()
-
-# class NewEntityRegister(cls):
-#     pass
