@@ -48,3 +48,12 @@ modules/whatsmynameapp/__pycache__/api.cpython-310.pyc
 modules/whatsmynameapp/__pycache__/models.cpython-310.pyc
 /.idea/
 /db/db.json
+_config.toml
+config.toml
+logs/debug.log
+.gitignore
+__pycache__/loggers.cpython-310.pyc
+tools/__pycache__/entities.cpython-310.pyc
+transforms/__pycache__/AresGetRecordsCompany.cpython-310.pyc
+local.mtz
+test.py
