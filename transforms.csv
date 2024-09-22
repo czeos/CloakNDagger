@@ -14,3 +14,4 @@ CloakNDagger,Mike,,Return photos for given Hunchly Webpage,0.1,getpagephoto,Get 
 CloakNDagger,Mike,,Return selectors for given Hunchly Webpage,0.1,getpageselectors,Get Page Selectors [Hunchly],gossip.monster\run\getpageselectors,cnd.Webpage,,,demo,cnd.Selector
 CloakNDagger,Mike,,Return tags for given Hunchly Webpage,0.1,getpagetags,Get Page Tags [Hunchly],gossip.monster\run\getpagetags,cnd.Webpage,,,demo,cnd.Tag
 CloakNDagger,Mike,,Get starting entity,0.1,tavilysearch,Query web resources [Tavili],gossip.monster\run\tavilysearch,cnd.Tavily,,,demo,cnd.Webpage;cnd.Image
+CloakNDagger,Mike,,TestTheThings,0.1,testthethings,TestTheThings,gossip.monster\run\testthethings,maltego.Company,,,demo,cnd.test_entity

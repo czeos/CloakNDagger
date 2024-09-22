@@ -1,9 +1,11 @@
 from typing import Type
+from maltego_trx.overlays import OverlayPosition, OverlayType
 
 from pydantic import Field, AnyUrl, model_validator
-from tools.base import BaseEntity, EntitySetting, RegisterMeta
+from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
 from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR
 from tools.base import entity_register, ENTITIES_TYPE_NAMES
+
 
 #todo: change loction of hunchly case
 #todo: refctor regiter
@@ -186,6 +188,17 @@ class Person(BaseEntity):
     fullname: str = Field(default='')
 
 
+class TestEntity(BaseEntity):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.test_entity',
+                                                         main_attribute='fullname',
+                                                         match='strict'))
+    fullname: str = Field(default='')
+    icon: EntityIcon = EntityIcon(url=TARGET)
+    note: EntityNote = EntityNote(note='Test entity note')
+    display_info: EntityDisplayInfo = EntityDisplayInfo(content='Test entity content', title='Test entity title:')
+    overlay_text: EntityDisplay = EntityDisplay(value='Test entity overlay', position=OverlayPosition.SOUTH_WEST, overlay_type=OverlayType.TEXT)
+    overlay_color: EntityDisplay = EntityDisplay(value='#45e06f', position=OverlayPosition.WEST, overlay_type=OverlayType.COLOUR)
+    overlay_icon: EntityDisplay = EntityDisplay(value=TAG, position=OverlayPosition.NORTH, overlay_type=OverlayType.IMAGE)
 
 
 entity_register.register(name=ENTITIES_TYPE_NAMES.CASE, item=Case)
@@ -214,8 +227,8 @@ class Register(metaclass=RegisterMeta):
     All entities are registered here
     Entities are registered dynamically and wrapped in EntityWrapper
     attributes:
-        entity_class: class of entity
-        entity_type: type of entity i.e. return value of entity.setting.type
+        clas: class of entity
+        name: type of entity i.e. return value of entity.setting.type
     """
     CASE: Type[BaseEntity] = Case
     PAGE: Type[BaseEntity] = Page
@@ -235,4 +248,7 @@ class Register(metaclass=RegisterMeta):
     TEXT: Type[BaseEntity] = Text
     COMPANY: Type[BaseEntity] = Company
     PERSON: Type[BaseEntity] = Person
+    TEST_ENTITY: Type[BaseEntity] = TestEntity
 
+
+ENTITYREG = Register()

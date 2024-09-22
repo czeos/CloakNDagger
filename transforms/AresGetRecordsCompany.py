@@ -7,13 +7,13 @@ from settings import ares_transformset
 from tools.base import ENTITIES_TYPE_NAMES
 from tools.maltego import model_from_maltego_request, create_entity_from_model
 from modules.ares.api import serch_ares
-from tools.entities import Company,Person
+from tools.entities import Company, Person, ENTITYREG
 
 @registry.register_transform(
     display_name="Get legal info from ARES",
-    input_entity=ENTITIES_TYPE_NAMES.COMPANY,
+    input_entity=ENTITYREG.COMPANY.get_type(),
     description="Get legal info from ARES (CZE) for given company name",
-    output_entities=[ENTITIES_TYPE_NAMES.COMPANY,ENTITIES_TYPE_NAMES.PERSON],
+    output_entities=[ENTITYREG.COMPANY.get_type(), ENTITYREG.PERSON.get_type()],
     transform_set=ares_transformset
 
 )

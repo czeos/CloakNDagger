@@ -3,6 +3,7 @@ from typing import Callable, Union, Dict, List, Type, Literal,Protocol
 from uuid import uuid4
 from pydantic import BaseModel, Field, field_validator, model_validator
 from tools.utils import hash_fn
+from enum import Enum
 
 
 class EntityStackProtocol(Protocol):
@@ -22,7 +23,14 @@ class RegisterProtocol(Protocol):
         ...
 
 
-class EntitySetting(BaseModel):
+class MaltegoSettingAttributes(BaseModel):
+    """
+    Base type to set dynamically distinguish trough type check which fields will be set as entity properties and which
+    are entity settings
+    """
+    pass
+
+class EntitySetting(MaltegoSettingAttributes):
     """
     Setting to generate mltego entity
     type: maltego type name e.g. "cnd.Entity"
@@ -34,6 +42,24 @@ class EntitySetting(BaseModel):
     match: Literal['strict', 'loose']
 
 
+class EntityDisplay(MaltegoSettingAttributes):
+    value: str
+    position: Enum
+    overlay_type: Enum
+
+class EntityIcon(MaltegoSettingAttributes):
+    url: str
+
+
+class EntityNote(MaltegoSettingAttributes):
+    note: str
+
+
+class EntityDisplayInfo(MaltegoSettingAttributes):
+    content: str
+    title: str
+
+
 class BaseEntity(BaseModel):
     """
     Base entity / inheritance and template type
@@ -42,9 +68,9 @@ class BaseEntity(BaseModel):
     _internal_fields: List[str] = ['setting', 'icon', 'display_info', 'note']
     setting: EntitySetting = Field(..., exclude=True)
     uuid: str = Field(default_factory=lambda: str(uuid4()))
-    icon: str = Field(default='', exclude=True)
-    display_info: str = Field(default='', exclude=True)
-    note: str = Field(default='', exclude=True)
+    icon: str | EntityIcon = Field(default='', exclude=True)
+    display_info: str | EntityDisplayInfo = Field(default='', exclude=True)
+    note: str | EntityNote = Field(default='', exclude=True)
 
 
     @property
@@ -96,8 +122,16 @@ class EntityWrapper:
         self.entity_class = entity_class
         self.entity_type = entity_class.model_fields['setting'].default.type
 
+    def get_cls(self) -> Type[BaseEntity]:
+        return self.entity_class
+
+    def get_type(self) -> Type[BaseEntity]:
+        return self.entity_type
     def __repr__(self):
         return f"<EntityWrapper: {self.entity_type}>"
+
+    def __str__(self):
+        return self.name
 
 # Define the metaclass to dynamically register the entities
 class RegisterMeta(type):
@@ -118,6 +152,10 @@ class RegisterMeta(type):
 
         return new_cls
 
+    def get_cls(cls, name: str) -> Type[BaseEntity]:
+        return cls._entity_registry.get(name).get_cls()
+
+# Define the base class for the entity register
 
 class EntityRegister(BaseRegisterFactory):
     pass

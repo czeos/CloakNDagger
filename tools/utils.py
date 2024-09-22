@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import base64
 from typing import Any
+import warnings
+import functools
 
 import envtoml
 import httpx
@@ -68,3 +70,18 @@ def extract_domain(uri: str) -> tuple[str, str, str]:
 class DummyRequest(BaseModel):
     Value: Any
     Properties: dict = {}
+
+
+def deprecated(func):
+    """This is a decorator to mark functions as deprecated."""
+
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        warnings.warn(
+            f"{func.__name__} is deprecated and will be removed in a future version.",
+            category=DeprecationWarning,
+            stacklevel=2
+        )
+        return func(*args, **kwargs)
+
+    return wrapper
