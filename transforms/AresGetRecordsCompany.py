@@ -1,8 +1,10 @@
+from typing import List
 from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from maltego_trx.transform import DiscoverableTransform
 
 from extensions import registry
-from modules.ares.models import RequestEkonomickySubjekt
+from modules.ares.gui import show_form
+from modules.ares.models import RequestEkonomickySubjekt,Sidlo
 from settings import ares_transformset
 from tools.base import ENTITIES_TYPE_NAMES
 from tools.maltego import model_from_maltego_request, create_entity_from_model
@@ -23,14 +25,23 @@ class AresGetRecordsCompany(DiscoverableTransform):
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         # build query
+        
         input_company = model_from_maltego_request(request=request, model=Company)
         search_request = RequestEkonomickySubjekt(**input_company.model_dump())
-        companies = serch_ares(search_request)
-        if not companies:
-            response.addUIMessage(f"No response from ARES")
-        else:
-            for company in companies.ekonomickeSubjekty:
-                create_entity_from_model(model=company, response=response)
+        data = show_form({'name': search_request.obchodniJmeno})
+
+        if data:
+            search_request.ico = [data.ico] if data.ico else None
+            search_request.sidlo = Sidlo(textovaAdresa=data.sidlo) if data.sidlo else None 
+
+            response.addUIMessage(search_request)
+            companies = serch_ares(search_request)
+
+            if not companies:
+                response.addUIMessage(f"No response from ARES")
+            else:
+                for company in companies.ekonomickeSubjekty:
+                    create_entity_from_model(model=company, response=response)
 
 
 

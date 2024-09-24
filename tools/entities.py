@@ -1,9 +1,9 @@
 from typing import Type
 from maltego_trx.overlays import OverlayPosition, OverlayType
 
-from pydantic import Field, AnyUrl, model_validator
+from pydantic import ConfigDict, Field, AnyUrl, model_validator
 from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
-from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR
+from tools.icons import ADRESS, EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR
 from tools.base import entity_register, ENTITIES_TYPE_NAMES
 
 
@@ -200,6 +200,13 @@ class TestEntity(BaseEntity):
     overlay_color: EntityDisplay = EntityDisplay(value='#45e06f', position=OverlayPosition.WEST, overlay_type=OverlayType.COLOUR)
     overlay_icon: EntityDisplay = EntityDisplay(value=TAG, position=OverlayPosition.NORTH, overlay_type=OverlayType.IMAGE)
 
+class AdressEntity(BaseEntity):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.adress_entity',
+                                                         main_attribute='sidlo',
+                                                         match='strict'))
+    sidlo: str = Field(default='')
+    icon: EntityIcon = EntityIcon(url=ADRESS)
+
 
 entity_register.register(name=ENTITIES_TYPE_NAMES.CASE, item=Case)
 entity_register.register(name=ENTITIES_TYPE_NAMES.PAGE, item=Page)
@@ -249,6 +256,6 @@ class Register(metaclass=RegisterMeta):
     COMPANY: Type[BaseEntity] = Company
     PERSON: Type[BaseEntity] = Person
     TEST_ENTITY: Type[BaseEntity] = TestEntity
-
+    ADRESS_ENTITY: Type[BaseEntity] = AdressEntity
 
 ENTITYREG = Register()
