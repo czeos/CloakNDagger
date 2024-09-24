@@ -4,19 +4,19 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_page_tags
-from tools.base import ENTITIES_TYPE_NAMES
+from tools.entities import ENTITYREG
 from tools.maltego import create_entity_from_model
 
 
 @registry.register_transform(
     display_name="Get Page Tags [Hunchly]",
-    input_entity=ENTITIES_TYPE_NAMES.PAGE,
+    input_entity=ENTITYREG.PAGE.get_type(),
     description="Return tags for given Hunchly Webpage",
-    output_entities=[ENTITIES_TYPE_NAMES.TAG],
+    output_entities=[ENTITYREG.TAG.get_type()],
     transform_set=hunchly_transformset
 
 )
-class GetPageTags(DiscoverableTransform):
+class Hunchly_GetPageTags(DiscoverableTransform):
     """
     Get a pages from Hunchly Case
     """

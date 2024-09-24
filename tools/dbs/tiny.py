@@ -1,26 +1,19 @@
-from typing import Optional, List, Union
+from typing import Optional, List
 from tinydb import TinyDB, Query
-from config import config
 from pathlib import Path
 from pydantic import BaseModel, Field, model_validator, Extra
-from tools.utils import hash_fn
-from tools.base import BaseEntity, BaseEntityStack, EntityRegister
 
+from tools.dbs.models import DBEntityStack
+from tools.base import BaseEntity, BaseEntityStack
+from tools.utils import hash_fn
 
 # set db
 def get_tinydb(path: Path) -> TinyDB:
     return TinyDB(path)
 
-def get_query_hash(model: BaseEntity, params: Optional[dict] = None):
-    """ create query record from entity and ditional params. Main query id is hash of model and prms dict"""
-    query = {name: model.__getattribute__(name) for name in model.property_fields}
-    if params:
-        query.update(params)
-    return str(hash_fn(query))
-
 
 def entities_stack_to_results(stack: BaseEntityStack, query_hash) -> List[dict]:
-    results = [item.dict() for item in stack.data]
+    results = [item.model_dump() for item in stack.data]
     for result in results:
         result.update({'query_hash': query_hash})
     return results
@@ -50,38 +43,31 @@ def is_table_empty(db: TinyDB, table: str) -> bool:
         return False
 
 
-class TiniDBTransitingEntity(BaseEntity, extra='allow'):
-    pass
-
-
-class TiniDBTransitingStack(BaseEntityStack):
-    data: List[TiniDBTransitingEntity] = Field(default_factory=list)
-
-
-def retrive_cnd_entity(register: EntityRegister, stack: TiniDBTransitingStack) -> List[BaseEntity]:
-    if stack.data:
-        return [register.get_item(item.setting.type)(**item.dict()) for item in stack.data]
-    else:
-        return []
-
+def get_query_hash(model: BaseEntity, params: Optional[dict] = None) -> str:
+    """ return hash of entity made entity properties """
+    query = {name: model.__getattribute__(name) for name in model.property_fields}
+    if params:
+        query.update(params)
+    return str(hash_fn(query))
 
 class TiDBCache(BaseModel):
     db_path: Path
-    entity_register: EntityRegister
     @property
     def db(self) -> TinyDB:
         return get_tinydb(self.db_path)
 
-    def __call__(self, query: BaseEntity, params: Optional[dict] = None, count: int = 12) -> List[BaseEntity]:
+    def get_records(self, query: BaseEntity, params: Optional[dict] = None, count: int = 12) -> DBEntityStack:
         # calculate query hash
         # TODO: Refactor
         query_hash = get_query_hash(model=query, params=params)
 
+
         if not is_table_empty(self.db, table=query_hash):
-            retrived = get_records(db=self.db, table=query_hash, query_hash=query_hash, count=count)
-            transition = TiniDBTransitingStack(**{'results': len(retrived), "data": retrived})
-            remove_records(db=self.db, table=query_hash, records=retrived)
-            return retrive_cnd_entity(register=self.entity_register, stack=transition)
+            retrieved = get_records(db=self.db, table=query_hash, query_hash=query_hash, count=count)
+
+            remove_records(db=self.db, table=query_hash, records=retrieved)
+
+            return DBEntityStack(**{'results': len(retrieved), "data": retrieved})
         else:
             self.db.drop_table(query_hash)
 
@@ -105,4 +91,4 @@ class TiDBCache(BaseModel):
             return self.db.table(table).search(query == value)[:count]
 
     def insert_one_to_table(self, table: str, item: BaseEntity) -> None:
-        self.db.table(table).insert(item.dict())
+        self.db.table(table).insert(item.model_dump())

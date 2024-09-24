@@ -1,29 +1,20 @@
 from typing import List
 from typing import Optional
 from pydantic import BaseModel, Field, model_validator, AliasChoices
-from tools.base import BaseEntity, EntitySetting, ENTITIES_TYPE_NAMES, entity_register
-from config import config
-
-from tools.icons import TAVILY
 from tools.entities import Page, Photo
 from tools.utils import extract_domain
 
 
-class Tavily(BaseEntity):
-    setting: EntitySetting = EntitySetting(type=ENTITIES_TYPE_NAMES.TAVILY, match='strict', main_attribute='query')
-    api_key: str = Field(default=config.tavily.api_key)
-    query: str = Field(default='Ask me', alias='query')
-    search_depth: str = Field(default='basic', alias='search_depth')
-    include_answer: bool = Field(default=False, alias='include_answer')
-    include_images: bool = Field(default=False, alias='include_images')
-    include_raw_content: bool = Field(default=False, alias='include_raw_content')
-    max_results: int = Field(default=5, alias='max_results')
-    include_domains: List[str] = Field(default_factory=list, alias='include_domains')
-    exclude_domains: List[str] = Field(default_factory=list, alias='exclude_domains')
-    icon: str = TAVILY
-
-
-entity_register.register(name=ENTITIES_TYPE_NAMES.TAVILY, item=Tavily)
+class SearchRequest(BaseModel):
+    api_key: str
+    query: str
+    search_depth: str = "basic"
+    include_answer: bool = False
+    include_images: bool = True
+    include_raw_content: bool = False
+    max_results: int = 5
+    include_domains: list = []
+    exclude_domains: list = []
 
 
 class Result(BaseModel):

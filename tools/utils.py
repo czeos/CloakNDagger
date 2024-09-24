@@ -2,7 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 import base64
-from typing import Any
+from typing import Any, Optional
 import warnings
 import functools
 
@@ -11,6 +11,7 @@ import httpx
 import json
 from pydantic import BaseModel
 from tldextract import tldextract
+
 
 
 def convert_image_to_base64(image_path):
@@ -47,8 +48,7 @@ def load_toml(path: Path) -> dict:
 def hash_fn(data: dict):
     json_string = json.dumps(data, sort_keys=True, ensure_ascii=False)
     hash_object = hashlib.sha256(json_string.encode('utf-8'))
-    return str(hash_object.hexdigest())
-
+    return int(hash_object.hexdigest(), 16)
 
 
 def load_json(path):

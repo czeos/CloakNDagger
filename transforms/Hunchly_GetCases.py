@@ -6,17 +6,17 @@ from settings import hunchly_transformset
 from modules.hunchly.api import get_cases
 from modules.hunchly.models import Case
 from tools.maltego import create_entity_from_model, model_from_maltego_request
-from tools.entities import ENTITIES_TYPE_NAMES
+from tools.entities import ENTITYREG
 
 @registry.register_transform(
     display_name="Get Hunchly Cases [Hunchly]",
-    input_entity=ENTITIES_TYPE_NAMES.CASE,
+    input_entity=ENTITYREG.CASE.get_type(),
     description="Return Hunchly Cases if no case name or id is provided",
-    output_entities=[ENTITIES_TYPE_NAMES.CASE],
+    output_entities=[ENTITYREG.CASE.get_type()],
     transform_set=hunchly_transformset
 
 )
-class GetCases(DiscoverableTransform):
+class Hunchly_GetCases(DiscoverableTransform):
     """
     Return cases for empty case entity
     """

@@ -8,17 +8,26 @@ from modules.hunchly.api import get_case_data, get_cases
 from modules.hunchly.models import Case, HUNCHLY_DATA_TYPES
 from tools.maltego import create_entity_from_model, model_from_maltego_request
 from tools.gui.components import MultiSelectorMenu, message_box
-from tools.entities import ENTITIES_TYPE_NAMES
+from tools.entities import ENTITYREG
+
+HUNCHLY_DATA = []
+
 
 @registry.register_transform(
     display_name="Get HunchlyPages Data [Hunchly]",
-    input_entity=ENTITIES_TYPE_NAMES.CASE,
+    input_entity=ENTITYREG.CASE.get_type(),
     description="Return data collected from pages for given Hunchly case name or case id",
-    output_entities=['cnd.HunchlyPageData'],
+    output_entities=[ENTITYREG.EMAIL.get_type(),
+                     ENTITYREG.IPV4.get_type(),
+                     ENTITYREG.IPV6.get_type(),
+                     ENTITYREG.GOOGLE_ANALYTICS.get_type(),
+                     ENTITYREG.FACEBOOK_PIXEL.get_type(),
+                     ENTITYREG.TOR_SERVICE.get_type(),
+                     ENTITYREG.SOCIAL_MEDIA_ACCOUNT.get_type()],
     transform_set=hunchly_transformset
 
 )
-class GetCaseData(DiscoverableTransform):
+class Hunchly_GetCaseData(DiscoverableTransform):
     """
     Get a page dat from Hunchly Case
     """

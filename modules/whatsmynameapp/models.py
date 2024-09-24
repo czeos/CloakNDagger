@@ -1,16 +1,11 @@
 from typing import List
-
 from pydantic import BaseModel, model_validator, Field
 
 from config import BASE_PATH
-from tools.base import BaseEntity, EntitySetting, BaseEntityStack
-from tools.base import ENTITIES_TYPE_NAMES, entity_register
+from tools.entities import SocialMediaProfile
+from tools.base import EntitySetting, BaseEntityStack, EntityIcon
 from tools.icons import WEB_PROFILE
-from tools.utils import extract_domain
-from tools.utils import load_json, convert_image_to_base64
-
-ENTITIES_TYPE_NAMES.register(name='USER_PROFILE', item='cnd.UserProfile')
-ENTITIES_TYPE_NAMES.register(name='LOGO', item='cnd.Logo')
+from tools.utils import load_json, convert_image_to_base64, extract_domain
 
 
 LOGOS = load_json(BASE_PATH /'tools' / 'icons' / 'social_media' / 'logos.json')
@@ -32,43 +27,32 @@ class WhatsMyNameData(BaseModel):
     sites: List[Site]
 
 
-class Logo(BaseEntity):
-    domain: str
-    icon: str
-
-
-class UserProfile(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type='cnd.UserProfile', main_attribute='site', match='strict'))
+class UserProfile(SocialMediaProfile):
     site: str
-    uri: str
     domain: str
-    icon: str
     # #
     @model_validator(mode='before')
     @classmethod
     def set_fields(cls, data: dict) -> dict:
-        uri = data.get('uri')
+        url = data.get('url')
 
         #set domain
-        _, domain, suffix = extract_domain(uri)
+        _, domain, suffix = extract_domain(url)
         data['domain'] = f"{domain}.{suffix}"
 
         logo_path = LOGOS.get(f"{domain}_{suffix}")
 
         #set icon
         if logo_path:
-            data['icon'] = convert_image_to_base64(logo_path)
+            data['icon'] = EntityIcon(url=convert_image_to_base64(logo_path))
         else:
-            data['icon'] = WEB_PROFILE
+            data['icon'] = EntityIcon(url=WEB_PROFILE)
         return data
-
 
 
 class UserProfiles(BaseEntityStack):
     results: int
     data: List[UserProfile]
-
-entity_register.register(name=ENTITIES_TYPE_NAMES.USER_PROFILE, item=UserProfile)
 
 
 
