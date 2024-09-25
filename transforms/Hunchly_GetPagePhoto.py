@@ -5,11 +5,11 @@ from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_page_photo
 from tools.entities import ENTITYREG
-from tools.maltego import create_entity_from_model
+from tools.maltego import entity_from_model
 
 
 @registry.register_transform(
-    display_name="Get Page HunchlyPhotos [Hunchly]",
+    display_name="Get Page Photos [Hunchly]",
     input_entity=ENTITYREG.PAGE.get_type(),
     description="Return photos for given Hunchly Webpage",
     output_entities=[ENTITYREG.PHOTO.get_type()],
@@ -34,8 +34,8 @@ class Hunchly_GetPagePhoto(DiscoverableTransform):
 
         # generating of pages
         for item in page.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
-        response.addUIMessage(f"Case contain {page.results} pages")
+        response.addUIMessage(f"Case contain {page.results} photos")
 
 

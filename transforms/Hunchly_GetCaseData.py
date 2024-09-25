@@ -6,7 +6,7 @@ from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_data, get_cases
 from modules.hunchly.models import Case, HUNCHLY_DATA_TYPES
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.gui.components import MultiSelectorMenu, message_box
 from tools.entities import ENTITYREG
 
@@ -14,7 +14,7 @@ HUNCHLY_DATA = []
 
 
 @registry.register_transform(
-    display_name="Get HunchlyPages Data [Hunchly]",
+    display_name="Get Case Data [Hunchly]",
     input_entity=ENTITYREG.CASE.get_type(),
     description="Return data collected from pages for given Hunchly case name or case id",
     output_entities=[ENTITYREG.EMAIL.get_type(),
@@ -70,7 +70,7 @@ class Hunchly_GetCaseData(DiscoverableTransform):
 
         # generating of pages
         for item in items.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
         message_box(message=f"Case contain {items.results} items", title='CloakNDagger MessageBox', description='')
         response.addUIMessage(f"Case contain {items.results} items")

@@ -6,7 +6,7 @@ from modules.hunchly.models import Case
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_selectors_by_case_name
 from tools.entities import ENTITYREG
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 
 
 @registry.register_transform(
@@ -35,7 +35,7 @@ class Hunchly_GetCaseSelectors(DiscoverableTransform):
 
         # generating of pages
         for item in items.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
         response.addUIMessage(f"Case contain {items.results} selectors")
 

@@ -3,6 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, Field, model_validator, AliasChoices
 from tools.entities import Page, Photo
 from tools.utils import extract_domain
+from tools.base import EntityIcon
 
 
 class SearchRequest(BaseModel):
@@ -42,7 +43,7 @@ class TavilyPhoto(Photo):
     def set_name(cls, data):
         subdomain, domain, suffix = extract_domain(data['url'])
         data['name'] = f'{subdomain}.{domain}.{suffix}'
-        data['icon'] = data['url']
+        data['icon'] = EntityIcon(url=data['url'])
         return data
 
 

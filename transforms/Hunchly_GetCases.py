@@ -5,11 +5,12 @@ from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_cases
 from modules.hunchly.models import Case
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.entities import ENTITYREG
 
+
 @registry.register_transform(
-    display_name="Get Hunchly Cases [Hunchly]",
+    display_name="Get Cases [Hunchly]",
     input_entity=ENTITYREG.CASE.get_type(),
     description="Return Hunchly Cases if no case name or id is provided",
     output_entities=[ENTITYREG.CASE.get_type()],
@@ -38,12 +39,12 @@ class Hunchly_GetCases(DiscoverableTransform):
         if case.name in case_names:
             i = case_names.index(case.name)
             item = items.data[i]
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
         elif case.name not in case_names and not case.name in ['', ' ']:
             response.addUIMessage(f"Case name: {case.name}  did not find")
         else:
             for item in items.data:
-                create_entity_from_model(item, response)
+                entity_from_model(item, response)
 
 
 

@@ -198,14 +198,22 @@ class RegisterMeta(type):
         for attr_name, attr_value in class_dict.items():
             if isinstance(attr_value, type) and issubclass(attr_value, BaseModel):
                 # Register entity dynamically
-                new_cls._entity_registry[attr_name] = EntityWrapper(entity_class=attr_value)
+                wrapper = EntityWrapper(entity_class=attr_value)
+                new_cls._entity_registry[wrapper.entity_type] = wrapper
                 # Also set it as an attribute of the class
                 setattr(new_cls, attr_name, EntityWrapper(attr_value))
 
         return new_cls
 
-    def get_cls(cls, name: str) -> Type[BaseEntity]:
-        return cls._entity_registry.get(name).get_cls()
+    def get_cls(self, name: str) -> Type[BaseEntity]:
+        wrapper = self._entity_registry.get(name)
+        if wrapper:
+            return wrapper.get_cls()
+        raise AttributeError(f"Entity class '{name}' not found in registry.")
+
+    def __call__(self, *args, **kwargs):
+        return self
+
 
 
 class RegisterProtocol(Protocol):

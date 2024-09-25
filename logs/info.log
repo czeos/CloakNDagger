@@ -195,3 +195,382 @@ pydantic_core._pydantic_core.ValidationError: 1 validation error for AdressEntit
 icon
   Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
     For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 12:42:18,712 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:42:18,713 - maltego.server - ERROR - 'Register' object has no attribute 'get_cls'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'Register' object has no attribute 'get_cls'
+2024-09-25 12:43:34,507 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:43:34,508 - maltego.server - ERROR - 'Register' object has no attribute 'get_cls'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'Register' object has no attribute 'get_cls'
+2024-09-25 12:57:48,362 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:57:48,362 - maltego.server - ERROR - Entity class 'cnd.HunchlyCase' not found in registry.
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\base.py", line 211, in get_cls
+    raise AttributeError(f"Entity class '{name}' not found in registry.")
+AttributeError: Entity class 'cnd.HunchlyCase' not found in registry.
+2024-09-25 13:14:08,596 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:14:08,597 - maltego.server - ERROR - 'EntityWrapper' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [starting_entities.get(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'EntityWrapper' object is not callable
+2024-09-25 13:14:39,263 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:14:39,264 - maltego.server - ERROR - setting
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 40, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 33, in create_entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+                                ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\_internal\_model_construction.py", line 221, in __getattr__
+    raise AttributeError(item)
+AttributeError: setting
+2024-09-25 13:15:15,937 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:15:15,938 - maltego.server - ERROR - setting
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 40, in create_entities
+    entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+                                ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\_internal\_model_construction.py", line 221, in __getattr__
+    raise AttributeError(item)
+AttributeError: setting
+2024-09-25 13:19:55,258 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-09-25 13:19:55,259 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-09-25 13:33:07,486 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:33:07,488 - maltego.server - ERROR - name 'create_entity_from_model' is not defined
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetCases.py", line 42, in create_entities
+    create_entity_from_model(item, response)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'create_entity_from_model' is not defined. Did you mean: 'entity_from_model'?
+2024-09-25 13:43:54,006 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:43:54,006 - maltego.server - ERROR - 'HunchlyPage' object has no attribute 'is_important'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetCasePages.py", line 37, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlyPage' object has no attribute 'is_important'
+2024-09-25 13:43:58,286 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:43:58,287 - maltego.server - ERROR - string argument expected, got 'EntityIcon'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 13, in run_transform
+    return response.returnOutput()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\maltego.py", line 279, in returnOutput
+    return serialize_xml(self.build_xml())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\utils.py", line 131, in serialize_xml
+    output = ElementTree.tostring(xml, encoding='unicode', short_empty_elements=short_empty_elements)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 1084, in tostring
+    ElementTree(element).write(stream, encoding,
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 729, in write
+    serialize(write, self._root, qnames, namespaces,
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 892, in _serialize_xml
+    _serialize_xml(write, e, qnames, None,
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 892, in _serialize_xml
+    _serialize_xml(write, e, qnames, None,
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 892, in _serialize_xml
+    _serialize_xml(write, e, qnames, None,
+  [Previous line repeated 1 more time]
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\xml\etree\ElementTree.py", line 890, in _serialize_xml
+    write(_escape_cdata(text))
+TypeError: string argument expected, got 'EntityIcon'
+2024-09-25 13:44:01,319 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:44:01,320 - maltego.server - ERROR - 'HunchlySelector' object has no attribute 'hits'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetCaseSelectors.py", line 38, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlySelector' object has no attribute 'hits'
+2024-09-25 13:44:30,511 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:44:30,512 - maltego.server - ERROR - 'HunchlySelector' object has no attribute 'hits'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetCaseSelectors.py", line 38, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlySelector' object has no attribute 'hits'
+2024-09-25 13:55:51,014 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:55:51,015 - maltego.server - ERROR - 'HunchlyTag' object has no attribute 'case_id'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetPageTags.py", line 37, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlyTag' object has no attribute 'case_id'
+2024-09-25 13:55:51,743 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:55:51,754 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:55:51,743 - maltego.server - ERROR - 'HunchlyTag' object has no attribute 'case_id'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetPageTags.py", line 37, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlyTag' object has no attribute 'case_id'
+2024-09-25 13:55:51,755 - maltego.server - ERROR - 'HunchlyTag' object has no attribute 'case_id'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Hunchly_GetPageTags.py", line 37, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 35, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'HunchlyTag' object has no attribute 'case_id'
+2024-09-25 13:58:41,455 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:58:41,455 - maltego.server - ERROR - 'Tavily' object has no attribute 'search_depth'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 759, in __getattr__
+    return pydantic_extra[item]
+           ~~~~~~~~~~~~~~^^^^^^
+KeyError: 'search_depth'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Tavily_Search.py", line 30, in create_entities
+    updated_request = request_form(request=searach_request ,
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\gui.py", line 107, in request_form
+    form = SearchRequestForm(request=request, title=title, description=description)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\gui.py", line 39, in __init__
+    self.search_depth_input.setCurrentText(self.request.search_depth)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 761, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+AttributeError: 'Tavily' object has no attribute 'search_depth'
+2024-09-25 14:38:43,192 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 14:38:43,192 - maltego.server - ERROR - HTTPSConnectionPool(host='api.tavily.com', port=443): Max retries exceeded with url: /search (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000206DEE6CD70>: Failed to resolve 'api.tavily.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x00000206DEE6CD70>: Failed to resolve 'api.tavily.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.tavily.com', port=443): Max retries exceeded with url: /search (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000206DEE6CD70>: Failed to resolve 'api.tavily.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Tavily_Search.py", line 37, in create_entities
+    tavili_search = tivaly_api(updated_request)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\api.py", line 12, in tivaly_api
+    response = requests.post(url, json=request.model_dump())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.tavily.com', port=443): Max retries exceeded with url: /search (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000206DEE6CD70>: Failed to resolve 'api.tavily.com' ([Errno 11001] getaddrinfo failed)"))
+2024-09-25 14:40:41,836 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 14:40:41,836 - maltego.server - ERROR - 1 validation error for Text
+note
+  Input should be a valid dictionary or instance of EntityNote [type=model_type, input_value='The Alhambra in Granada,...e immersive experience.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Tavily_Search.py", line 42, in create_entities
+    entities = response_to_entities(tavili_search)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\api.py", line 20, in response_to_entities
+    entities += [Text(text=response.answer)]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Text
+note
+  Input should be a valid dictionary or instance of EntityNote [type=model_type, input_value='The Alhambra in Granada,...e immersive experience.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 14:50:52,003 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 14:50:52,003 - maltego.server - ERROR - 1 validation error for Text
+note
+  Input should be a valid dictionary or instance of EntityNote [type=model_type, input_value='The Alhambra in Granada,...ardens start at $48.09.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Tavily_Search.py", line 42, in create_entities
+    entities = response_to_entities(tavili_search)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\api.py", line 20, in response_to_entities
+    entities += [Text(text=response.answer)]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Text
+note
+  Input should be a valid dictionary or instance of EntityNote [type=model_type, input_value='The Alhambra in Granada,...ardens start at $48.09.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 14:53:30,106 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 14:53:30,106 - maltego.server - ERROR - 'url'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Tavily_Search.py", line 42, in create_entities
+    entities = response_to_entities(tavili_search)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\api.py", line 22, in response_to_entities
+    entities += [TavilyPhoto(icon=img) for img in response.images]
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\tavily\models.py", line 44, in set_name
+    subdomain, domain, suffix = extract_domain(data['url'])
+                                               ~~~~^^^^^^^
+KeyError: 'url'
