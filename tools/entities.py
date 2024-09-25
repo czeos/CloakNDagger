@@ -3,7 +3,7 @@ from maltego_trx.overlays import OverlayPosition, OverlayType
 
 from pydantic import ConfigDict, Field, AnyUrl, model_validator
 from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
-from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR, TAVILY
+from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR, TAVILY,  ADRESS
 
 
 

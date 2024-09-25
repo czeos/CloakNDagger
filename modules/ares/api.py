@@ -15,6 +15,7 @@ def serch_ares(payload: RequestEkonomickySubjekt):
     return root
 
 def make_request(payload: RequestEkonomickySubjekt) -> Root:
-    response = requests.post("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat", json=payload.model_dump(exclude_none=True))
+    response = requests.post("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat",
+                             json=payload.model_dump(exclude_none=True))
     if response.status_code == 200:
         return Root(**response.json())

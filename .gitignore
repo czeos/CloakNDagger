@@ -1,62 +1,35 @@
+# Virtual Environment
 /.venv/
-config.toml
-__pycache__/config.cpython-310.pyc
-__pycache__/extensions.cpython-310.pyc
-__pycache__/settings.cpython-310.pyc
-transforms/__pycache__/__init__.cpython-310.pyc
-transforms/__pycache__/AliasToWebProfile.cpython-310.pyc
-transforms/__pycache__/AresGetRecordCompany.cpython-310.pyc
-transforms/__pycache__/CNDGetEntity.cpython-310.pyc
-transforms/__pycache__/GetCaseData.cpython-310.pyc
-transforms/__pycache__/GetCasePage.cpython-310.pyc
-transforms/__pycache__/GetCasePages.cpython-310.pyc
-transforms/__pycache__/GetCasePhoto.cpython-310.pyc
-transforms/__pycache__/GetCases.cpython-310.pyc
-transforms/__pycache__/GetCaseSelectors.cpython-310.pyc
-transforms/__pycache__/GetCaseTags.cpython-310.pyc
-transforms/__pycache__/GetPageData.cpython-310.pyc
-transforms/__pycache__/GetPagePhoto.cpython-310.pyc
-transforms/__pycache__/GetPageSelectors.cpython-310.pyc
-transforms/__pycache__/GetPageTags.cpython-310.pyc
-transforms/__pycache__/TavilySearch.cpython-310.pyc
-tools/__pycache__/__init__.cpython-310.pyc
-tools/__pycache__/base.cpython-310.pyc
-tools/__pycache__/maltego.cpython-310.pyc
-tools/__pycache__/utils.cpython-310.pyc
-tools/dbs/__pycache__/__init__.cpython-310.pyc
-tools/dbs/__pycache__/tiny.cpython-310.pyc
-tools/entities/__pycache__/__init__.cpython-310.pyc
-tools/gui/__pycache__/__init__.cpython-310.pyc
-tools/gui/__pycache__/components.cpython-310.pyc
-tools/icons/__pycache__/__init__.cpython-310.pyc
-modules/__pycache__/__init__.cpython-310.pyc
-modules/ares/__pycache__/__init__.cpython-310.pyc
-modules/ares/__pycache__/api.cpython-310.pyc
-modules/ares/__pycache__/models.cpython-310.pyc
-modules/cloak_n_dagger/__pycache__/__init__.cpython-310.pyc
-modules/cloak_n_dagger/__pycache__/gui.cpython-310.pyc
-modules/hunchly/__pycache__/__init__.cpython-310.pyc
-modules/hunchly/__pycache__/api.cpython-310.pyc
-modules/hunchly/__pycache__/gui.cpython-310.pyc
-modules/hunchly/__pycache__/models.cpython-310.pyc
-modules/tavily/__pycache__/__init__.cpython-310.pyc
-modules/tavily/__pycache__/api.cpython-310.pyc
-modules/tavily/__pycache__/gui.cpython-310.pyc
-modules/tavily/__pycache__/models.cpython-310.pyc
-modules/whatsmynameapp/__pycache__/__init__.cpython-310.pyc
-modules/whatsmynameapp/__pycache__/api.cpython-310.pyc
-modules/whatsmynameapp/__pycache__/models.cpython-310.pyc
-/.idea/
-/db/db.json
 _config.toml
+
+# Python Compiled Files
+__pycache__/
+*.pyc
+
+# IDE Configuration
+/.idea/
+
+# Database
+/db/db.json
+
+# Logs
+logs/
+debug.log
+
+# Local Configuration
 config.toml
-logs/debug.log
-.gitignore
-__pycache__/loggers.cpython-310.pyc
-tools/__pycache__/entities.cpython-310.pyc
-transforms/__pycache__/AresGetRecordsCompany.cpython-310.pyc
+
+# Maltego
 local.mtz
+
+# Transforms
+transforms/__pycache__/
+
+# Tools
+tools/__pycache__/
+
+# Modules
+modules/**/__pycache__/
+
+# Test Files
 test.py
-modules/ares/__pycache__/gui.cpython-310.pyc
-transforms/__pycache__/ExtractAdress.cpython-310.pyc
-transforms/__pycache__/TestTheThings.cpython-310.pyc

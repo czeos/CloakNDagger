@@ -17,7 +17,7 @@ from tools.base import BaseEntityStack
     display_name="Search profiles by username [WhatsMyNameApp]",
     input_entity=ENTITYREG.ALIAS.get_type(),
     description="Search web profiles by username",
-    output_entities=['cnd.UserProfile'],
+    output_entities=[ENTITYREG.SOCIAL_MEDIA_ACCOUNT.get_type()],
     transform_set=whatsmynameapp_transformset
 
 )

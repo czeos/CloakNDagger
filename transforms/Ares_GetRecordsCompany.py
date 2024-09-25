@@ -6,7 +6,7 @@ from extensions import registry
 from modules.ares.gui import show_form
 from modules.ares.models import RequestEkonomickySubjekt,Sidlo
 from settings import ares_transformset
-from tools.maltego import model_from_maltego_request, create_entity_from_model
+from tools.maltego import model_from_maltego_request, entity_from_model
 from modules.ares.api import serch_ares
 from tools.entities import Company, Person, ENTITYREG
 
@@ -40,7 +40,7 @@ class Ares_GetRecordsCompany(DiscoverableTransform):
                 response.addUIMessage(f"No response from ARES")
             else:
                 for company in companies.ekonomickeSubjekty:
-                    create_entity_from_model(model=company, response=response)
+                    entity_from_model(model=company, response=response)
 
 
 

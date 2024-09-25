@@ -94,3 +94,32 @@ Traceback (most recent call last):
   File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\TestTheThings.py", line 31, in create_entities
     t.set_icon(icon_url=None)
 TypeError: BaseEntity.set_icon() got an unexpected keyword argument 'icon_url'
+2024-09-25 10:21:37,342 - maltego_trx.registry - INFO - Ignoring File: "Ares_ExtractAdress" does not contain a class of the same name
+2024-09-25 10:23:11,806 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:23:11,807 - maltego.server - ERROR - 'PravnickaOsoba' object has no attribute 'dalsiUdaje'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 43, in create_entities
+    create_entity_from_model(model=company, response=response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 33, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PravnickaOsoba' object has no attribute 'dalsiUdaje'
+2024-09-25 10:25:42,711 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:25:42,711 - maltego.server - ERROR - 'PravnickaOsoba' object has no attribute 'dalsiUdaje'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 43, in create_entities
+    create_entity_from_model(model=company, response=response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 33, in create_entity_from_model
+    entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PravnickaOsoba' object has no attribute 'dalsiUdaje'
