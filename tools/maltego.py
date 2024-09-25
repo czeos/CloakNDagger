@@ -5,8 +5,6 @@ from tools.base import BaseEntity, MaltegoSettingAttributes, EntityDisplay, Enti
 from config import Config
 
 
-
-
 def entity_from_model(model: BaseEntity, response: MaltegoTransform) -> MaltegoEntity:
     #create entity and set main attribute, type and matching rule based on the EntitySetting
     entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
@@ -26,20 +24,6 @@ def entity_from_model(model: BaseEntity, response: MaltegoTransform) -> MaltegoE
         if isinstance(field, EntityNote):
             entity.setNote(field.note)
     return entity
-
-
-
-def create_entity_from_model(model: BaseEntity, response: MaltegoTransform) -> MaltegoEntity:
-    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
-    for field in model.property_fields:
-        entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
-    if model.icon:
-        entity.setIconURL(model.icon)
-    if model.display_info:
-        entity.addDisplayInformation(content=model.display_info)
-        entity.addOverlay()
-    return entity
-
 
 
 def model_from_maltego_request(request: MaltegoMsg, model: Type[BaseEntity]) -> BaseEntity:
