@@ -195,3 +195,87 @@ pydantic_core._pydantic_core.ValidationError: 1 validation error for AdressEntit
 icon
   Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
     For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 12:42:18,712 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:42:18,713 - maltego.server - ERROR - 'Register' object has no attribute 'get_cls'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'Register' object has no attribute 'get_cls'
+2024-09-25 12:43:34,507 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:43:34,508 - maltego.server - ERROR - 'Register' object has no attribute 'get_cls'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'Register' object has no attribute 'get_cls'
+2024-09-25 12:57:48,362 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 12:57:48,362 - maltego.server - ERROR - Entity class 'cnd.HunchlyCase' not found in registry.
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [ENTITYREG.get_cls(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\base.py", line 211, in get_cls
+    raise AttributeError(f"Entity class '{name}' not found in registry.")
+AttributeError: Entity class 'cnd.HunchlyCase' not found in registry.
+2024-09-25 13:14:08,596 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:14:08,597 - maltego.server - ERROR - 'EntityWrapper' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 36, in create_entities
+    items = [starting_entities.get(name)() for name in selected_entities]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'EntityWrapper' object is not callable
+2024-09-25 13:14:39,263 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:14:39,264 - maltego.server - ERROR - setting
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 40, in create_entities
+    create_entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 33, in create_entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+                                ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\_internal\_model_construction.py", line 221, in __getattr__
+    raise AttributeError(item)
+AttributeError: setting
+2024-09-25 13:15:15,937 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 13:15:15,938 - maltego.server - ERROR - setting
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\CND_GetEntity.py", line 40, in create_entities
+    entity_from_model(item, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+                                ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\_internal\_model_construction.py", line 221, in __getattr__
+    raise AttributeError(item)
+AttributeError: setting
+2024-09-25 13:19:55,258 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-09-25 13:19:55,259 - maltego-trx - WARNING - Entity has no Value and will default to ''
