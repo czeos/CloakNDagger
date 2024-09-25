@@ -32,4 +32,10 @@ class TestTheThings(DiscoverableTransform):
         entity_from_model(model=t, response=response)
 
 
+    @classmethod
+    def run_transform(cls, request: MaltegoMsg):
+        response = MaltegoTransform()
+        for _ in range(5):  # Loop to call create_entities multiple times
+            cls.create_entities(request, response)
+        return response.returnOutput()
 

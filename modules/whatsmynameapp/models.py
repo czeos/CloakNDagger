@@ -1,5 +1,6 @@
-from typing import List
+from typing import List, Type, Union
 from pydantic import BaseModel, model_validator, Field
+from requests import get
 
 from config import BASE_PATH
 from tools.entities import SocialMediaProfile
@@ -40,19 +41,26 @@ class UserProfile(SocialMediaProfile):
         _, domain, suffix = extract_domain(url)
         data['domain'] = f"{domain}.{suffix}"
 
-        logo_path = LOGOS.get(f"{domain}_{suffix}")
 
-        #set icon
-        if logo_path:
-            data['icon'] = EntityIcon(url=convert_image_to_base64(logo_path))
-        else:
-            data['icon'] = EntityIcon(url=WEB_PROFILE)
+        try:
+            logo_path = LOGOS.get(f"{domain}_{suffix}")
+            icon = EntityIcon(url=convert_image_to_base64(logo_path))
+        except FileNotFoundError:
+            url = f"https://logo.clearbit.com/{domain}.{suffix}"
+            response = get(f"https://logo.clearbit.com/{domain}.{suffix}")
+            if response.status_code == 200:
+                icon = EntityIcon(url=url)
+            else:
+                icon = EntityIcon(url=WEB_PROFILE)
+
+
+        data['icon'] = icon
         return data
 
 
 class UserProfiles(BaseEntityStack):
     results: int
-    data: List[UserProfile]
+    data: List[Union[SocialMediaProfile, UserProfile]]
 
 
 

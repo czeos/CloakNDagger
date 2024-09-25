@@ -574,3 +574,93 @@ Traceback (most recent call last):
     subdomain, domain, suffix = extract_domain(data['url'])
                                                ~~~~^^^^^^^
 KeyError: 'url'
+2024-09-25 21:51:17,643 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 21:51:17,644 - maltego.server - ERROR - 'Alias' object has no attribute 'properties.alias'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Whatmynameapp_AliasToWebProfile.py", line 40, in create_entities
+    if cache.exist_table(query=username):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 84, in exist_table
+    table = get_query_hash(model=query, params=params)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 48, in get_query_hash
+    query = {name: model.__getattribute__(name) for name in model.property_fields}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Alias' object has no attribute 'properties.alias'
+2024-09-25 22:40:11,299 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 22:40:11,299 - maltego.server - ERROR - 'Alias' object has no attribute 'properties.alias'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Whatmynameapp_AliasToWebProfile.py", line 40, in create_entities
+    if cache.exist_table(query=username):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 84, in exist_table
+    table = get_query_hash(model=query, params=params)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 48, in get_query_hash
+    query = {name: model.__getattribute__(name) for name in model.property_fields}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Alias' object has no attribute 'properties.alias'
+2024-09-25 22:46:53,678 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 22:46:53,678 - maltego.server - ERROR - 'SocialMediaProfile' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 759, in __getattr__
+    return pydantic_extra[item]
+           ~~~~~~~~~~~~~~^^^^^^
+KeyError: 'get'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Whatmynameapp_AliasToWebProfile.py", line 45, in create_entities
+    items = UserProfiles(results=cache.query_cache_size(username), data=entities)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\whatsmynameapp\models.py", line 37, in set_fields
+    url = data.get('url')
+          ^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 761, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+AttributeError: 'SocialMediaProfile' object has no attribute 'get'
+2024-09-25 23:56:54,226 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 23:56:54,226 - maltego.server - ERROR - 'SocialMediaProfile' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 759, in __getattr__
+    return pydantic_extra[item]
+           ~~~~~~~~~~~~~~^^^^^^
+KeyError: 'get'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Whatmynameapp_AliasToWebProfile.py", line 46, in create_entities
+    items = UserProfiles(results=cache.query_cache_size(username), data=entities)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\whatsmynameapp\models.py", line 38, in set_fields
+    url = data.get('url')
+          ^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 761, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+AttributeError: 'SocialMediaProfile' object has no attribute 'get'

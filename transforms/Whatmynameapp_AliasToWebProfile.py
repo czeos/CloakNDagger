@@ -7,7 +7,7 @@ from modules.whatsmynameapp.api import get_site_dat, check_all_sites, HEADERS
 from modules.whatsmynameapp.models import UserProfiles
 from config import config
 from tools.gui.components import message_box
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.dbs import TiDBCache, db_records_to_entity
 from tools.entities import  Alias, ENTITYREG
 from tools.base import BaseEntityStack
@@ -37,25 +37,27 @@ class Whatmynameapp_AliasToWebProfile(DiscoverableTransform):
         #cache
         cache = TiDBCache(db_path=config.db.db_path)
 
-        if cache.exist_table(query=username):
+        if cache.query_cache_size(query=username) > 0:
             response.addUIMessage(f' exist cache routine')
 
             cached_stack = cache.get_records(query=username, count=howmany)
             entities = db_records_to_entity(register=ENTITYREG, stack=cached_stack)
             items = UserProfiles(results=cache.query_cache_size(username), data=entities)
+
         else:
             response.addUIMessage(f' request routine')
-
             wmnd = get_site_dat(config.whatsmynmeapp.data)
             profiles = check_all_sites(wmnd.sites, username.alias, HEADERS)
-            items = UserProfiles(results=len(profiles), data=profiles)
-            cache.save_to_cache(query=username, stack=items)
+            if len(profiles) > howmany:
+                cache.save_to_cache(query=username, entities=profiles[howmany:])
+            items = UserProfiles(results=len(profiles), data=profiles[:howmany])
 
         # generating of pages
         for item in items.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
+        in_cache = cache.query_cache_size(query=username)
         message_box(message=f"On WhatsMyNameApp were found profiles for username {username.alias}. "
-                              f"In cache {items.results} left", title='CloakNDagger MessageBox', description='')
-        response.addUIMessage(f"On WhatsMyNameApp were found profiles for username {username.alias}. "
-                              f"In cache {items.results} left")
+                            f"In cache {in_cache} left", title='CloakNDagger MessageBox', description='')
+
+

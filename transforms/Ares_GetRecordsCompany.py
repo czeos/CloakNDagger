@@ -4,7 +4,7 @@ from maltego_trx.transform import DiscoverableTransform
 
 from extensions import registry
 from modules.ares.gui import show_form
-from modules.ares.models import RequestEkonomickySubjekt,Sidlo
+from modules.ares.models import RequestEkonomickySubjekt, Sidlo
 from settings import ares_transformset
 from tools.maltego import model_from_maltego_request, entity_from_model
 from modules.ares.api import serch_ares
