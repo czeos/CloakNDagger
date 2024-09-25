@@ -19,7 +19,7 @@ def response_to_entities(response: Response) -> List[BaseEntity]:
     if response.answer:
         entities += [Text(text=response.answer)]
     if response.images:
-        entities += [TavilyPhoto(url=img) for img in response.images]
+        entities += [TavilyPhoto(icon=img, url=img) for img in response.images]
     if response.results:
         entities += [TavilyPage(**page.model_dump()) for page in response.results]
     return entities

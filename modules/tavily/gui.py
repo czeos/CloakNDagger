@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QComboBox, QCheckBox, QSpinBox, QPushButton, \
     QLabel, QTextEdit, QScrollArea
 from PyQt6.QtCore import pyqtSlot
-from tools.entities import Tavily
+from modules.tavily.models import SearchRequest
 
 
 class SearchRequestForm(QWidget):
@@ -16,7 +16,7 @@ class SearchRequestForm(QWidget):
     return form.search_request
     """
 
-    def __init__(self, request: Tavily, title: str, description: str):
+    def __init__(self, request: SearchRequest, title: str, description: str):
         super().__init__()
         self.request = request
 
@@ -87,7 +87,7 @@ class SearchRequestForm(QWidget):
         include_domains = self.include_domains_input.toPlainText().split(',')
         exclude_domains = self.exclude_domains_input.toPlainText().split(',')
 
-        self.search_request = Tavily(
+        self.search_request = SearchRequest(
             api_key=self.request.api_key,
             query=query,
             search_depth=search_depth,
@@ -102,7 +102,7 @@ class SearchRequestForm(QWidget):
         self.close()
 
 
-def request_form(request: Tavily, title: str, description: str):
+def request_form(request: SearchRequest, title: str, description: str):
     app = QApplication(sys.argv)
     form = SearchRequestForm(request=request, title=title, description=description)
     form.show()
@@ -112,7 +112,7 @@ def request_form(request: Tavily, title: str, description: str):
 
 # Example usage
 if __name__ == '__main__':
-    from modules.tavily.models import Tavily  # Assuming Tavily is defined here
+    from modules.tavily.models import Tavily, SearchRequest  # Assuming Tavily is defined here
 
     request = Tavily(
         api_key='your_api_key',

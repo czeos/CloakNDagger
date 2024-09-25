@@ -1,7 +1,7 @@
 from typing import Type
 from maltego_trx.overlays import OverlayPosition, OverlayType
 
-from pydantic import ConfigDict, Field, AnyUrl, model_validator
+from pydantic import ConfigDict, Field, AnyUrl, model_validator, field_validator
 from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
 from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR, TAVILY,  ADRESS
 
@@ -101,6 +101,11 @@ class Photo(BaseEntity):
     name: str = Field(default='')
     icon: EntityIcon = EntityIcon(url=IMAGE)
 
+    @field_validator('url')
+    @classmethod
+    def set_icon(cls, url):
+        return EntityIcon(url=url)
+
 
 class Selector(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.Selector',
@@ -151,7 +156,7 @@ class Text(BaseEntity):
     @model_validator(mode='before')
     @classmethod
     def set_note(cls, data):
-        data['note'] = data['text']
+        data['note'] = EntityNote(note=data['text'])
         return data
 
 
