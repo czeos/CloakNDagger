@@ -1,5 +1,5 @@
 from tools.entities import Company,Person
-from pydantic import BaseModel, Field, field_validator
+from pydantic import AliasChoices, BaseModel, Field, field_validator
 from typing import List, Literal,Optional, Union
 
 #todo: add entities add forma
@@ -19,7 +19,7 @@ class RequestEkonomickySubjekt(BaseModel):
     start : int = 0
     pocet: int = 10
     ico: Optional[List[str]] = None
-    obchodniJmeno: str = Field(validation_alias ='name')
+    obchodniJmeno: str = Field(alias= AliasChoices('name', 'fullname'),default=None)
     sidlo: Optional[Sidlo] = None
 
 class AdresaDorucovaci(BaseModel):
@@ -86,7 +86,7 @@ class EkonomickySubjekt(BaseModel):
     def validate_pravniForma(cls, pravniForma: str) -> str:
             return dict_pravni_forma[pravniForma]
 
-
+#TODO: vypsat vsechny pravni formy
 class PravnickaOsoba(Company,EkonomickySubjekt):
     name: str = Field(validation_alias='obchodniJmeno')
     pravniForma: Literal[
@@ -95,6 +95,7 @@ class PravnickaOsoba(Company,EkonomickySubjekt):
     '141', '142', '144', '148', '149',
     '201', '205', '301', '302', '303', '304', '308', '311',
     '331', '332',
+    '421',
     '601', '602', '603',
     '706',
     '911', '931', '932'

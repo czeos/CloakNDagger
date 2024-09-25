@@ -199,6 +199,13 @@ class Adress(BaseEntity):
     sidlo: str = Field(default='')
     icon: EntityIcon = Field(default=EntityIcon(url=ADRESS))
 
+class ICO(BaseEntity):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.ico_entity',
+                                                         main_attribute='ico',
+                                                         match='strict'))
+    ico: str = Field(default='')
+    icon: EntityIcon = Field(default=EntityIcon(url=ADRESS))
+
 
 # Define the Register class using the dynamic metaclass
 class Register(metaclass=RegisterMeta):
@@ -230,5 +237,6 @@ class Register(metaclass=RegisterMeta):
     TAVILY: Type[BaseEntity] = Tavily
     TEST_ENTITY: Type[BaseEntity] = TestEntity
     ADRESS: Type[BaseEntity] = Adress
+    ICO: Type[BaseEntity] = ICO
 
 ENTITYREG = Register()
