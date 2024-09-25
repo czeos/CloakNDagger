@@ -4,7 +4,7 @@ from typing import List, Optional, Union, Literal
 
 from pydantic import AnyUrl, Field, model_validator, field_validator, AliasChoices
 
-from tools.base import BaseEntityStack
+from tools.base import BaseEntityStack, EntityIcon
 from tools.entities import (Case, Page, Email, IPV4, IPV6, GoogleAnalytics,
                             FacebookPixel, TorService, SocialMediaProfile, Photo, Selector, Tag)
 from tools.icons import VKONTAKTE
@@ -95,7 +95,7 @@ class HunchlyVKontakteProfile(SocialMediaProfile):
     type: str = Field(validation_alias='data_type')
     extractor: Literal['VKontakte User'] = Field(validation_alias='data_extractor')
     url: str = Field(validation_alias='data_record')
-    icon: str = VKONTAKTE
+    icon: EntityIcon = EntityIcon(url=VKONTAKTE)
 
 
 HUNCHLY_DATA_TYPES = {'Email Address': HunchlyEmail,
@@ -121,7 +121,7 @@ class HunchlyPhoto(Photo):
     path: str = Field(validation_alias='photo_local_file_path')
     exif_data: bool = Field(validation_alias='exif_data')
     name: str
-    icon: str = Field(default='')
+    icon: EntityIcon = Field(default_factory=EntityIcon)
 
 
     @model_validator(mode='before')
@@ -135,7 +135,8 @@ class HunchlyPhoto(Photo):
         if data['photo_url']:
             data['name'] = Path(data['photo_url']).name
 
-        data['icon'] = convert_image_to_base64(data['photo_local_file_path'])
+        url = convert_image_to_base64(data['photo_local_file_path'])
+        data['icon'] = EntityIcon(url=url)
         return data
 
 

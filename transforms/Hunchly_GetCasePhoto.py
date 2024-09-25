@@ -6,11 +6,11 @@ from modules.hunchly.models import Case
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_photo
 from tools.entities import ENTITYREG
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 
 
 @registry.register_transform(
-    display_name="Get Case HunchlyPhotos [Hunchly]",
+    display_name="Get Case Photos [Hunchly]",
     input_entity=ENTITYREG.CASE.get_type(),
     description="Return photos collected from pages for given Hunchly case name",
     output_entities=[ENTITYREG.PHOTO.get_type()],
@@ -21,7 +21,6 @@ class Hunchly_GetCasePhoto(DiscoverableTransform):
     """
     Get a pages from Hunchly Case
     """
-
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         # how many
@@ -35,7 +34,7 @@ class Hunchly_GetCasePhoto(DiscoverableTransform):
 
         # generating of pages
         for item in items.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
         response.addUIMessage(f"Case contain {items.results} pages")
 

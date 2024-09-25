@@ -6,12 +6,12 @@ from modules.hunchly.models import Case
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_pages_by_case_name
 from tools.gui.components import message_box
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.entities import ENTITYREG
 
 
 @registry.register_transform(
-    display_name="Get HunchlyPages [Hunchly]",
+    display_name="Get Pages [Hunchly]",
     input_entity=ENTITYREG.CASE.get_type(),
     description="Return captured pages for given Hunchly case name",
     output_entities=[ENTITYREG.PAGE.get_type()],
@@ -34,7 +34,7 @@ class Hunchly_GetCasePages(DiscoverableTransform):
 
         # generating of pages
         for item in items.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
         message_box(message=f"Case contain {items.results} pages", title='CloakNDagger MessageBox', description='')
         response.addUIMessage(f"Case contain {items.results} pages")

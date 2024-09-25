@@ -3,7 +3,7 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 
 from extensions import registry
 from settings import tavily_transformset
-from tools.maltego import create_entity_from_model, model_from_maltego_request
+from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.entities import ENTITYREG
 from tools.entities import Tavily
 from modules.tavily.gui import request_form
@@ -39,4 +39,4 @@ class Tavily_Search(DiscoverableTransform):
         else:
             entities = response_to_entities(tavili_search)
             for item in entities:
-                create_entity_from_model(model=item, response=response)
+                entity_from_model(model=item, response=response)

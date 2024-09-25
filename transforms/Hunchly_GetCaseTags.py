@@ -5,7 +5,7 @@ from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_tags
 from tools.entities import ENTITYREG
-from tools.maltego import create_entity_from_model
+from tools.maltego import entity_from_model
 
 
 @registry.register_transform(
@@ -35,7 +35,7 @@ class Hunchly_GetCaseTags(DiscoverableTransform):
 
         # generating of pages
         for item in case.data:
-            create_entity_from_model(item, response)
+            entity_from_model(item, response)
 
-        response.addUIMessage(f"Case contain {case.results} pages")
+        response.addUIMessage(f"Case contain {case.results} tags")
 
