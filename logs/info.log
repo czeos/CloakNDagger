@@ -1,0 +1,141 @@
+2024-09-24 14:59:43,108 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 14:59:43,108 - maltego.server - ERROR - model_from_maltego_request() got an unexpected keyword argument 'main_attribute'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 26, in create_entities
+    data = model_from_maltego_request(request,model=AdressEntity,main_attribute=False)
+TypeError: model_from_maltego_request() got an unexpected keyword argument 'main_attribute'
+2024-09-24 15:15:35,817 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:15:35,817 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 32, in create_entities
+    entity_from_model(model=AdressEntity(**input_company.model_dump()), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:17:01,457 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:17:01,457 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 32, in create_entities
+    entity_from_model(model=AdressEntity(**input_company.model_dump()), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:39:41,120 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:39:41,120 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 33, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:43:02,929 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:43:02,929 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 36, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:45:21,096 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:45:21,096 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 36, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:46:24,393 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:46:24,393 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 36, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:46:58,102 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:46:58,102 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 37, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 15:47:45,327 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 15:47:45,327 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 36, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 18:39:23,800 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 18:39:23,800 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 31, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 18:40:05,450 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 18:40:05,450 - maltego.server - ERROR - 'AdressEntity' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 31, in create_entities
+    entity_from_model(model=AdressEntity(**dict_company), response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 12, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+AttributeError: 'AdressEntity' object has no attribute 'name'
+2024-09-24 18:43:26,633 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-24 18:43:26,633 - maltego.server - ERROR - BaseModel.__init__() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\ExtractAdress.py", line 30, in create_entities
+    adress = AdressEntity({'sidlo': dict_company['sidlo']})
+TypeError: BaseModel.__init__() takes 1 positional argument but 2 were given
+2024-09-24 19:06:11,026 - maltego.server - ERROR - An exception occurred while executing your transform code.

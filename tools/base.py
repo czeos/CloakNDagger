@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import Callable, Union, Dict, List, Type, Literal,Protocol
 from uuid import uuid4
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from tools.utils import hash_fn
 from enum import Enum
 
@@ -71,7 +71,7 @@ class BaseEntity(BaseModel):
     icon: str | EntityIcon = Field(default='', exclude=True)
     display_info: str | EntityDisplayInfo = Field(default='', exclude=True)
     note: str | EntityNote = Field(default='', exclude=True)
-
+    model_config = ConfigDict(extra='allow')
 
     @property
     def property_fields(self) -> List[str]:

@@ -57,3 +57,6 @@ tools/__pycache__/entities.cpython-310.pyc
 transforms/__pycache__/AresGetRecordsCompany.cpython-310.pyc
 local.mtz
 test.py
+modules/ares/__pycache__/gui.cpython-310.pyc
+transforms/__pycache__/ExtractAdress.cpython-310.pyc
+transforms/__pycache__/TestTheThings.cpython-310.pyc

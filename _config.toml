@@ -4,7 +4,7 @@
     # Is comunity
     community = true
     # path to env
-    python_path =  'C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Scripts\python'
+    python_path =  'C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe'
 
 
 [hunchly]
