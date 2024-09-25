@@ -6,7 +6,6 @@ from extensions import registry
 from modules.ares.gui import show_form
 from modules.ares.models import RequestEkonomickySubjekt,Sidlo
 from settings import ares_transformset
-from tools.base import ENTITIES_TYPE_NAMES
 from tools.maltego import model_from_maltego_request, create_entity_from_model
 from modules.ares.api import serch_ares
 from tools.entities import Company, Person, ENTITYREG
@@ -19,7 +18,7 @@ from tools.entities import Company, Person, ENTITYREG
     transform_set=ares_transformset
 
 )
-class AresGetRecordsCompany(DiscoverableTransform):
+class Ares_GetRecordsCompany(DiscoverableTransform):
 
 
     @classmethod

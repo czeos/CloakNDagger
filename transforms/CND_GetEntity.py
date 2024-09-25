@@ -4,23 +4,23 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import cloak_n_dagger_transformset
 from tools.maltego import create_entity_from_model, model_from_maltego_request
-from tools.entities import ENTITIES_TYPE_NAMES, CloakNDagger, entity_register
+from tools.entities import ENTITYREG, CloakNDagger
 from modules.cloak_n_dagger.gui import check_box_form
 
 
-starting_entities = [ENTITIES_TYPE_NAMES.CASE,
-                    ENTITIES_TYPE_NAMES.ALIAS,
-                    ENTITIES_TYPE_NAMES.TAVILY]
+starting_entities = [ENTITYREG.CASE.get_type(),
+                    ENTITYREG.ALIAS.get_type(),
+                    ENTITYREG.TAVILY.get_type()]
 
 @registry.register_transform(
     display_name="Get CND strarting Entity [CloakNDagger]",
-    input_entity=ENTITIES_TYPE_NAMES.CLOAK_N_DAGGER,
+    input_entity=ENTITYREG.CLOAK_N_DAGGER.get_type(),
     description="Get starting entity",
     output_entities=[name for name in starting_entities],
     transform_set=cloak_n_dagger_transformset
 
 )
-class CNDGetEntity(DiscoverableTransform):
+class CND_GetEntity(DiscoverableTransform):
     """
     Get a page dat from Hunchly Case
     """
@@ -33,7 +33,7 @@ class CNDGetEntity(DiscoverableTransform):
                                         description='Select main project entities')
 
 
-        items = [entity_register.get_item(name)() for name in selected_entities]
+        items = [ENTITYREG.get_cls(name)() for name in selected_entities]
 
         # generating of pages
         for item in items:

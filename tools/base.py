@@ -1,7 +1,6 @@
 from abc import ABC
-from typing import Callable, Union, Dict, List, Type, Literal,Protocol
-from uuid import uuid4
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from typing import Callable, Union, Dict, List, Type, Literal, Protocol, Optional
+from pydantic import BaseModel, Field, ConfigDict
 from tools.utils import hash_fn
 from enum import Enum
 
@@ -11,15 +10,19 @@ class EntityStackProtocol(Protocol):
     data: list[BaseModel]
 
 
-class RegisterProtocol(Protocol):
+class BaseEntityProtocol(Protocol):
 
-    def register(self, name: str, item: Union[BaseModel, Callable, str]) -> None:
+    setting: BaseModel
+    uuid: str
+    icon: str | BaseModel
+    display_info: str | BaseModel
+    note: str | BaseModel
+
+    @property
+    def property_fields(self) -> List[str]:
         ...
 
-    def get_item(self, name: str) -> Union[BaseModel, Callable]:
-        ...
-
-    def get_list_of_names(self) -> List[str]:
+    def __hash__(self) -> int:
         ...
 
 
@@ -43,21 +46,25 @@ class EntitySetting(MaltegoSettingAttributes):
 
 
 class EntityDisplay(MaltegoSettingAttributes):
-    value: str
-    position: Enum
-    overlay_type: Enum
+    """
+    Class  representing matlego entity display settings. It can be used to set the entity overlay type, position and value
+    """
+    value: str | None
+    position: Enum |  None
+    overlay_type: Enum | None
+
 
 class EntityIcon(MaltegoSettingAttributes):
-    url: str
+    url: str | None
 
 
 class EntityNote(MaltegoSettingAttributes):
-    note: str
+    note: str | None
 
 
 class EntityDisplayInfo(MaltegoSettingAttributes):
-    content: str
-    title: str
+    content: str | None
+    title: str | None
 
 
 class BaseEntity(BaseModel):
@@ -65,25 +72,66 @@ class BaseEntity(BaseModel):
     Base entity / inheritance and template type
 
     """
-    _internal_fields: List[str] = ['setting', 'icon', 'display_info', 'note']
-    setting: EntitySetting = Field(..., exclude=True)
-    uuid: str = Field(default_factory=lambda: str(uuid4()))
-    icon: str | EntityIcon = Field(default='', exclude=True)
-    display_info: str | EntityDisplayInfo = Field(default='', exclude=True)
-    note: str | EntityNote = Field(default='', exclude=True)
+    setting: EntitySetting = Field(...)
+    icon: Optional[EntityIcon] = Field(default=None)
+    display_info: Optional[EntityDisplayInfo] = Field(default=None)
+    note: Optional[EntityNote] = Field(default=None)
+
     model_config = ConfigDict(extra='allow')
 
     @property
     def property_fields(self) -> List[str]:
         """
-        Return list
-         of attributes that will be map on the entity properties
+        Return list of attributes that will be map on the entity properties
         """
-        return [attr for attr in self.__dict__.keys() if attr not in self._internal_fields]
+        return [attr for attr in self.entity_dump(exclude=[MaltegoSettingAttributes]).keys()]
 
     def __hash__(self):
-        data_to_hash = {name: self.__getattribute__(name) for name in self.property_fields}
-        return hash_fn(data_to_hash)
+        return hash_fn(self.model_dump())
+
+    def set_icon(self, url: str | None) -> None:
+        self.icon = EntityIcon(url=url)
+
+    def set_note(self, note: str):
+        self.note = EntityNote(note=note)
+
+    def set_display_info(self, content: str, title: str):
+        self.display_info = EntityDisplayInfo(content=content, title=title)
+
+    def set_overlay(self, attr_name: str, value: str, position: Enum, overlay_type: Enum):
+        """
+        Set an overlay attribute for the entity.
+
+        Parameters:
+        attr_name (str): The name of the attribute to set the overlay on.
+        value (str): The value to set for the overlay.
+        position (Enum): The position of the overlay.
+        overlay_type (Enum): The type of the overlay.
+        """
+        # define overlay
+        overlay = EntityDisplay(value=value, position=position, overlay_type=overlay_type)
+        # set overlay as attribute
+        setattr(self, attr_name, overlay)
+
+    def entity_dump(self, exclude: Optional[List[Union[str, Type[MaltegoSettingAttributes]]]] = []) -> dict:
+        """
+        Method will dump entity properties to dict. Method will exclude all attributes that are specified in exclude parameter
+        by attr name or type or subtype.
+        """
+        # Prepare the exclusion set. Set takes as base all attributes defined as string or empty se
+        exclude_set = set([name for name in exclude if isinstance(name, str)] or [])
+        #list type exlude
+        exclude_types = [ex_type for ex_type in exclude if isinstance(ex_type, type)]
+
+        # get remaining attributes to map
+        attrs_set = {name for name in self.__dict__.keys()}.difference(exclude_set)
+
+        for attr_name in attrs_set:
+            if any(isinstance(self.__getattribute__(attr_name), ex_type) for ex_type in exclude_types):
+                exclude_set.add(attr_name)
+
+        # Use Pydantic's model_dump method with the exclude parameter
+        return self.model_dump(exclude=exclude_set)
 
 
 class BaseEntityStack(BaseModel, ABC):
@@ -97,6 +145,7 @@ class BaseEntityStack(BaseModel, ABC):
             self.data = filtered
         else:
             return filtered
+
 
 class BaseRegisterFactory(BaseModel):
     items: Dict[str, Union[BaseModel, Callable, str]] = Field(default_factory=dict)
@@ -115,6 +164,7 @@ class BaseRegisterFactory(BaseModel):
         if item is not None:
             return item
 
+
 ## Register entities
 # Helper class to wrap the entity class and its type
 class EntityWrapper:
@@ -132,6 +182,7 @@ class EntityWrapper:
 
     def __str__(self):
         return self.name
+
 
 # Define the metaclass to dynamically register the entities
 class RegisterMeta(type):
@@ -155,22 +206,10 @@ class RegisterMeta(type):
     def get_cls(cls, name: str) -> Type[BaseEntity]:
         return cls._entity_registry.get(name).get_cls()
 
+
+class RegisterProtocol(Protocol):
+
+    def get_cls(cls, name: str) -> Type[BaseEntity]:
+        ...
+
 # Define the base class for the entity register
-
-class EntityRegister(BaseRegisterFactory):
-    pass
-
-global entity_register
-entity_register = EntityRegister()
-
-
-class EntitiesTypeNames(BaseRegisterFactory):
-    """
-    name: name of the class property
-    item: maltego type name like "cnd.Entity"
-    """
-    items: Dict[str, str] = Field(default_factory=dict)
-
-
-global ENTITIES_TYPE_NAMES
-ENTITIES_TYPE_NAMES = EntitiesTypeNames()

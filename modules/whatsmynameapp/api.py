@@ -16,14 +16,14 @@ HEADERS = {
 
 def check_site(site: Site, username: str, headers: dict) -> Optional[UserProfile]:
     site_name = site.name
-    uri_check = site.uri_check.format(account=username)
+    url2check = site.uri_check.format(account=username)
     try:
-        res = requests.get(uri_check, headers=headers, timeout=10)
+        res = requests.get(url2check, headers=headers, timeout=10)
         estring_pos = site.e_string in res.text
         estring_neg = site.m_string in res.text
 
         if res.status_code == site.e_code and estring_pos and not estring_neg:
-            return UserProfile(site=site_name, uri=uri_check)
+            return UserProfile(site=site_name, url=url2check)
     except Exception as e:
         pass
 

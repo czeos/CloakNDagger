@@ -3,8 +3,8 @@ from maltego_trx.overlays import OverlayPosition, OverlayType
 
 from pydantic import ConfigDict, Field, AnyUrl, model_validator
 from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
-from tools.icons import ADRESS, EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR
-from tools.base import entity_register, ENTITIES_TYPE_NAMES
+from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR, TAVILY
+
 
 
 #todo: change loction of hunchly case
@@ -13,29 +13,9 @@ from tools.base import entity_register, ENTITIES_TYPE_NAMES
 #todo: create ico as matego entity in appliction and crete configurtion, add iconto tools/icon
 #todo: refactor as module
 
-ENTITIES_TYPE_NAMES.register(name='CASE', item='cnd.HunchlyCase')
-ENTITIES_TYPE_NAMES.register(name='PAGE', item='cnd.Webpage')
-ENTITIES_TYPE_NAMES.register(name='EMAIL', item='cnd.Email')
-ENTITIES_TYPE_NAMES.register(name='IPV4', item='cnd.IPV4')
-ENTITIES_TYPE_NAMES.register(name='IPV6', item='cnd.IPV6')
-ENTITIES_TYPE_NAMES.register(name='GOOGLE_ANALYTICS', item='cnd.GoogleAnalytics')
-ENTITIES_TYPE_NAMES.register(name='FACEBOOK_PIXEL', item='cnd.FacebookPixel')
-ENTITIES_TYPE_NAMES.register(name='TOR_SERVICE', item='cnd.TorService')
-ENTITIES_TYPE_NAMES.register(name='SOCIAL_MEDIA_ACCOUNT', item='cnd.SocialMediaAccount')
-ENTITIES_TYPE_NAMES.register(name='PHOTO', item='cnd.Image')
-ENTITIES_TYPE_NAMES.register(name='SELECTOR', item='cnd.Selector')
-ENTITIES_TYPE_NAMES.register(name='TAG', item='cnd.Tag')
-ENTITIES_TYPE_NAMES.register(name='USERNAME', item='cnd.Username')
-ENTITIES_TYPE_NAMES.register(name='ALIAS', item='cnd.Alias')
-ENTITIES_TYPE_NAMES.register(name='CLOAK_N_DAGGER', item='cnd.CloakNDagger')
-ENTITIES_TYPE_NAMES.register(name='TEXT', item='cnd.Text')
-ENTITIES_TYPE_NAMES.register(name='TAVILY', item='cnd.Tavily')
-ENTITIES_TYPE_NAMES.register(name='COMPANY', item='maltego.Company')
-ENTITIES_TYPE_NAMES.register(name='PERSON', item='maltego.Person')
-
 
 class Case(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.CASE,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.HunchlyCase',
                                                          main_attribute='name',
                                                          match='strict'))
     id: int = Field(default=0)
@@ -43,67 +23,68 @@ class Case(BaseEntity):
 
 
 class Page(BaseEntity, extra='allow'):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.PAGE,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Webpage',
                                                          main_attribute='title',
                                                          match='strict'))
     url: AnyUrl
     title: str
-    icon: str = WEBPAGE
+    icon: EntityIcon = EntityIcon(url=WEBPAGE)
 
 
 class Email(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.EMAIL,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Email',
                                                          main_attribute='email',
                                                          match='strict'))
-    icon: str = EMAIL
+    icon: EntityIcon = EntityIcon(url=EMAIL)
     email: str
 
 
 class IPV4(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.IPV4,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.IPV4',
                                                          main_attribute='ipv4',
                                                          match='strict'))
-    icon: str = IP
+    icon: EntityIcon = EntityIcon(url=IP)
     ipv4: str = Field(validation_alias='data_record')
 
 
 class IPV6(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.IPV6,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.IPV6',
                                                          main_attribute='ipv6',
                                                          match='strict'))
-    icon: str = IP
+    icon: EntityIcon = EntityIcon(url=IP)
     ipv6: str
 
 
 class GoogleAnalytics(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.GOOGLE_ANALYTICS,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.GoogleAnalytics',
                                                          main_attribute='id',
                                                          match='strict'))
     id: str
-    icon: str = IDENTIFICATOR
+    icon: EntityIcon = EntityIcon(url=IDENTIFICATOR)
 
 
 class FacebookPixel(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.FACEBOOK_PIXEL,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.FacebookPixel',
                                                          main_attribute='id',
                                                          match='strict'))
     id: str
-    icon: str = IDENTIFICATOR
+    icon: EntityIcon = EntityIcon(url=IDENTIFICATOR)
 
 
 class TorService(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.TOR_SERVICE,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.TorService',
                                                          main_attribute='url',
                                                          match='strict'))
     url: str
 
 
 class SocialMediaProfile(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.SOCIAL_MEDIA_ACCOUNT,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.SocialMediaAccount',
                                                          main_attribute='url',
                                                          match='strict'))
+
     url: str
-    icon: str = WEB_PROFILE
+    icon: EntityIcon = Field(default=EntityIcon(url=WEB_PROFILE))
 
 
 class Photo(BaseEntity):
@@ -111,61 +92,61 @@ class Photo(BaseEntity):
     url     - location on net
     path    - location on file system
     """
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.PHOTO,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Photo',
                                                          main_attribute='name',
                                                          match='strict'))
     hash: str = Field(default='')
     url: str = Field(default='')
     path: str = Field(default='')
     name: str = Field(default='')
-    icon: str = IMAGE
+    icon: EntityIcon = EntityIcon(url=IMAGE)
 
 
 class Selector(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.SELECTOR,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Selector',
                                                          main_attribute='name',
                                                          match='strict'))
     name: str
-    icon: str = TARGET
+    icon: EntityIcon = EntityIcon(url=TARGET)
     uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
 class Tag(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.TAG,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Tag',
                                                          main_attribute='name',
                                                          match='strict'))
     name: str
-    icon: str = TAG
+    icon: EntityIcon = EntityIcon(url=TAG)
     uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
 class Username(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.USERNAME,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Username',
                                                          main_attribute='username',
                                                          match='strict'))
     username: str
 
 
 class Alias(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.ALIAS,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Alias',
                                                          main_attribute='alias',
                                                          match='strict'))
     alias: str = Field(default='')
 
 
 class CloakNDagger(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.CLOAK_N_DAGGER,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.CloakNDagger',
                                                          main_attribute='moto',
                                                          match='strict'))
     moto: str
 
 
 class Text(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.TEXT,
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.Text',
                                                          main_attribute='text',
                                                          match='strict'))
     text: str = Field(default='')
-    icon: str = COMMENT
+    icon: EntityIcon = EntityIcon(url=COMMENT)
 
     @model_validator(mode='before')
     @classmethod
@@ -175,17 +156,23 @@ class Text(BaseEntity):
 
 
 class Company(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.COMPANY,
+    setting: EntitySetting = Field(default=EntitySetting(type='maltego.Company',
                                                          main_attribute='name',
                                                          match='strict'))
     name: str = Field(default='')
 
 
 class Person(BaseEntity):
-    setting: EntitySetting = Field(default=EntitySetting(type=ENTITIES_TYPE_NAMES.PERSON,
+    setting: EntitySetting = Field(default=EntitySetting(type='maltego.Person',
                                                          main_attribute='fullname',
                                                          match='strict'))
     fullname: str = Field(default='')
+
+
+class Tavily(BaseEntity):
+    setting: EntitySetting = EntitySetting(type='cnd.Tavily', match='strict', main_attribute='query')
+    query: str = Field(default='Ask me', alias='query')
+    icon: EntityIcon = EntityIcon(url=TAVILY)
 
 
 class TestEntity(BaseEntity):
@@ -206,26 +193,6 @@ class AdressEntity(BaseEntity):
                                                          match='strict'))
     sidlo: str = Field(default='')
     icon: EntityIcon = EntityIcon(url=ADRESS)
-
-
-entity_register.register(name=ENTITIES_TYPE_NAMES.CASE, item=Case)
-entity_register.register(name=ENTITIES_TYPE_NAMES.PAGE, item=Page)
-entity_register.register(name=ENTITIES_TYPE_NAMES.EMAIL, item=EMAIL)
-entity_register.register(name=ENTITIES_TYPE_NAMES.IPV4, item=IPV4)
-entity_register.register(name=ENTITIES_TYPE_NAMES.IPV6, item=IPV6)
-entity_register.register(name=ENTITIES_TYPE_NAMES.GOOGLE_ANALYTICS, item=GoogleAnalytics)
-entity_register.register(name=ENTITIES_TYPE_NAMES.FACEBOOK_PIXEL, item=FacebookPixel)
-entity_register.register(name=ENTITIES_TYPE_NAMES.TOR_SERVICE, item=TorService)
-entity_register.register(name=ENTITIES_TYPE_NAMES.SOCIAL_MEDIA_ACCOUNT, item=SocialMediaProfile)
-entity_register.register(name=ENTITIES_TYPE_NAMES.PHOTO, item=Photo)
-entity_register.register(name=ENTITIES_TYPE_NAMES.SELECTOR, item=Selector)
-entity_register.register(name=ENTITIES_TYPE_NAMES.TAG, item=Tag)
-entity_register.register(name=ENTITIES_TYPE_NAMES.USERNAME, item=Username)
-entity_register.register(name=ENTITIES_TYPE_NAMES.ALIAS, item=Alias)
-entity_register.register(name=ENTITIES_TYPE_NAMES.CLOAK_N_DAGGER, item=CloakNDagger)
-entity_register.register(name=ENTITIES_TYPE_NAMES.TEXT, item=Text)
-entity_register.register(name=ENTITIES_TYPE_NAMES.COMPANY, item=Company)
-entity_register.register(name=ENTITIES_TYPE_NAMES.PERSON, item=Person)
 
 
 # Define the Register class using the dynamic metaclass
@@ -255,6 +222,7 @@ class Register(metaclass=RegisterMeta):
     TEXT: Type[BaseEntity] = Text
     COMPANY: Type[BaseEntity] = Company
     PERSON: Type[BaseEntity] = Person
+    TAVILY: Type[BaseEntity] = Tavily
     TEST_ENTITY: Type[BaseEntity] = TestEntity
     ADRESS_ENTITY: Type[BaseEntity] = AdressEntity
 

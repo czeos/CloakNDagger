@@ -4,21 +4,21 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import tavily_transformset
 from tools.maltego import create_entity_from_model, model_from_maltego_request
-from tools.base import ENTITIES_TYPE_NAMES, entity_register
-from modules.tavily.models import Tavily
+from tools.entities import ENTITYREG
+from tools.entities import Tavily
 from modules.tavily.gui import request_form
 from modules.tavily.api import tivaly_api, response_to_entities, SearchRequest
 
 
 @registry.register_transform(
     display_name="Query web resources [Tavili]",
-    input_entity=ENTITIES_TYPE_NAMES.TAVILY,
+    input_entity=ENTITYREG.TAVILY.get_type(),
     description="Get starting entity",
-    output_entities=[ENTITIES_TYPE_NAMES.PAGE, ENTITIES_TYPE_NAMES.PHOTO],
+    output_entities=[ENTITYREG.PAGE.get_type(), ENTITYREG.PHOTO.get_type()],
     transform_set=tavily_transformset
 
 )
-class TavilySearch(DiscoverableTransform):
+class Tavily_Search(DiscoverableTransform):
     """
     Get a page dat from Hunchly Case
     """

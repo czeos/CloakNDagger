@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QComboBox, QCheckBox, QSpinBox, QPushButton, \
     QLabel, QTextEdit, QScrollArea
 from PyQt6.QtCore import pyqtSlot
-from modules.tavily.models import Tavily
+from tools.entities import Tavily
 
 
 class SearchRequestForm(QWidget):

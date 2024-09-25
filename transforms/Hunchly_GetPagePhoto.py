@@ -4,19 +4,19 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_page_photo
-from tools.base import ENTITIES_TYPE_NAMES
+from tools.entities import ENTITYREG
 from tools.maltego import create_entity_from_model
 
 
 @registry.register_transform(
     display_name="Get Page HunchlyPhotos [Hunchly]",
-    input_entity=ENTITIES_TYPE_NAMES.PAGE,
+    input_entity=ENTITYREG.PAGE.get_type(),
     description="Return photos for given Hunchly Webpage",
-    output_entities=[ENTITIES_TYPE_NAMES.PHOTO],
+    output_entities=[ENTITYREG.PHOTO.get_type()],
     transform_set=hunchly_transformset
 
 )
-class GetPagePhoto(DiscoverableTransform):
+class Hunchly_GetPagePhoto(DiscoverableTransform):
     """
     Get a pages from Hunchly Case
     """

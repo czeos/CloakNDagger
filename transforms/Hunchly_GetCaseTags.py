@@ -3,20 +3,20 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 
 from extensions import registry
 from settings import hunchly_transformset
-from modules.hunchly.api import get_page_selectors
-from tools.base import ENTITIES_TYPE_NAMES
+from modules.hunchly.api import get_case_tags
+from tools.entities import ENTITYREG
 from tools.maltego import create_entity_from_model
 
 
 @registry.register_transform(
-    display_name="Get Page Selectors [Hunchly]",
-    input_entity=ENTITIES_TYPE_NAMES.PAGE,
-    description="Return selectors for given Hunchly Webpage",
-    output_entities=[ENTITIES_TYPE_NAMES.SELECTOR],
+    display_name="Get Case Tags [Hunchly]",
+    input_entity=ENTITYREG.CASE.get_type(),
+    description="Return tags collected from pages for given Hunchly case name",
+    output_entities=[ENTITYREG.TAG.get_type()],
     transform_set=hunchly_transformset
 
 )
-class GetPageSelectors(DiscoverableTransform):
+class Hunchly_GetCaseTags(DiscoverableTransform):
     """
     Get a pages from Hunchly Case
     """
@@ -29,11 +29,13 @@ class GetPageSelectors(DiscoverableTransform):
         # TODO: implement slidebar
 
         # case data
-        page_id = request.getProperty('id')
-        results = get_page_selectors(page_id)
+        case_name = request.Value
+        response.addUIMessage(f"casse value {case_name}")
+        case = get_case_tags(case_name)
 
         # generating of pages
-        for item in results.data:
+        for item in case.data:
             create_entity_from_model(item, response)
 
-        response.addUIMessage(f"Case contain {results.results} pages")
+        response.addUIMessage(f"Case contain {case.results} pages")
+

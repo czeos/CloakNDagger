@@ -1,10 +1,5 @@
-2024-09-24 14:47:02,605 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 14:52:15,275 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 14:53:00,194 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 14:53:50,546 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 14:56:08,545 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 15:00:27,515 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 15:45:21,096 - app.module.ares - DEBUG - ExtractAdress - create_entities - test log
-2024-09-24 18:39:49,134 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-24 19:01:26,656 - app.module.ares - DEBUG - api - serch_ares - logger test
-2024-09-25 09:10:59,787 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-09-19 14:05:07,917 - app.module.ares - DEBUG - api - 5 - logger test
+2024-09-19 16:09:06,364 - app.module.ares - DEBUG - api - serch_by_name - logger test
+2024-09-19 16:09:55,845 - app.module.ares - DEBUG - api - serch_by_name - logger test
+2024-09-21 16:35:45,987 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-09-24 23:19:04,390 - app.module.ares - DEBUG - api - serch_ares - logger test

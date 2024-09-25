@@ -4,7 +4,6 @@ from maltego_trx.transform import DiscoverableTransform
 from extensions import registry
 from modules.ares.models import RequestEkonomickySubjekt
 from settings import ares_transformset
-from tools.base import ENTITIES_TYPE_NAMES
 from tools.maltego import model_from_maltego_request, entity_from_model
 from tools.entities import Company, ENTITYREG, TestEntity
 
@@ -26,20 +25,11 @@ class TestTheThings(DiscoverableTransform):
         output = {
             "fullname": "Test"
         }
+        t = TestEntity(**output)
+        t.set_display_info(content=None, title=None)
+        t.set_note(note=None)
+        t.set_icon(url=None)
+        entity_from_model(model=t, response=response)
 
-        entity_from_model(model=TestEntity(**output), response=response)
 
 
-
-
-if __name__ == "__main__":
-    from tools.entities import TestEntity
-    from tools.maltego import entity_from_model
-    from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
-    response = MaltegoTransform()
-    output = {
-        "fullname": "Test"
-    }
-
-    t = TestEntity(**output)
-    entity_from_model(model=TestEntity(**output), response=response)
