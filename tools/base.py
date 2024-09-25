@@ -31,7 +31,8 @@ class MaltegoSettingAttributes(BaseModel):
     Base type to set dynamically distinguish trough type check which fields will be set as entity properties and which
     are entity settings
     """
-    pass
+    def __bool__(self):
+        return any(self.__getattribute__(attr) is not None for attr in self.__dict__.keys())
 
 class EntitySetting(MaltegoSettingAttributes):
     """
@@ -55,16 +56,16 @@ class EntityDisplay(MaltegoSettingAttributes):
 
 
 class EntityIcon(MaltegoSettingAttributes):
-    url: str | None
+    url: str | None = Field(default=None)
 
 
 class EntityNote(MaltegoSettingAttributes):
-    note: str | None
+    note: str | None = Field(default=None)
 
 
 class EntityDisplayInfo(MaltegoSettingAttributes):
-    content: str | None
-    title: str | None
+    content: str | None = Field(default=None)
+    title: str | None = Field(default=None)
 
 
 class BaseEntity(BaseModel):
@@ -73,9 +74,9 @@ class BaseEntity(BaseModel):
 
     """
     setting: EntitySetting = Field(...)
-    icon: Optional[EntityIcon] = Field(default=None)
-    display_info: Optional[EntityDisplayInfo] = Field(default=None)
-    note: Optional[EntityNote] = Field(default=None)
+    icon: EntityIcon = Field(default_factory=EntityIcon)
+    display_info: EntityDisplayInfo = Field(default_factory=EntityDisplayInfo)
+    note: EntityNote = Field(default_factory=EntityNote)
 
     model_config = ConfigDict(extra='allow')
 

@@ -187,12 +187,12 @@ class TestEntity(BaseEntity):
     overlay_color: EntityDisplay = EntityDisplay(value='#45e06f', position=OverlayPosition.WEST, overlay_type=OverlayType.COLOUR)
     overlay_icon: EntityDisplay = EntityDisplay(value=TAG, position=OverlayPosition.NORTH, overlay_type=OverlayType.IMAGE)
 
-class AdressEntity(BaseEntity):
+class Adress(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.adress_entity',
                                                          main_attribute='sidlo',
                                                          match='strict'))
     sidlo: str = Field(default='')
-    icon: EntityIcon = EntityIcon(url=ADRESS)
+    icon: EntityIcon = Field(default=EntityIcon(url=ADRESS))
 
 
 # Define the Register class using the dynamic metaclass
@@ -224,6 +224,6 @@ class Register(metaclass=RegisterMeta):
     PERSON: Type[BaseEntity] = Person
     TAVILY: Type[BaseEntity] = Tavily
     TEST_ENTITY: Type[BaseEntity] = TestEntity
-    ADRESS_ENTITY: Type[BaseEntity] = AdressEntity
+    ADRESS: Type[BaseEntity] = Adress
 
 ENTITYREG = Register()

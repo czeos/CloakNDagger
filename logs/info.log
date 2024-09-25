@@ -123,3 +123,75 @@ Traceback (most recent call last):
     entity.addProperty(fieldName=field, matchingRule=model.setting.match, value=model.__getattribute__(field))
                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'PravnickaOsoba' object has no attribute 'dalsiUdaje'
+2024-09-25 10:52:05,434 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:52:05,434 - maltego.server - ERROR - 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_ExtractAdress.py", line 29, in create_entities
+    adress = AdressEntity(**dict_company)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 10:54:40,298 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:54:40,298 - maltego.server - ERROR - name 'dict_compan' is not defined
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_ExtractAdress.py", line 30, in create_entities
+    adress = AdressEntity(**dict_compan)
+                            ^^^^^^^^^^^
+NameError: name 'dict_compan' is not defined. Did you mean: 'dict_company'?
+2024-09-25 10:54:59,549 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:54:59,550 - maltego.server - ERROR - 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_ExtractAdress.py", line 30, in create_entities
+    adress = AdressEntity(**dict_company)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+2024-09-25 10:56:42,260 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-25 10:56:42,260 - maltego.server - ERROR - 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_ExtractAdress.py", line 30, in create_entities
+    adress = AdressEntity(**dict_company)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for AdressEntity
+icon
+  Input should be a valid dictionary or instance of EntityIcon [type=model_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/model_type

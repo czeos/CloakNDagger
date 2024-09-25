@@ -12,6 +12,8 @@ def entity_from_model(model: BaseEntity, response: MaltegoTransform) -> MaltegoE
     entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
 
     for attr, field in model.__dict__.items():
+        if not field:
+            continue
         if not isinstance(field, MaltegoSettingAttributes):
             #add property to entity if not type of MaltegoSettingAttributes
             entity.addProperty(fieldName=attr, matchingRule=model.setting.match, value=field)
