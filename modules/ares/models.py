@@ -1,4 +1,8 @@
-from tools.entities import Company,Person
+from maltego_trx.overlays import OverlayPosition, OverlayType
+
+from tools import icons
+from tools.base import EntityDisplay
+from tools.entities import Company, Person, ICO, Adress
 from pydantic import AliasChoices, BaseModel, Field, field_validator
 from typing import List, Literal,Optional, Union
 
@@ -98,13 +102,28 @@ class PravnickaOsoba(Company,EkonomickySubjekt):
     '421',
     '601', '602', '603',
     '706',
-    '911', '931', '932'
-]
+    '911', '931', '932']
+
+    logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
+                                        overlay_type=OverlayType.IMAGE)
 
 class FyzickaOsoba(Person,EkonomickySubjekt):
     fullname: str = Field(validation_alias='obchodniJmeno')
     pravniForma: Literal['101', '102', '105','106','107','108','109','110']
+    logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
+                                        overlay_type=OverlayType.IMAGE)
+
 
 class Root(BaseModel):
     pocetCelkem: int
     ekonomickeSubjekty: List[Union[PravnickaOsoba,FyzickaOsoba]]
+
+
+class AresICO(ICO):
+    logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
+                                        overlay_type=OverlayType.IMAGE)
+
+
+class AresAdress(Adress):
+    logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
+                                        overlay_type=OverlayType.IMAGE)

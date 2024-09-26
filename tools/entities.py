@@ -203,7 +203,7 @@ class ICO(BaseEntity):
                                                          main_attribute='ico',
                                                          match='strict'))
     ico: str = Field(default='')
-    icon: EntityIcon = Field(default=EntityIcon(url=icons.ADRESS))
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.STAMP))
 
 
 class Ares(BaseEntity):

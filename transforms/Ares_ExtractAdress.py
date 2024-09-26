@@ -4,7 +4,8 @@ from maltego_trx.transform import DiscoverableTransform
 from extensions import registry
 from settings import ares_transformset
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG, Adress, Company
+from tools.entities import ENTITYREG, Company
+from modules.ares.models import AresAdress
 from tools.base import MaltegoSettingAttributes
 from modules.ares import ares_logger
 
@@ -27,5 +28,5 @@ class Ares_ExtractAdress(DiscoverableTransform):
         dict_company = input_company.entity_dump(exclude=[MaltegoSettingAttributes])
         if not input_company:
             return
-        entity_from_model(model=Adress(**dict_company), response=response)
+        entity_from_model(model=AresAdress(**dict_company), response=response)
         

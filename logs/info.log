@@ -664,3 +664,139 @@ Traceback (most recent call last):
   File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 761, in __getattr__
     raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
 AttributeError: 'SocialMediaProfile' object has no attribute 'get'
+2024-09-26 13:40:36,362 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-26 13:40:36,363 - maltego.server - ERROR - 6 validation errors for Root
+ekonomickeSubjekty.0.PravnickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '27082440', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.0.FyzickaOsoba.pravniForma
+  Input should be '101', '102', '105', '106', '107', '108', '109' or '110' [type=literal_error, input_value='121', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/literal_error
+ekonomickeSubjekty.0.FyzickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '27082440', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.1.PravnickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '46960643', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.1.FyzickaOsoba.pravniForma
+  Input should be '101', '102', '105', '106', '107', '108', '109' or '110' [type=literal_error, input_value='112', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/literal_error
+ekonomickeSubjekty.1.FyzickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '46960643', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 37, in create_entities
+    companies = serch_ares(search_request)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 10, in serch_ares
+    root = make_request(payload)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 21, in make_request
+    return Root(**response.json())
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 6 validation errors for Root
+ekonomickeSubjekty.0.PravnickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '27082440', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.0.FyzickaOsoba.pravniForma
+  Input should be '101', '102', '105', '106', '107', '108', '109' or '110' [type=literal_error, input_value='121', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/literal_error
+ekonomickeSubjekty.0.FyzickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '27082440', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.1.PravnickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '46960643', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty.1.FyzickaOsoba.pravniForma
+  Input should be '101', '102', '105', '106', '107', '108', '109' or '110' [type=literal_error, input_value='112', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/literal_error
+ekonomickeSubjekty.1.FyzickaOsoba.logo
+  Field required [type=missing, input_value={'ico': '46960643', 'obch... 'subRegistrSzr': 'szr'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+2024-09-26 14:28:35,828 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-09-26 14:32:06,941 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-09-26 14:32:06,941 - maltego.server - ERROR - HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001FE9B9F9520>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001FE9B9F9520>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001FE9B9F9520>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 37, in create_entities
+    companies = serch_ares(search_request)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 10, in serch_ares
+    root = make_request(payload)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 18, in make_request
+    response = requests.post("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat",
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001FE9B9F9520>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
