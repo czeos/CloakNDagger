@@ -3,8 +3,7 @@ from maltego_trx.overlays import OverlayPosition, OverlayType
 
 from pydantic import ConfigDict, Field, AnyUrl, model_validator, field_validator
 from tools.base import BaseEntity, EntitySetting, RegisterMeta, EntityIcon, EntityNote, EntityDisplay, EntityDisplayInfo
-from tools.icons import EMAIL, IP, WEB_PROFILE, WEBPAGE, COMMENT, IMAGE, TARGET, TAG, IDENTIFICATOR, TAVILY,  ADRESS
-
+from tools import icons
 
 
 #todo: change loction of hunchly case
@@ -28,14 +27,14 @@ class Page(BaseEntity, extra='allow'):
                                                          match='strict'))
     url: AnyUrl
     title: str
-    icon: EntityIcon = EntityIcon(url=WEBPAGE)
+    icon: EntityIcon = EntityIcon(url=icons.WEBPAGE)
 
 
 class Email(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.Email',
                                                          main_attribute='email',
                                                          match='strict'))
-    icon: EntityIcon = EntityIcon(url=EMAIL)
+    icon: EntityIcon = EntityIcon(url=icons.EMAIL)
     email: str
 
 
@@ -43,7 +42,7 @@ class IPV4(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.IPV4',
                                                          main_attribute='ipv4',
                                                          match='strict'))
-    icon: EntityIcon = EntityIcon(url=IP)
+    icon: EntityIcon = EntityIcon(url=icons.IP)
     ipv4: str = Field(validation_alias='data_record')
 
 
@@ -51,7 +50,7 @@ class IPV6(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.IPV6',
                                                          main_attribute='ipv6',
                                                          match='strict'))
-    icon: EntityIcon = EntityIcon(url=IP)
+    icon: EntityIcon = EntityIcon(url=icons.IP)
     ipv6: str
 
 
@@ -60,7 +59,7 @@ class GoogleAnalytics(BaseEntity):
                                                          main_attribute='id',
                                                          match='strict'))
     id: str
-    icon: EntityIcon = EntityIcon(url=IDENTIFICATOR)
+    icon: EntityIcon = EntityIcon(url=icons.IDENTIFICATOR)
 
 
 class FacebookPixel(BaseEntity):
@@ -68,7 +67,7 @@ class FacebookPixel(BaseEntity):
                                                          main_attribute='id',
                                                          match='strict'))
     id: str
-    icon: EntityIcon = EntityIcon(url=IDENTIFICATOR)
+    icon: EntityIcon = EntityIcon(url=icons.IDENTIFICATOR)
 
 
 class TorService(BaseEntity):
@@ -84,7 +83,7 @@ class SocialMediaProfile(BaseEntity):
                                                          match='strict'))
 
     url: str
-    icon: EntityIcon = Field(default=EntityIcon(url=WEB_PROFILE))
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.WEB_PROFILE))
 
 
 class Photo(BaseEntity):
@@ -99,7 +98,7 @@ class Photo(BaseEntity):
     url: str = Field(default='')
     path: str = Field(default='')
     name: str = Field(default='')
-    icon: EntityIcon = EntityIcon(url=IMAGE)
+    icon: EntityIcon = EntityIcon(url=icons.IMAGE)
 
     @field_validator('url')
     @classmethod
@@ -112,7 +111,7 @@ class Selector(BaseEntity):
                                                          main_attribute='name',
                                                          match='strict'))
     name: str
-    icon: EntityIcon = EntityIcon(url=TARGET)
+    icon: EntityIcon = EntityIcon(url=icons.TARGET)
     uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
@@ -121,7 +120,7 @@ class Tag(BaseEntity):
                                                          main_attribute='name',
                                                          match='strict'))
     name: str
-    icon: EntityIcon = EntityIcon(url=TAG)
+    icon: EntityIcon = EntityIcon(url=icons.TAG)
     uuid: None = Field(default=None, description='Selector is unique accross the all cases')
 
 
@@ -151,7 +150,7 @@ class Text(BaseEntity):
                                                          main_attribute='text',
                                                          match='strict'))
     text: str = Field(default='')
-    icon: EntityIcon = EntityIcon(url=COMMENT)
+    icon: EntityIcon = EntityIcon(url=icons.COMMENT)
 
     @model_validator(mode='before')
     @classmethod
@@ -177,7 +176,7 @@ class Person(BaseEntity):
 class Tavily(BaseEntity):
     setting: EntitySetting = EntitySetting(type='cnd.Tavily', match='strict', main_attribute='query')
     query: str = Field(default='Ask me', alias='query')
-    icon: EntityIcon = EntityIcon(url=TAVILY)
+    icon: EntityIcon = EntityIcon(url=icons.TAVILY)
 
 
 class TestEntity(BaseEntity):
@@ -185,26 +184,34 @@ class TestEntity(BaseEntity):
                                                          main_attribute='fullname',
                                                          match='strict'))
     fullname: str = Field(default='')
-    icon: EntityIcon = EntityIcon(url=TARGET)
+    icon: EntityIcon = EntityIcon(url=icons.TARGET)
     note: EntityNote = EntityNote(note='Test entity note')
     display_info: EntityDisplayInfo = EntityDisplayInfo(content='Test entity content', title='Test entity title:')
     overlay_text: EntityDisplay = EntityDisplay(value='Test entity overlay', position=OverlayPosition.SOUTH_WEST, overlay_type=OverlayType.TEXT)
     overlay_color: EntityDisplay = EntityDisplay(value='#45e06f', position=OverlayPosition.WEST, overlay_type=OverlayType.COLOUR)
-    overlay_icon: EntityDisplay = EntityDisplay(value=TAG, position=OverlayPosition.NORTH, overlay_type=OverlayType.IMAGE)
+    overlay_icon: EntityDisplay = EntityDisplay(value=icons.TAG, position=OverlayPosition.NORTH, overlay_type=OverlayType.IMAGE)
 
 class Adress(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.adress_entity',
                                                          main_attribute='sidlo',
                                                          match='strict'))
     sidlo: str = Field(default='')
-    icon: EntityIcon = Field(default=EntityIcon(url=ADRESS))
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.ADRESS))
 
 class ICO(BaseEntity):
     setting: EntitySetting = Field(default=EntitySetting(type='cnd.ico_entity',
                                                          main_attribute='ico',
                                                          match='strict'))
     ico: str = Field(default='')
-    icon: EntityIcon = Field(default=EntityIcon(url=ADRESS))
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.ADRESS))
+
+
+class Ares(BaseEntity):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.ares',
+                                                         main_attribute='name',
+                                                         match='strict'))
+    ico: str = Field(default='')
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.ARES))
 
 
 # Define the Register class using the dynamic metaclass
