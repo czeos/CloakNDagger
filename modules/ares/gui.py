@@ -4,6 +4,7 @@ from typing import Dict
 
 from pydantic import BaseModel, Field
 
+
 class FormOutput(BaseModel):
     name: str | None = Field(default=None)
     ico: str | None = Field(default=None)
