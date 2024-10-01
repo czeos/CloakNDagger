@@ -9,6 +9,8 @@ from settings import ares_transformset
 from tools.maltego import model_from_maltego_request, entity_from_model
 from modules.ares.api import serch_ares
 from tools.entities import Company, Person, ENTITYREG
+from tools.gui import create_dynamic_form
+from modules.ares import ares_logger
 
 @registry.register_transform(
     display_name="Get legal info from ARES",
@@ -27,7 +29,16 @@ class Ares_GetRecordsCompany(DiscoverableTransform):
         
         input_company = model_from_maltego_request(request=request, model=Company)
         search_request = RequestEkonomickySubjekt(**input_company.model_dump())
-        data = show_form({'name': search_request.obchodniJmeno})
+
+        # invoke formular
+        data = create_dynamic_form(model_class=RequestEkonomickySubjekt,
+                                   init_values=search_request.model_dump(),
+                                   title='Ares search',
+                                   description='Fill the form to search in ARES',
+                                   default_fields=['obchodniJmeno'],
+                                   exclude_fields=['pocet', 'start'])
+
+
 
         if data:
             search_request.ico = [data.ico] if data.ico else None

@@ -800,3 +800,20 @@ Traceback (most recent call last):
   File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\requests\adapters.py", line 700, in send
     raise ConnectionError(e, request=request)
 requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001FE9B9F9520>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+2024-10-01 21:16:19,998 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-01 21:16:19,999 - maltego.server - ERROR - 'FormEkonomickeSubjekt' object has no attribute 'start'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 50, in create_entities
+    companies = serch_ares(search_request)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 11, in serch_ares
+    while root and root.pocetCelkem > payload.start:
+                                      ^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 767, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'FormEkonomickeSubjekt' object has no attribute 'start'

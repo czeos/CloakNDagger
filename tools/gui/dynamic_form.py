@@ -1,5 +1,3 @@
-
-
 from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox, QLineEdit,
                              QPushButton, QApplication, QHBoxLayout, QSpinBox,
                              QDoubleSpinBox, QCheckBox, QDateEdit, QDateTimeEdit, QSpacerItem, QSizePolicy)
@@ -28,9 +26,12 @@ class DynamicFormApp(QWidget):
         If set to "all", all the fields defined in the Pydantic class will be rendered initially.
     init_values : dict, optional
         A dictionary of initial values for the form fields, where the keys are field names and the values are the initial data.
+    exclude_fields : list of str, optional
+        A list of field names (attributes) to be excluded from the dropdown and the form, even in "all" mode.
     """
 
-    def __init__(self, model_class, title, description, default_fields=None, mode=None, init_values=None):
+    def __init__(self, model_class, title, description, default_fields=None, mode=None, init_values=None,
+                 exclude_fields=None):
         super().__init__()
         self.model_class = model_class
         self.title = title
@@ -38,7 +39,12 @@ class DynamicFormApp(QWidget):
         self.default_fields = default_fields or []
         self.mode = mode
         self.init_values = init_values or {}
-        self.available_attributes = list(model_class.__fields__.keys())  # Pydantic attributes
+        self.exclude_fields = exclude_fields or []
+
+        # Remove excluded fields from available attributes
+        self.available_attributes = [field for field in list(model_class.__fields__.keys()) if
+                                     field not in self.exclude_fields]
+
         self.form_rows = []
         self.result = None  # Default result to avoid AttributeError if closed without submission
         self.initUI()
@@ -91,10 +97,11 @@ class DynamicFormApp(QWidget):
         """ Returns the descriptions or field names if no description exists """
         descriptions = []
         for field_name, field_info in self.model_class.__fields__.items():
-            if field_info.description:
-                descriptions.append(field_info.description)
-            else:
-                descriptions.append(field_name)
+            if field_name not in self.exclude_fields:  # Skip excluded fields
+                if field_info.description:
+                    descriptions.append(field_info.description)
+                else:
+                    descriptions.append(field_name)
         return descriptions
 
     def addFormRow(self, specific_field=None):
@@ -148,7 +155,8 @@ class DynamicFormApp(QWidget):
     def getFieldNameFromDescription(self, description):
         """ Get the field name by matching the description or defaulting to name """
         for field_name, field_info in self.model_class.__fields__.items():
-            if field_info.description == description or field_name == description:
+            if field_name not in self.exclude_fields and (
+                    field_info.description == description or field_name == description):
                 return field_name
         return description
 
@@ -279,36 +287,36 @@ class DynamicFormApp(QWidget):
         return self.result
 
 
-def open_dynamic_form(model_class, title, description, default_fields=None, mode=None, init_values=None):
+def create_dynamic_form(model_class, title, description, default_fields=None, mode=None, init_values=None,
+                      exclude_fields=None):
     app = QApplication(sys.argv)
-    form = DynamicFormApp(model_class, title, description, default_fields, mode, init_values)
+    form = DynamicFormApp(model_class, title, description, default_fields, mode, init_values, exclude_fields)
     form.show()
     app.exec()
     return form.getResult()
 
 
+# Example Pydantic class with various types
+class PersonModel(BaseModel):
+    name: str = Field(default='', description='Name of the person')
+    age: int = Field(default=0, description='Age of the person')
+    salary: float = Field(default=0.0, description='Person\'s salary')
+    birthdate: date = Field(default=None, description='Birthdate')
+    last_logged_in: datetime = Field(default=None, description='Last login time')
+    is_employee: bool = Field(default=False, description='Is the person an employee?')
+    gender: Literal['Male', 'Female', 'Other'] = Field(default=None, description='Gender')
 
 
 if __name__ == "__main__":
-    # Example Pydantic class with various types
-    class PersonModel(BaseModel):
-        name: str = Field(default='', description='Name of the person')
-        age: int = Field(default=0, description='Age of the person')
-        salary: float = Field(default=0.0, description='Person\'s salary')
-        birthdate: date = Field(default=None, description='Birthdate')
-        last_logged_in: datetime = Field(default=None, description='Last login time')
-        is_employee: bool = Field(default=False, description='Is the person an employee?')
-        gender: Literal['Male', 'Female', 'Other'] = Field(default=None, description='Gender')
-
-
-    # Test case with default fields and mode, and initial values
+    # Test case with default fields, mode, init_values, and exclude_fields
     title = "Person Form"
     description = "Fill out the details below. You can add or remove fields dynamically."
     default_fields = ["name", "age"]
     init_values = {"name": "John Doe", "age": 30, "gender": "Male"}
+    exclude_fields = ["salary", "birthdate"]
 
-    result = open_dynamic_form(PersonModel, title, description, default_fields=default_fields, mode='all',
-                               init_values=init_values)
+    result = open_dynamic_form(PersonModel, title, description, default_fields=default_fields, mode="all",
+                               init_values=init_values, exclude_fields=exclude_fields)
     if result:
         print(result)
     else:

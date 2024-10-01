@@ -13,18 +13,20 @@ dict_pravni_forma = {'000': 'Zatím neurčeno', '101': 'Fyzická osoba podnikaj�
 
 
 class Sidlo(BaseModel):
-    cisloDomovni: int = None
-    cisloOrientacni: int = None
-    cisloOrientacniPismeno: str = None
-    textovaAdresa: str = None
-    nazevStatu: str = None
+    cisloDomovni: int = Field(default=None, description="Domovni čílo")
+    cisloOrientacni: int = Field(default=None, description="Orientační číslo")
+    cisloOrientacniPismeno: str = Field(default=None, description="Orientační písmeno")
+    textovaAdresa: str = Field(default=None, description="Textová adresa")
+    nazevStatu: str = Field(default=None, description="Název státu")
+
 
 class RequestEkonomickySubjekt(BaseModel):
-    start : int = 0
+    start: int = 0
     pocet: int = 10
-    ico: Optional[List[str]] = None
-    obchodniJmeno: str = Field(alias= AliasChoices('name', 'fullname'),default=None)
-    sidlo: Optional[Sidlo] = None
+    ico: Optional[List[str]] = Field(default=None, description="IČO")
+    obchodniJmeno: str = Field(alias= AliasChoices('name', 'fullname'),default=None, description="Obchodní jméno")
+    sidlo: Optional[str] = Field(default=None, description="Adresa")
+
 
 class AdresaDorucovaci(BaseModel):
     radekAdresy1: str = None

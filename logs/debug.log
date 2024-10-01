@@ -15,3 +15,9 @@
 2024-09-26 13:40:35,855 - app.module.ares - DEBUG - api - serch_ares - logger test
 2024-09-26 13:44:01,046 - app.module.ares - DEBUG - api - serch_ares - logger test
 2024-09-26 14:32:06,928 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-01 21:12:59,266 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Search request: setting=EntitySetting(type='maltego.Company', main_attribute='name', match='strict') icon=EntityIcon(url=None) display_info=EntityDisplayInfo(content=None, title=None) note=EntityNote(note=None) name='Alza' title='Alza'
+2024-10-01 21:13:53,165 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Search request: setting=EntitySetting(type='maltego.Company', main_attribute='name', match='strict') icon=EntityIcon(url=None) display_info=EntityDisplayInfo(content=None, title=None) note=EntityNote(note=None) name='Alza' title='Alza'
+2024-10-01 21:16:16,108 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Search request: setting=EntitySetting(type='maltego.Company', main_attribute='name', match='strict') icon=EntityIcon(url=None) display_info=EntityDisplayInfo(content=None, title=None) note=EntityNote(note=None) name='Alza' title='Alza'
+2024-10-01 21:16:18,131 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-01 21:26:09,495 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Search request: setting=EntitySetting(type='maltego.Company', main_attribute='name', match='strict') icon=EntityIcon(url=None) display_info=EntityDisplayInfo(content=None, title=None) note=EntityNote(note=None) name='Alza' title='Alza'
+2024-10-01 21:26:11,339 - app.module.ares - DEBUG - api - serch_ares - logger test
