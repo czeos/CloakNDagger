@@ -37,7 +37,7 @@ class Hunchly_GetCasePages(DiscoverableTransform):
             entity_from_model(item, response)
 
         message_box(message=f"Case contain {items.results} pages", title='CloakNDagger MessageBox', description='')
-        response.addUIMessage(f"Case contain {items.results} pages")
+
 
 
 

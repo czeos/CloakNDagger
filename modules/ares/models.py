@@ -3,7 +3,7 @@ from maltego_trx.overlays import OverlayPosition, OverlayType
 from tools import icons
 from tools.base import EntityDisplay
 from tools.entities import Company, Person, ICO, Adress
-from pydantic import AliasChoices, BaseModel, Field, field_validator
+from pydantic import AliasChoices, BaseModel, Field, field_validator, model_validator
 from typing import List, Literal,Optional, Union
 
 #todo: add entities add forma
@@ -20,12 +20,34 @@ class Sidlo(BaseModel):
     nazevStatu: str = Field(default=None, description="Název státu")
 
 
+class RequestFormEkonomickySubjekt(BaseModel):
+    """Craeted for form pourpose, that does not take a nested types"""
+    start: int = 0
+    pocet: int = 10
+    ico: Optional[str] = Field(default=None, description="IČO")
+    obchodniJmeno: str = Field(default=None, description="Obchodní jméno", alias=AliasChoices('obchodniJmeno','name', 'fullname'))
+    sidlo: Optional[str] = Field(default=None, description="Adresa", alias=AliasChoices('sidlo','address'))
+
+
+
 class RequestEkonomickySubjekt(BaseModel):
     start: int = 0
     pocet: int = 10
-    ico: Optional[List[str]] = Field(default=None, description="IČO")
-    obchodniJmeno: str = Field(alias= AliasChoices('name', 'fullname'),default=None, description="Obchodní jméno")
-    sidlo: Optional[str] = Field(default=None, description="Adresa")
+    ico: Optional[List[str] | str] = Field(default=None)
+    obchodniJmeno: Optional[str] = Field(default=None)
+    sidlo: Optional[Sidlo] = Field(default=None)
+
+    @model_validator(mode='before')
+    @classmethod
+    def set_attrs(cls, values: dict) -> dict:
+
+        if isinstance(values.get('ico'), str):
+            values['ico'] = [values.get('ico')]
+
+        if isinstance(values.get('sidlo'), str):
+            values['sidlo'] = Sidlo(textovaAdresa=values.get('sidlo'))
+
+        return values
 
 
 class AdresaDorucovaci(BaseModel):
@@ -62,7 +84,7 @@ class DalsiUdaje(BaseModel):
 class EkonomickySubjekt(BaseModel):
     ico: str = None
     obchodniJmeno: str = None
-    sidlo: Sidlo = None 
+    address: Sidlo = Field(default=None, alias=AliasChoices( 'sidlo'))
     pravniForma: str = None
     financniUrad: str = None
     datumVzniku: str = None
@@ -81,7 +103,7 @@ class EkonomickySubjekt(BaseModel):
 
         return complete_adress
     
-    @field_validator("sidlo")
+    @field_validator("address")
     @classmethod
     def validate_sidlo(cls, adress: Sidlo) -> str:
         if adress:

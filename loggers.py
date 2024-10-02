@@ -1,8 +1,11 @@
 import logging.config
 from pathlib import Path
 
-LOGS_DIR = Path('logs')
+from config import BASE_PATH
+LOGS_DIR = BASE_PATH / Path('logs')
 
+#check if logs directory exists
+LOGS_DIR.mkdir(exist_ok=True)
 
 # logging configuration
 LOGGING_CONFIG = {
@@ -35,7 +38,7 @@ LOGGING_CONFIG = {
             'class': 'logging.FileHandler',
             'filename': f'{LOGS_DIR / 'debug.log'}',
             'formatter': 'detailed',
-            'level': 'DEBUG',
+            'level': 'DEBUG'
         },
         'file_error': {
             'class': 'logging.FileHandler',

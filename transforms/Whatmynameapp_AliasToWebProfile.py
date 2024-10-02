@@ -38,14 +38,13 @@ class Whatmynameapp_AliasToWebProfile(DiscoverableTransform):
         cache = TiDBCache(db_path=config.db.db_path)
 
         if cache.query_cache_size(query=username) > 0:
-            response.addUIMessage(f' exist cache routine')
-
+            #cached routine
             cached_stack = cache.get_records(query=username, count=howmany)
             entities = db_records_to_entity(register=ENTITYREG, stack=cached_stack)
             items = UserProfiles(results=cache.query_cache_size(username), data=entities)
 
         else:
-            response.addUIMessage(f' request routine')
+            # get data from site
             wmnd = get_site_dat(config.whatsmynmeapp.data)
             profiles = check_all_sites(wmnd.sites, username.alias, HEADERS)
             if len(profiles) > howmany:

@@ -817,3 +817,83 @@ Traceback (most recent call last):
   File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 767, in __getattr__
     raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
 AttributeError: 'FormEkonomickeSubjekt' object has no attribute 'start'
+2024-10-02 09:47:48,719 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 09:47:48,747 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 09:47:48,720 - maltego.server - ERROR - 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='46960643', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 31, in create_entities
+    search_request = RequestEkonomickySubjekt(**input_company.model_dump())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='46960643', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+2024-10-02 09:47:48,748 - maltego.server - ERROR - 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='27082440', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 31, in create_entities
+    search_request = RequestEkonomickySubjekt(**input_company.model_dump())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='27082440', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+2024-10-02 11:07:00,669 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 11:07:00,670 - maltego.server - ERROR - 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='03699862', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 45, in create_entities
+    search_request = RequestEkonomickySubjekt(**form.model_dump())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkonomickySubjekt
+ico
+  Input should be a valid list [type=list_type, input_value='03699862', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.6/v/list_type
+2024-10-02 11:54:25,753 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 11:54:25,754 - maltego.server - ERROR - 1 validation error for RequestEkonomickySubjekt
+obchodniJmeno
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 45, in create_entities
+    search_request = RequestEkonomickySubjekt(**form.model_dump())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkonomickySubjekt
+obchodniJmeno
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type

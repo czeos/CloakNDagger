@@ -296,26 +296,29 @@ def create_dynamic_form(model_class, title, description, default_fields=None, mo
     return form.getResult()
 
 
-# Example Pydantic class with various types
-class PersonModel(BaseModel):
-    name: str = Field(default='', description='Name of the person')
-    age: int = Field(default=0, description='Age of the person')
-    salary: float = Field(default=0.0, description='Person\'s salary')
-    birthdate: date = Field(default=None, description='Birthdate')
-    last_logged_in: datetime = Field(default=None, description='Last login time')
-    is_employee: bool = Field(default=False, description='Is the person an employee?')
-    gender: Literal['Male', 'Female', 'Other'] = Field(default=None, description='Gender')
 
 
 if __name__ == "__main__":
+    # Example Pydantic class with various types
+    class PersonModel(BaseModel):
+        name: str = Field(default='', description='Name of the person')
+        age: int = Field(default=0, description='Age of the person')
+        salary: float = Field(default=0.0, description='Person\'s salary')
+        birthdate: date = Field(default=None, description='Birthdate')
+        last_logged_in: datetime = Field(default=None, description='Last login time')
+        is_employee: bool = Field(default=False, description='Is the person an employee?')
+        gender: Literal['Male', 'Female', 'Other'] = Field(default=None, description='Gender')
+
+
     # Test case with default fields, mode, init_values, and exclude_fields
     title = "Person Form"
     description = "Fill out the details below. You can add or remove fields dynamically."
     default_fields = ["name", "age"]
     init_values = {"name": "John Doe", "age": 30, "gender": "Male"}
+    init_values = {"name": None, "age": None}
     exclude_fields = ["salary", "birthdate"]
 
-    result = open_dynamic_form(PersonModel, title, description, default_fields=default_fields, mode="all",
+    result = create_dynamic_form(PersonModel, title, description, default_fields=default_fields, mode="all",
                                init_values=init_values, exclude_fields=exclude_fields)
     if result:
         print(result)

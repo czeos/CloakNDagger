@@ -1,11 +1,6 @@
 import tkinter as tk
-from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QComboBox, QLineEdit,
-                             QPushButton, QApplication, QHBoxLayout, QSpinBox,
-                             QDoubleSpinBox, QCheckBox, QDateEdit, QDateTimeEdit)
+from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QLabel)
 from PyQt6.QtCore import pyqtSlot
-from pydantic import BaseModel
-from typing import Literal, get_args, get_origin
-from datetime import date, datetime
 import sys
 
 class SelectorMenu:
