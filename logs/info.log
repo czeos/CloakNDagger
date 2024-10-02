@@ -897,3 +897,212 @@ pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkon
 obchodniJmeno
   Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
     For further information visit https://errors.pydantic.dev/2.6/v/string_type
+2024-10-02 16:00:41,189 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:00:41,189 - maltego.server - ERROR - 5 validation errors for Root
+edges.3.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.11.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.19.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.20.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.21.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 32, in create_entities
+    resp = find_relations(ico=dict_company['ico'])
+  File "C:\Users\user\PycharmProjects\CloakNDagger\modules\rejstrik\api.py", line 19, in find_relations
+    return Root(**j)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 5 validation errors for Root
+edges.3.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.11.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.19.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.20.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+edges.21.data.dateEnd
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+2024-10-02 16:02:37,350 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:02:37,351 - maltego.server - ERROR - tools.entities.Company() argument after ** must be a mapping, not NodeData
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 36, in create_entities
+    entity_from_model(model=Company(**company.data), response=response)
+TypeError: tools.entities.Company() argument after ** must be a mapping, not NodeData
+2024-10-02 16:03:27,741 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,742 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,742 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,743 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,743 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,744 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,744 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:03:27,744 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:24,760 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:24,760 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:24,760 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:57,196 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:57,196 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:57,196 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:57,197 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:06:57,197 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:31:01,261 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:31:14,775 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:31:28,112 - maltego-trx - WARNING - Entity has no Value and will default to ''
+2024-10-02 16:32:03,648 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:32:03,648 - maltego.server - ERROR - 'NoneType' object has no attribute 'model_dump'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 50, in create_entities
+    search_request = RequestEkonomickySubjekt(**form.model_dump())
+AttributeError: 'NoneType' object has no attribute 'model_dump'
+2024-10-02 16:46:33,582 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:46:33,582 - maltego.server - ERROR - 'ico'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 32, in create_entities
+    if not dict_company['ico']:
+KeyError: 'ico'
+2024-10-02 16:47:47,799 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:47:47,799 - maltego.server - ERROR - 'ico'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 35, in create_entities
+    resp = find_relations(ico=dict_company['ico'])
+KeyError: 'ico'
+2024-10-02 17:01:09,500 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 17:01:09,500 - maltego.server - ERROR - 'EdgeData' object has no attribute 'setting'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 40, in create_entities
+    entity_from_model(model=company.data, response=response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\maltego.py", line 10, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\pydantic\main.py", line 767, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'EdgeData' object has no attribute 'setting'
+2024-10-02 17:54:35,078 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 17:54:35,078 - maltego.server - ERROR - HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A55AF39A20>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connection.py", line 206, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001A55AF39A20>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A55AF39A20>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 56, in create_entities
+    companies = serch_ares(search_request)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\modules\ares\api.py", line 10, in serch_ares
+    root = make_request(payload)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\modules\ares\api.py", line 18, in make_request
+    response = requests.post("https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat",
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ares.gov.cz', port=443): Max retries exceeded with url: /ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A55AF39A20>: Failed to resolve 'ares.gov.cz' ([Errno 11001] getaddrinfo failed)"))
+2024-10-02 17:55:49,034 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 17:55:49,035 - maltego.server - ERROR - 'list' object has no attribute 'data'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 40, in create_entities
+    dict_node = {node.data.id: resp.nodes.data for node in resp.nodes}
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 40, in <dictcomp>
+    dict_node = {node.data.id: resp.nodes.data for node in resp.nodes}
+AttributeError: 'list' object has no attribute 'data'
+2024-10-02 17:56:57,579 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 17:56:57,580 - maltego.server - ERROR - 'Edge' object has no attribute 'target'
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 42, in create_entities
+    if ic == edge.target[3:]:
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\pydantic\main.py", line 767, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'Edge' object has no attribute 'target'
+2024-10-02 18:01:04,950 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-02 18:01:04,951 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-02 18:01:04,951 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-02 18:01:04,951 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-02 18:01:04,952 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text

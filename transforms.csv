@@ -16,6 +16,7 @@ CloakNDagger,Mike,,Return pages data for given Hunchly Webpage,0.1,hunchly-getpa
 CloakNDagger,Mike,,Return photos for given Hunchly Webpage,0.1,hunchly-getpagephoto,Get Page Photos [Hunchly],gossip.monster\run\hunchly-getpagephoto,cnd.Webpage,,,demo,cnd.Photo
 CloakNDagger,Mike,,Return selectors for given Hunchly Webpage,0.1,hunchly-getpageselectors,Get Page Selectors [Hunchly],gossip.monster\run\hunchly-getpageselectors,cnd.Webpage,,,demo,cnd.Selector
 CloakNDagger,Mike,,Return tags for given Hunchly Webpage,0.1,hunchly-getpagetags,Get Page Tags [Hunchly],gossip.monster\run\hunchly-getpagetags,cnd.Webpage,,,demo,cnd.Tag
+CloakNDagger,Mike,,Extract information about the company from Rejstrik,0.1,rejstrik-getrecords,Rejstrik Get Records,gossip.monster\run\rejstrik-getrecords,maltego.Company,,,demo,maltego.Company;maltego.Person
 CloakNDagger,Mike,,Get starting entity,0.1,tavily-search,Query web resources [Tavili],gossip.monster\run\tavily-search,cnd.Tavily,,,demo,cnd.Webpage;cnd.Photo
 CloakNDagger,Mike,,TestTheThings,0.1,testthethings,TestTheThings,gossip.monster\run\testthethings,maltego.Company,,,demo,cnd.test_entity
 CloakNDagger,Mike,,Search web profiles by username,0.1,whatmynameapp-aliastowebprofile,Search profiles by username [WhatsMyNameApp],gossip.monster\run\whatmynameapp-aliastowebprofile,cnd.Alias,,,demo,cnd.SocialMediaAccount

@@ -30,19 +30,19 @@ LOGGING_CONFIG = {
         },
         'file_info': {
             'class': 'logging.FileHandler',
-            'filename': f'{LOGS_DIR / 'info.log'}',
+            'filename': f'{LOGS_DIR}/info.log',
             'formatter': 'standard',
             'level': 'INFO',
         },
         'file_debug': {
             'class': 'logging.FileHandler',
-            'filename': f'{LOGS_DIR / 'debug.log'}',
+            'filename': f'{LOGS_DIR}/debug.log',
             'formatter': 'detailed',
             'level': 'DEBUG'
         },
         'file_error': {
             'class': 'logging.FileHandler',
-            'filename': f'{LOGS_DIR / 'error.log'}',
+            'filename': f'{LOGS_DIR}/error.log',
             'formatter': 'detailed',
             'level': 'ERROR',
         },
