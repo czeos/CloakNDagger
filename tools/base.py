@@ -1,8 +1,12 @@
 from abc import ABC
-from typing import Callable, Union, Dict, List, Type, Literal, Protocol, Optional
-from pydantic import BaseModel, Field, ConfigDict
+from functools import wraps
+from typing import Callable, Union, Dict, List, Type, Literal, Protocol, Optional, Any
+from pydantic import BaseModel, Field, ConfigDict, field_serializer
+
+
 from tools.utils import hash_fn
 from enum import Enum
+from maltego_trx.overlays import OverlayPosition, OverlayType
 
 
 class EntityStackProtocol(Protocol):
@@ -51,8 +55,13 @@ class EntityDisplay(MaltegoSettingAttributes):
     Class  representing matlego entity display settings. It can be used to set the entity overlay type, position and value
     """
     value: str | None
-    position: Enum |  None
-    overlay_type: Enum | None
+    position: OverlayPosition | None
+    overlay_type: OverlayType | None
+
+    @field_serializer('position', 'overlay_type')
+    def serilize_enum(self, value):
+        return value.value
+
 
 
 class EntityIcon(MaltegoSettingAttributes):
@@ -78,7 +87,7 @@ class BaseEntity(BaseModel):
     display_info: EntityDisplayInfo = Field(default_factory=EntityDisplayInfo)
     note: EntityNote = Field(default_factory=EntityNote)
 
-    model_config = ConfigDict(extra='allow')
+    model_config = ConfigDict(extra='allow', arbitrary_types_allowed=True)
 
     @property
     def property_fields(self) -> List[str]:
@@ -135,6 +144,15 @@ class BaseEntity(BaseModel):
         return self.model_dump(exclude=exclude_set)
 
 
+class Cacheble(Protocol):
+
+    def __hash__(self):
+        ...
+
+    def entity_dump(self, exclude: Optional[List[Union[str, Type[MaltegoSettingAttributes]]]] = []) -> dict:
+        ...
+
+
 class BaseEntityStack(BaseModel, ABC):
     results: int
     data: List[BaseEntity]
@@ -176,7 +194,7 @@ class EntityWrapper:
     def get_cls(self) -> Type[BaseEntity]:
         return self.entity_class
 
-    def get_type(self) -> Type[BaseEntity]:
+    def get_type(self) -> str:
         return self.entity_type
     def __repr__(self):
         return f"<EntityWrapper: {self.entity_type}>"
@@ -205,11 +223,23 @@ class RegisterMeta(type):
 
         return new_cls
 
-    def get_cls(self, name: str) -> Type[BaseEntity]:
-        wrapper = self._entity_registry.get(name)
-        if wrapper:
-            return wrapper.get_cls()
-        raise AttributeError(f"Entity class '{name}' not found in registry.")
+    # def get_cls(self, name: str) -> Type[BaseEntity]:
+    #     wrapper = self._entity_registry.get(name)
+    #     if wrapper:
+    #         return wrapper.get_cls()
+    #     raise AttributeError(f"Entity class '{name}' not found in registry.")
+    #
+    # def get_type(self, cls: Type[BaseEntity]) -> str:
+    #     if issubclass(cls, BaseEntity):
+    #         type_name = cls.model_fields['setting'].default.type
+    #     else:
+    #         raise TypeError(f"Input class in not subtype of BaseEntity")
+    #
+    #     if type_name in self._entity_registry.keys():
+    #         wrapper = self._entity_registry.get(type_name)
+    #         return wrapper.get_type()
+    #     else:
+    #         raise AttributeError(f"Entity class '{type_name}' not found in registry.")
 
     def __call__(self, *args, **kwargs):
         return self
@@ -222,3 +252,42 @@ class RegisterProtocol(Protocol):
         ...
 
 # Define the base class for the entity register
+class Register(metaclass=RegisterMeta):
+    """
+    All entities are registered here
+    Entities are registered dynamically and wrapped in EntityWrapper
+    attributes:
+        clas: class of entity
+        name: type of entity i.e. return value of entity.setting.type
+    """
+
+    @classmethod
+    def get_cls(cls, name: str) -> Type[BaseEntity]:
+        wrapper = cls._entity_registry.get(name)
+        if wrapper:
+            return wrapper.get_cls()
+        raise AttributeError(f"Entity class '{name}' not found in registry.")
+
+    @classmethod
+    def get_type(cls, entity_cls: Type[BaseEntity]) -> str:
+        if issubclass(entity_cls, BaseEntity):
+            type_name = entity_cls.model_fields['setting'].default.type
+        else:
+            raise TypeError(f"Input class in not subtype of BaseEntity")
+
+        if type_name in cls._entity_registry.keys():
+            wrapper = cls._entity_registry.get(type_name)
+            return wrapper.get_type()
+        else:
+            raise AttributeError(f"Entity class '{type_name}' not found in registry.")
+
+
+def register_entity(cls):
+    if issubclass(cls, BaseEntity):
+        wrapper_instance = EntityWrapper(entity_class=cls)
+        entity_type = wrapper_instance.entity_type
+        if entity_type in Register._entity_registry.keys():
+            raise AttributeError(f"Entity type name '{entity_type}' for class {cls.__name__} already registered.")
+        Register._entity_registry[entity_type] = wrapper_instance
+        setattr(Register, cls.__name__, wrapper_instance)
+    return cls

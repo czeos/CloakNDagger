@@ -4,21 +4,17 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import hunchly_transformset
 from modules.hunchly.api import get_page_data
-from tools.entities import ENTITYREG
+from tools.entities import entity_register, Page, Email, IPV4, IPV6, GoogleAnalytics, FacebookPixel, TorService, SocialMediaProfile
 from tools.maltego import entity_from_model
 
 
 @registry.register_transform(
     display_name="Get Page Data [Hunchly]",
-    input_entity=ENTITYREG.PAGE.get_type(),
+    input_entity=entity_register.get_type(Page),
     description="Return pages data for given Hunchly Webpage",
-    output_entities=[ENTITYREG.EMAIL.get_type(),
-                     ENTITYREG.IPV4.get_type(),
-                     ENTITYREG.IPV6.get_type(),
-                     ENTITYREG.GOOGLE_ANALYTICS.get_type(),
-                     ENTITYREG.FACEBOOK_PIXEL.get_type(),
-                     ENTITYREG.TOR_SERVICE.get_type(),
-                     ENTITYREG.SOCIAL_MEDIA_ACCOUNT.get_type()],
+    output_entities=[entity_register.get_type(Email), entity_register.get_type(IPV4), entity_register.get_type(IPV6),
+                      entity_register.get_type(GoogleAnalytics), entity_register.get_type(FacebookPixel),
+                      entity_register.get_type(TorService), entity_register.get_type(SocialMediaProfile)],
     transform_set=hunchly_transformset
 
 )

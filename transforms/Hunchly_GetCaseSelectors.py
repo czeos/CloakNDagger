@@ -2,18 +2,17 @@ from maltego_trx.transform import DiscoverableTransform
 from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 
 from extensions import registry
-from modules.hunchly.models import Case
 from settings import hunchly_transformset
 from modules.hunchly.api import get_case_selectors_by_case_name
-from tools.entities import ENTITYREG
+from tools.entities import entity_register, Case, Selector
 from tools.maltego import entity_from_model, model_from_maltego_request
 
 
 @registry.register_transform(
     display_name="Get Case Selectors [Hunchly]",
-    input_entity=ENTITYREG.CASE.get_type(),
+    input_entity=entity_register.get_type(Case),
     description="Return selectors collected from pages for given Hunchly case name",
-    output_entities=[ENTITYREG.SELECTOR.get_type()],
+    output_entities=[entity_register.get_type(Selector)],
     transform_set=hunchly_transformset
 
 )

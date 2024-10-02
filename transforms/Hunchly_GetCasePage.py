@@ -7,14 +7,14 @@ from settings import hunchly_transformset
 from modules.hunchly.api import get_case_page, get_cases, get_case_pages_by_case_id
 from modules.hunchly.gui import check_box_form
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG
+from tools.entities import entity_register, Case, Page
 from tools.gui.components import message_box
 
 @registry.register_transform(
     display_name="Get HunchlyPage [Hunchly]",
-    input_entity=ENTITYREG.CASE.get_type(),
+    input_entity=entity_register.get_type(Case),
     description="Return captured pages for given Hunchly case name",
-    output_entities=[ENTITYREG.PAGE.get_type()],
+    output_entities=[entity_register.get_type(Page)],
     transform_set=hunchly_transformset
 
 )

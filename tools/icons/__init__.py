@@ -19,3 +19,5 @@ IDENTIFICATOR = convert_image_to_base64(icon_base.parent / r'flat/identificator.
 ADRESS = convert_image_to_base64(icon_base.parent / r'flat/adress.png')
 ARES = convert_image_to_base64(icon_base.parent / r'modules/ares.png')
 STAMP = convert_image_to_base64(icon_base.parent / r'flat/official_stamp.png')
+COMPANY = convert_image_to_base64(icon_base.parent / r'flat/company.png')
+PERSON = convert_image_to_base64(icon_base.parent / r'flat/person.png')

@@ -897,6 +897,126 @@ pydantic_core._pydantic_core.ValidationError: 1 validation error for RequestEkon
 obchodniJmeno
   Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
     For further information visit https://errors.pydantic.dev/2.6/v/string_type
+2024-10-02 13:05:28,708 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 13:05:28,709 - maltego.server - ERROR - 'NoneType' object has no attribute 'model_dump'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 50, in create_entities
+    search_request = RequestEkonomickySubjekt(**form.model_dump())
+                                                ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'model_dump'
+2024-10-02 16:11:06,538 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:11:06,539 - maltego.server - ERROR - name 'search' is not defined
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 52, in create_entities
+    if search:
+       ^^^^^^
+NameError: name 'search' is not defined
+2024-10-02 16:12:02,189 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:12:02,190 - maltego.server - ERROR - 'Root' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 68, in create_entities
+    companies = Root(results=len(companies.ekonomickeSubjekty), data=companies[:howmany])
+                                                                     ~~~~~~~~~^^^^^^^^^^
+TypeError: 'Root' object is not subscriptable
+2024-10-02 16:13:06,690 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 16:13:06,690 - maltego.server - ERROR - 2 validation errors for Root
+pocetCelkem
+  Field required [type=missing, input_value={'results': 21, 'data': [...r'}], czNace=['9499'])]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty
+  Field required [type=missing, input_value={'results': 21, 'data': [...r'}], czNace=['9499'])]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 68, in create_entities
+    companies = Root(results=len(companies.ekonomickeSubjekty), data=companies.ekonomickeSubjekty[:howmany])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for Root
+pocetCelkem
+  Field required [type=missing, input_value={'results': 21, 'data': [...r'}], czNace=['9499'])]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+ekonomickeSubjekty
+  Field required [type=missing, input_value={'results': 21, 'data': [...r'}], czNace=['9499'])]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/missing
+2024-10-02 18:45:45,023 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 18:45:45,024 - maltego.server - ERROR - 'RequestEkonomickySubjekt' object has no attribute 'entity_dump'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 57, in create_entities
+    if cache.query_cache_size(query=search) > 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 67, in query_cache_size
+    query_hash = get_query_hash(query=query.entity_dump(exclude=[MaltegoSettingAttributes]), params=params)
+                                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 767, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'RequestEkonomickySubjekt' object has no attribute 'entity_dump'
+2024-10-02 18:47:37,487 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 18:47:37,488 - maltego.server - ERROR - 'NoneType' object has no attribute 'ekonomickeSubjekty'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 79, in create_entities
+    for company in companies.ekonomickeSubjekty:
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'ekonomickeSubjekty'
+2024-10-02 18:50:21,185 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 18:50:21,186 - maltego.server - ERROR - 'NoneType' object has no attribute 'ekonomickeSubjekty'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 67, in create_entities
+    if len(companies.ekonomickeSubjekty) > howmany:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'ekonomickeSubjekty'
+2024-10-02 18:51:19,936 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 18:51:19,937 - maltego.server - ERROR - 'RequestEkonomickySubjekt' object has no attribute 'entity_dump'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 80, in create_entities
+    in_cache = cache.query_cache_size(query=search)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\tiny.py", line 67, in query_cache_size
+    query_hash = get_query_hash(query=query.entity_dump(exclude=[MaltegoSettingAttributes]), params=params)
+                                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 767, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'RequestEkonomickySubjekt' object has no attribute 'entity_dump'
 2024-10-02 16:00:41,189 - maltego.server - ERROR - An exception occurred while executing your transform code.
 2024-10-02 16:00:41,189 - maltego.server - ERROR - 5 validation errors for Root
 edges.3.data.dateEnd
@@ -1106,3 +1226,232 @@ AttributeError: 'Edge' object has no attribute 'target'
 2024-10-02 18:01:04,951 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
 2024-10-02 18:01:04,951 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
 2024-10-02 18:01:04,952 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-02 20:55:24,587 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 20:55:24,588 - maltego.server - ERROR - 20 validation errors for Root
+ekonomickeSubjekty.0.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '01417070', 'obch..., '581', '620', '8559']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.0.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '01417070', 'obch..., '581', '620', '8559']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.1.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07379633', 'obch... '620', '702', '73110']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.1.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07379633', 'obch... '620', '702', '73110']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.2.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07698429', 'obch...vr'}], 'czNace': ['00']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.2.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07698429', 'obch...vr'}], 'czNace': ['00']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.3.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07980311', 'obch...731', '74200', '90040']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.3.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07980311', 'obch...731', '74200', '90040']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.4.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08224048', 'obch...', '721', '731', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.4.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08224048', 'obch...', '721', '731', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.5.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08490341', 'obch..., '46900', '47', '620']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.5.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08490341', 'obch..., '46900', '47', '620']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.6.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08560447', 'obch...3511', '43120', '3514']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.6.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08560447', 'obch...3511', '43120', '3514']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.7.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08809160', 'obch...}], 'czNace': ['69100']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.7.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08809160', 'obch...}], 'czNace': ['69100']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.8.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08966524', 'obch..., '016', '46900', '47']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.8.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08966524', 'obch..., '016', '46900', '47']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.9.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '09239189', 'obch... '731', '74200', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.9.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '09239189', 'obch... '731', '74200', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 65, in create_entities
+    companies = serch_ares(search)
+                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 10, in serch_ares
+    root = make_request(payload)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\api.py", line 21, in make_request
+    return Root(**response.json())
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 20 validation errors for Root
+ekonomickeSubjekty.0.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '01417070', 'obch..., '581', '620', '8559']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.0.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '01417070', 'obch..., '581', '620', '8559']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.1.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07379633', 'obch... '620', '702', '73110']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.1.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07379633', 'obch... '620', '702', '73110']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.2.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07698429', 'obch...vr'}], 'czNace': ['00']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.2.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07698429', 'obch...vr'}], 'czNace': ['00']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.3.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '07980311', 'obch...731', '74200', '90040']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.3.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '07980311', 'obch...731', '74200', '90040']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.4.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08224048', 'obch...', '721', '731', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.4.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08224048', 'obch...', '721', '731', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.5.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08490341', 'obch..., '46900', '47', '620']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.5.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08490341', 'obch..., '46900', '47', '620']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.6.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08560447', 'obch...3511', '43120', '3514']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.6.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08560447', 'obch...3511', '43120', '3514']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.7.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08809160', 'obch...}], 'czNace': ['69100']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.7.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08809160', 'obch...}], 'czNace': ['69100']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.8.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '08966524', 'obch..., '016', '46900', '47']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.8.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '08966524', 'obch..., '016', '46900', '47']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.9.is-subclass[Person]
+  Input should be a subclass of Person [type=is_subclass_of, input_value={'ico': '09239189', 'obch... '731', '74200', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+ekonomickeSubjekty.9.is-subclass[Company]
+  Input should be a subclass of Company [type=is_subclass_of, input_value={'ico': '09239189', 'obch... '731', '74200', '821']}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.6/v/is_subclass_of
+2024-10-02 23:21:43,120 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 23:21:43,123 - maltego.server - ERROR - 'NoneType' object has no attribute 'ekonomickeSubjekty'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 69, in create_entities
+    if len(companies.ekonomickeSubjekty) > howmany:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'ekonomickeSubjekty'
+2024-10-02 23:31:50,372 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-02 23:31:50,372 - maltego.server - ERROR - 2 validation errors for PravnickaOsoba
+dic
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+subRegistrSzr
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 61, in create_entities
+    entities = db_records_to_entity(register=entity_register, stack=cached_stack)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\dbs\__init__.py", line 10, in db_records_to_entity
+    return [register.get_cls(item.setting.type)(**item.model_dump()) for item in stack.data]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for PravnickaOsoba
+dic
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+subRegistrSzr
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+2024-10-03 00:17:17,022 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-03 00:17:17,023 - maltego.server - ERROR - 'FyzickaOsoba' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 70, in create_entities
+    companies = ResponseRoot(pocetCelkem=len(companies.ekonomickeSubjekty),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\models.py", line 131, in validate_pravniForma
+    pravniForma = values['pravniForma']
+                  ~~~~~~^^^^^^^^^^^^^^^
+TypeError: 'FyzickaOsoba' object is not subscriptable
+2024-10-03 00:18:42,968 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-03 00:18:42,969 - maltego.server - ERROR - 'FyzickaOsoba' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 70, in create_entities
+    companies = ResponseRoot(pocetCelkem=len(companies.ekonomickeSubjekty),
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\modules\ares\models.py", line 131, in validate_pravniForma
+    pravniForma = values['pravniForma']
+                  ~~~~~~^^^^^^^^^^^^^^^
+TypeError: 'FyzickaOsoba' object is not subscriptable
+2024-10-03 00:48:25,995 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-03 00:48:25,996 - maltego.server - ERROR - 'FyzickaOsoba' object has no attribute 'name'
+Traceback (most recent call last):
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\.venv\Lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 79, in create_entities
+    entity_from_model(model=company, response=response)
+  File "C:\Users\micha\PycharmProjects\CloakNDagger\tools\maltego.py", line 10, in entity_from_model
+    entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FyzickaOsoba' object has no attribute 'name'

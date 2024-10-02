@@ -1,8 +1,8 @@
 Owner,Author,Disclaimer,Description,Version,Name,UIName,URL,entityName,oAuthSettingId,transformSettingIDs,seedIDs,outputEntities
-CloakNDagger,Mike,,Extract Company Adress,0.1,ares-extractadress,Extract Adress,gossip.monster\run\ares-extractadress,maltego.Company,,,demo,cnd.adress_entity
-CloakNDagger,Mike,,Extract Company ICO,0.1,ares-extractico,Extract ICO,gossip.monster\run\ares-extractico,maltego.Company,,,demo,cnd.ico_entity
-CloakNDagger,Mike,,Get legal info from ARES (CZE) for given address,0.1,ares-getrecordsaddress,Get ARES info from address,gossip.monster\run\ares-getrecordsaddress,cnd.adress_entity,,,demo,maltego.Company;maltego.Person
-CloakNDagger,Mike,,Get legal info from ARES (CZE) for given company name,0.1,ares-getrecordscompany,Get legal info from ARES,gossip.monster\run\ares-getrecordscompany,maltego.Company,,,demo,maltego.Company;maltego.Person
+CloakNDagger,Mike,,Extract Company Adress,0.1,ares-extractadress,Extract Adress,gossip.monster\run\ares-extractadress,maltego.Company,,,demo,cnd.address
+CloakNDagger,Mike,,Extract Company ICO,0.1,ares-extractico,Extract ICO,gossip.monster\run\ares-extractico,maltego.Company,,,demo,cnd.ico
+CloakNDagger,Mike,,Get legal info from ARES (CZE) for given address,0.1,ares-getrecordsaddress,Get ARES info from address,gossip.monster\run\ares-getrecordsaddress,cnd.address,,,demo,maltego.Company;maltego.Person
+CloakNDagger,Mike,,Get legal info from ARES (CZE) for given company name,0.1,ares-getrecordscompany,Get legal info from ARES,gossip.monster\run\ares-getrecordscompany,maltego.Company,,,demo,cnd.pravnicka_osoba;cnd.fyzicka_osoba
 CloakNDagger,Mike,,Get legal info from ARES (CZE) for given person name,0.1,ares-getrecordsperson,Get legal info from ARES,gossip.monster\run\ares-getrecordsperson,maltego.Person,,,demo,maltego.Company;maltego.Person
 CloakNDagger,Mike,,Get starting entity,0.1,cnd-getentity,Get CND strarting Entity [CloakNDagger],gossip.monster\run\cnd-getentity,cnd.CloakNDagger,,,demo,cnd.HunchlyCase;cnd.Alias;cnd.Tavily
 CloakNDagger,Mike,,Return data collected from pages for given Hunchly case name or case id,0.1,hunchly-getcasedata,Get Case Data [Hunchly],gossip.monster\run\hunchly-getcasedata,cnd.HunchlyCase,,,demo,cnd.Email;cnd.IPV4;cnd.IPV6;cnd.GoogleAnalytics;cnd.FacebookPixel;cnd.TorService;cnd.SocialMediaAccount

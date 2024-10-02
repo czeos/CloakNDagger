@@ -81,6 +81,79 @@
 2024-10-02 11:55:26,207 - app.module.ares - DEBUG - api - serch_ares - logger test
 2024-10-02 12:57:08,696 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Start Ares_GetRecordsCompany
 2024-10-02 12:57:08,697 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 13:04:57,506 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:05:14,386 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:05:39,006 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:06:04,186 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:07:27,149 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:08:10,828 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:10:00,021 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 13:46:04,452 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:46:05,960 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 13:46:57,114 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:46:57,575 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 13:47:31,821 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:47:32,515 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 13:48:42,812 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:48:43,567 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 13:50:59,788 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:51:00,512 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 13:51:55,365 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 13:51:55,831 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 14:00:28,410 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 14:00:29,167 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 14:06:55,031 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 14:06:55,451 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 14:07:56,048 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 14:07:56,382 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 14:15:31,326 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 14:15:32,105 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 15:12:45,650 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 15:12:46,435 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 15:30:54,003 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 15:30:54,826 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 15:42:58,146 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 15:42:58,649 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:08:43,011 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Call ARES
+2024-10-02 16:08:43,527 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:10:54,076 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:11:54,178 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:12:00,782 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Call ARES
+2024-10-02 16:12:00,782 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:12:50,395 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:13:00,201 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Call ARES
+2024-10-02 16:13:00,201 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:23:35,891 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:23:46,167 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:24:03,477 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:24:20,378 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:25:39,929 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:25:54,275 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:26:14,706 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 16:26:26,584 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:29:53,488 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:32:44,655 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:33:55,588 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:34:38,451 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:37:43,850 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:40:17,033 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 16:58:14,970 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 17:01:32,286 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 17:13:02,483 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 17:17:48,392 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 17:21:46,122 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:44:06,669 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:45:13,070 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:47:30,887 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:47:36,075 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:49:46,166 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:50:20,786 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:51:01,591 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:51:18,324 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:52:34,621 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:53:24,001 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 18:53:48,380 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 18:54:38,861 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
 2024-10-02 15:58:21,505 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Start Ares_GetRecordsCompany
 2024-10-02 15:58:21,511 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
 2024-10-02 15:58:28,167 - app.module.ares - DEBUG - api - serch_ares - logger test
@@ -98,3 +171,56 @@
 2024-10-02 17:55:27,117 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Start Ares_GetRecordsCompany
 2024-10-02 17:55:27,117 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
 2024-10-02 17:55:28,058 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 20:55:11,564 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 20:55:23,955 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 20:57:34,484 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:36:44,022 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:39:14,491 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:50:02,316 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:54:17,497 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:56:57,431 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 22:57:52,300 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:20:27,902 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:21:36,527 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:21:42,741 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:21:52,654 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:22:39,412 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:22:47,790 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:23:01,816 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:23:42,112 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:23:51,062 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:25:55,150 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 23:26:17,457 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:27:07,932 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-02 23:27:42,634 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:28:16,005 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:31:32,211 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:33:04,754 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:33:20,776 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-02 23:34:02,242 - app.module.ares - DEBUG - Ares_GetRecordsCompany - create_entities - Invoke  modal form
+2024-10-02 23:58:56,059 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:05:55,030 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:07:37,816 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:07:57,560 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:10:54,812 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:11:12,748 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:15:21,848 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:15:23,972 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:17:15,040 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:18:40,984 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:19:50,055 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:21:03,271 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:21:05,211 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:24:51,059 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:27:16,004 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:27:18,170 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:30:20,803 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:42:49,283 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:42:52,420 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:44:43,804 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:44:46,262 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:45:58,679 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:46:03,417 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:47:55,310 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
+2024-10-03 00:48:23,850 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 00:50:06,221 - app.module.ares - DEBUG - api - serch_ares - logger test

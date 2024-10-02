@@ -4,19 +4,19 @@ from maltego_trx.maltego import MaltegoTransform, MaltegoMsg
 from extensions import registry
 from settings import cloak_n_dagger_transformset
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG, CloakNDagger
+from tools.entities import entity_register, CloakNDagger, Case, Alias, Tavily
 from modules.cloak_n_dagger.gui import check_box_form
 
 
-starting_entities = {'Hunchly Case': ENTITYREG.CASE,
-                    'Whatsmyname App': ENTITYREG.ALIAS,
-                    'Tavily search': ENTITYREG.TAVILY}
+starting_entities = {'Hunchly Case': entity_register.get_type(Case),
+                    'Whatsmyname App': entity_register.get_type(Alias),
+                    'Tavily search': entity_register.get_type(Tavily)}
 
 @registry.register_transform(
     display_name="Get CND strarting Entity [CloakNDagger]",
-    input_entity=ENTITYREG.CLOAK_N_DAGGER.get_type(),
+    input_entity=entity_register.get_type(CloakNDagger),
     description="Get starting entity",
-    output_entities=[entity.get_type() for entity in starting_entities.values()],
+    output_entities=[entity for entity in starting_entities.values()],
     transform_set=cloak_n_dagger_transformset
 
 )

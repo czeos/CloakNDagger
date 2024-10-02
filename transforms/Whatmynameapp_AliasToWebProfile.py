@@ -9,15 +9,15 @@ from config import config
 from tools.gui.components import message_box
 from tools.maltego import entity_from_model, model_from_maltego_request
 from tools.dbs import TiDBCache, db_records_to_entity
-from tools.entities import  Alias, ENTITYREG
+from tools.entities import  Alias, entity_register, SocialMediaProfile
 from tools.base import BaseEntityStack
 
 
 @registry.register_transform(
     display_name="Search profiles by username [WhatsMyNameApp]",
-    input_entity=ENTITYREG.ALIAS.get_type(),
+    input_entity=entity_register.get_type(Alias),
     description="Search web profiles by username",
-    output_entities=[ENTITYREG.SOCIAL_MEDIA_ACCOUNT.get_type()],
+    output_entities=[entity_register.get_type(SocialMediaProfile)],
     transform_set=whatsmynameapp_transformset
 
 )
@@ -40,7 +40,7 @@ class Whatmynameapp_AliasToWebProfile(DiscoverableTransform):
         if cache.query_cache_size(query=username) > 0:
             #cached routine
             cached_stack = cache.get_records(query=username, count=howmany)
-            entities = db_records_to_entity(register=ENTITYREG, stack=cached_stack)
+            entities = db_records_to_entity(register=entity_register, stack=cached_stack)
             items = UserProfiles(results=cache.query_cache_size(username), data=entities)
 
         else:

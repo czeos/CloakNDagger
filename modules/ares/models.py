@@ -1,10 +1,10 @@
 from maltego_trx.overlays import OverlayPosition, OverlayType
 
 from tools import icons
-from tools.base import EntityDisplay
-from tools.entities import Company, Person, ICO, Adress
-from pydantic import AliasChoices, BaseModel, Field, field_validator, model_validator
-from typing import List, Literal,Optional, Union
+from tools.base import EntityDisplay, register_entity, EntitySetting, EntityIcon
+from tools.entities import Company, Person, ICO, Address
+from pydantic import AliasChoices, BaseModel, Field, field_validator, model_validator, ConfigDict
+from typing import List, Literal, Optional, Union, Type
 
 #todo: add entities add forma
 #todo: response entity website> aka
@@ -22,12 +22,20 @@ class Sidlo(BaseModel):
 
 class RequestFormEkonomickySubjekt(BaseModel):
     """Craeted for form pourpose, that does not take a nested types"""
-    start: int = 0
-    pocet: int = 10
     ico: Optional[str] = Field(default=None, description="IČO")
-    obchodniJmeno: str = Field(default=None, description="Obchodní jméno", alias=AliasChoices('obchodniJmeno','name', 'fullname'))
+    obchodniJmeno: Optional[str] = Field(default=None, description="Obchodní jméno", alias=AliasChoices('obchodniJmeno','name', 'fullname'))
     sidlo: Optional[str] = Field(default=None, description="Adresa", alias=AliasChoices('sidlo','address'))
 
+    @model_validator(mode='before')
+    @classmethod
+    def empty_string2none(cls, values: dict) -> dict:
+        for key, value in values.items():
+            if value == '':
+                values[key] = None
+        return values
+
+    def entity_dump(self, *args, **kwargs):
+        return self.model_dump()
 
 
 class RequestEkonomickySubjekt(BaseModel):
@@ -48,7 +56,6 @@ class RequestEkonomickySubjekt(BaseModel):
             values['sidlo'] = Sidlo(textovaAdresa=values.get('sidlo'))
 
         return values
-
 
 class AdresaDorucovaci(BaseModel):
     radekAdresy1: str = None
@@ -81,26 +88,32 @@ class DalsiUdaje(BaseModel):
     pravniForma: str
     datovyZdroj: str
 
+
 class EkonomickySubjekt(BaseModel):
     ico: str = None
     obchodniJmeno: str = None
     address: Sidlo = Field(default=None, alias=AliasChoices( 'sidlo'))
     pravniForma: str = None
+    pravniFormaText: str = None
     financniUrad: str = None
     datumVzniku: str = None
     datumAktualizace: str = None
-    dic: str = None
+    dic: str | None = None
     icoId: str = None
-    adresaDorucovaci: AdresaDorucovaci = None
+    adresaDorucovaci: AdresaDorucovaci | str = None
     seznamRegistraci: SeznamRegistraci = None
     primarniZdroj: str = None
-    subRegistrSzr: str = None
+    subRegistrSzr: str | None = None
 
     @field_validator("adresaDorucovaci")
     @classmethod
     def validate_adresaDorucovaci(cls, adress: AdresaDorucovaci) -> str:
-        complete_adress = f"{adress.radekAdresy1}, {adress.radekAdresy2}, {adress.radekAdresy3}"
-
+        if isinstance(adress, AdresaDorucovaci):
+            return f"{adress.radekAdresy1}, {adress.radekAdresy2}, {adress.radekAdresy3}"
+        elif isinstance(adress, str):
+            return adress
+        else:
+            return 'Error with parsing adress'
         return complete_adress
     
     @field_validator("address")
@@ -109,13 +122,22 @@ class EkonomickySubjekt(BaseModel):
         if adress:
             return adress.textovaAdresa
         
-    @field_validator("pravniForma")
+    @model_validator(mode='before')
     @classmethod
-    def validate_pravniForma(cls, pravniForma: str) -> str:
-            return dict_pravni_forma[pravniForma]
+    def validate_pravniForma(cls, values: dict | Type['EkonomickySubjekt']) -> dict:
+        # mode='before' the input can be dict or isntance of EkonomickySubjekt
+        if isinstance(values, dict):
+            pravniForma = values['pravniForma']
+            values['pravniFormaText'] = dict_pravni_forma.get(pravniForma)
+        elif isinstance(values, EkonomickySubjekt):
+            pravniForma = values.pravniForma
+            values.pravniFormaText = dict_pravni_forma.get(pravniForma)
+        return values
 
-#TODO: vypsat vsechny pravni formy
-class PravnickaOsoba(Company,EkonomickySubjekt):
+
+@register_entity
+class PravnickaOsoba(Company, EkonomickySubjekt):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.pravnicka_osoba', main_attribute='name', match='strict'))
     name: str = Field(validation_alias='obchodniJmeno')
     pravniForma: Literal[
     '111', '112', '113', '115', '116', '117',
@@ -128,19 +150,26 @@ class PravnickaOsoba(Company,EkonomickySubjekt):
     '706',
     '911', '931', '932']
 
-    logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
-                                        overlay_type=OverlayType.IMAGE)
+    logo: EntityDisplay = Field(default=EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
+                                        overlay_type=OverlayType.IMAGE))
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.COMPANY))
 
-class FyzickaOsoba(Person,EkonomickySubjekt):
-    fullname: str = Field(validation_alias='obchodniJmeno')
+@register_entity
+class FyzickaOsoba(Person, EkonomickySubjekt):
+    setting: EntitySetting = Field(default=EntitySetting(type='cnd.fyzicka_osoba', main_attribute='name', match='strict'))
+    name: str = Field(validation_alias='obchodniJmeno')
     pravniForma: Literal['101', '102', '105','106','107','108','109','110']
     logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
                                         overlay_type=OverlayType.IMAGE)
+    icon: EntityIcon = Field(default=EntityIcon(url=icons.PERSON))
 
 
-class Root(BaseModel):
+class ResponseRoot(BaseModel):
+    """Paring response"""
     pocetCelkem: int
-    ekonomickeSubjekty: List[Union[PravnickaOsoba,FyzickaOsoba]]
+    ekonomickeSubjekty: List[Union[PravnickaOsoba, FyzickaOsoba]]
+
+
 
 
 class AresICO(ICO):
@@ -148,6 +177,6 @@ class AresICO(ICO):
                                         overlay_type=OverlayType.IMAGE)
 
 
-class AresAdress(Adress):
+class AresAdress(Address):
     logo: EntityDisplay = EntityDisplay(value=icons.ARES, position=OverlayPosition.SOUTH_WEST,
                                         overlay_type=OverlayType.IMAGE)

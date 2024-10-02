@@ -6,16 +6,16 @@ from extensions import registry
 from modules.rejstrik.api import find_relations
 from settings import ares_transformset
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG, Company, Person
+from tools.entities import entity_register, Company, Person
 from tools.base import EntityDisplay, MaltegoSettingAttributes
 from modules.ares import ares_logger
 from modules.ares.models import AresICO
 
 @registry.register_transform(
     display_name="Rejstrik Get Records",
-    input_entity=ENTITYREG.COMPANY.get_type(),
+    input_entity=entity_register.get_type(Company),
     description="Extract information about the company from Rejstrik",
-    output_entities=[ENTITYREG.COMPANY.get_type(),ENTITYREG.PERSON.get_type()],
+    output_entities=[entity_register.get_type(Company), entity_register.get_type(Person)],
     transform_set=ares_transformset
 )
 

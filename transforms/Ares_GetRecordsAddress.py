@@ -9,13 +9,13 @@ from modules.ares.models import RequestEkonomickySubjekt,Sidlo
 from settings import ares_transformset
 from tools.maltego import model_from_maltego_request, entity_from_model
 from modules.ares.api import serch_ares
-from tools.entities import Adress, Company, Person, ENTITYREG
+from tools.entities import Address, Company, Person, entity_register
 
 @registry.register_transform(
     display_name="Get ARES info from address",
-    input_entity=ENTITYREG.ADRESS.get_type(),
+    input_entity=entity_register.get_type(Address),
     description="Get legal info from ARES (CZE) for given address",
-    output_entities=[ENTITYREG.COMPANY.get_type(), ENTITYREG.PERSON.get_type()],
+    output_entities=[entity_register.get_type(Company), entity_register.get_type(Person)],
     transform_set=ares_transformset
 
 )
@@ -27,7 +27,7 @@ class Ares_GetRecordsAddress(DiscoverableTransform):
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         # build query
         
-        input_address = model_from_maltego_request(request=request, model=Adress)
+        input_address = model_from_maltego_request(request=request, model=Address)
         search_request = RequestEkonomickySubjekt(sidlo=Sidlo(textovaAdresa=input_address.sidlo))
         
         data = show_form({'adress': search_request.sidlo.textovaAdresa})

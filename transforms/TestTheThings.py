@@ -5,13 +5,13 @@ from extensions import registry
 from modules.ares.models import RequestEkonomickySubjekt
 from settings import ares_transformset
 from tools.maltego import model_from_maltego_request, entity_from_model
-from tools.entities import Company, ENTITYREG, TestEntity
+from tools.entities import Company, entity_register, TestEntity
 
 @registry.register_transform(
     display_name="TestTheThings",
-    input_entity=ENTITYREG.COMPANY.get_type(),
+    input_entity=entity_register.get_type(Company),
     description="TestTheThings",
-    output_entities=[ENTITYREG.TEST_ENTITY.get_type()],
+    output_entities=[entity_register.get_type(TestEntity)],
     transform_set=ares_transformset
 )
 class TestTheThings(DiscoverableTransform):

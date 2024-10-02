@@ -4,7 +4,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, model_validator, Extra
 
 from tools.dbs.models import DBEntityStack
-from tools.base import BaseEntity, BaseEntityStack, MaltegoSettingAttributes
+from tools.base import BaseEntity, BaseEntityStack, MaltegoSettingAttributes, Cacheble
 from tools.utils import hash_fn
 
 # set db

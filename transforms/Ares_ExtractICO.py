@@ -4,16 +4,16 @@ from maltego_trx.transform import DiscoverableTransform
 from extensions import registry
 from settings import ares_transformset
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG, Company
+from tools.entities import entity_register, Company, ICO
 from tools.base import MaltegoSettingAttributes
 from modules.ares import ares_logger
 from modules.ares.models import AresICO
 
 @registry.register_transform(
     display_name="Extract ICO",
-    input_entity=ENTITYREG.COMPANY.get_type(),
+    input_entity=entity_register.get_type(Company),
     description="Extract Company ICO",
-    output_entities=[ENTITYREG.ICO.get_type()],
+    output_entities=[entity_register.get_type(ICO)],
     transform_set=ares_transformset
 )
 

@@ -5,7 +5,7 @@ from config import config
 from extensions import registry
 from settings import tavily_transformset
 from tools.maltego import entity_from_model, model_from_maltego_request
-from tools.entities import ENTITYREG, Tavily
+from tools.entities import entity_register, Tavily, Page, Photo
 from tools.base import MaltegoSettingAttributes
 from modules.tavily.gui import request_form
 from modules.tavily.api import tivaly_api, response_to_entities, SearchRequest
@@ -14,9 +14,9 @@ from modules.tavily.api import tivaly_api, response_to_entities, SearchRequest
 
 @registry.register_transform(
     display_name="Query web resources [Tavili]",
-    input_entity=ENTITYREG.TAVILY.get_type(),
+    input_entity=entity_register.get_type(Tavily),
     description="Get starting entity",
-    output_entities=[ENTITYREG.PAGE.get_type(), ENTITYREG.PHOTO.get_type()],
+    output_entities=[entity_register.get_type(Page), entity_register.get_type(Photo)],
     transform_set=tavily_transformset
 
 )
