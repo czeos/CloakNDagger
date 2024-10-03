@@ -224,3 +224,5 @@
 2024-10-03 00:47:55,310 - app.module.ares - DEBUG - Ares_GetRecordsCompany - <module> - Invoke  modal form
 2024-10-03 00:48:23,850 - app.module.ares - DEBUG - api - serch_ares - logger test
 2024-10-03 00:50:06,221 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 10:44:16,011 - app.module.ares - DEBUG - api - serch_ares - logger test
+2024-10-03 10:49:38,374 - app.module.ares - DEBUG - api - serch_ares - logger test

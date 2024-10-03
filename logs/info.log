@@ -1455,3 +1455,73 @@ Traceback (most recent call last):
     entity = response.addEntity(model.setting.type, model.__getattribute__(model.setting.main_attribute))
                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'FyzickaOsoba' object has no attribute 'name'
+2024-10-03 10:38:23,023 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 10:38:23,023 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 10:38:23,024 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 10:38:23,024 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 10:38:23,024 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 10:44:44,644 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-03 10:44:44,644 - maltego.server - ERROR - 1 validation error for PravnickaOsoba
+financniUrad
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Ares_GetRecordsCompany.py", line 61, in create_entities
+    entities = db_records_to_entity(register=entity_register, stack=cached_stack)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\dbs\__init__.py", line 10, in db_records_to_entity
+    return [register.get_cls(item.setting.type)(**item.model_dump()) for item in stack.data]
+  File "C:\Users\user\PycharmProjects\CloakNDagger\tools\dbs\__init__.py", line 10, in <listcomp>
+    return [register.get_cls(item.setting.type)(**item.model_dump()) for item in stack.data]
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\pydantic\main.py", line 171, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for PravnickaOsoba
+financniUrad
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.6/v/string_type
+2024-10-03 11:17:15,028 - maltego.server - ERROR - An exception occurred while executing your transform code.
+2024-10-03 11:17:15,029 - maltego.server - ERROR - Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\models.py", line 974, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\user\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\server.py", line 38, in run_transform
+    return transform_method.run_transform(client_msg), 200  # Transform class
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\maltego_trx\transform.py", line 12, in run_transform
+    cls.create_entities(request, response)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\transforms\Rejstrik_GetRecords.py", line 38, in create_entities
+    resp = find_relations(ico=ic)
+  File "C:\Users\user\PycharmProjects\CloakNDagger\modules\rejstrik\api.py", line 16, in find_relations
+    j = response.json()
+  File "C:\Users\user\PycharmProjects\CloakNDagger\venv\lib\site-packages\requests\models.py", line 978, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-10-03 11:18:06,412 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:18:06,413 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:18:06,413 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:18:06,413 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:18:06,413 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:30:43,437 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:30:43,438 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:30:43,438 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:30:43,439 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:30:43,439 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:32:20,625 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:32:20,626 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:32:20,626 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:32:20,627 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:32:20,627 - root - WARNING - Overlay is missing a property name, position or type: property_name=None, position=SW, overlay_type=text
+2024-10-03 11:42:25,698 - maltego-trx - WARNING - Entity has no Value and will default to ''

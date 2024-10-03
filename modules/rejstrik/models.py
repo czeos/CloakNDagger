@@ -14,18 +14,16 @@ class NodeData(BaseModel):
     url: str= Field(default=None)
     dateStart: Optional[str] = Field(default=None)
     dateEnd: Optional[str] = Field(default=None)
-
+    desc: Optional[EntityDisplay] = None
+    dateStartLogo: Optional[EntityDisplay] = None
+    dateEndLogo: Optional[EntityDisplay] = None
 class PravnickaOsoba(Company,NodeData):
     name: str = Field(validation_alias='label')
     typeGroup: Literal['company']
-    dateStartLogo: Optional[EntityDisplay] = None
-    dateEndLogo: Optional[EntityDisplay] = None
 
 class FyzickaOsoba(Person,NodeData):
     fullname: str = Field(validation_alias='label')    
     typeGroup: Literal['person']
-    dateStartLogo: Optional[EntityDisplay] = None
-    dateEndLogo: Optional[EntityDisplay] = None
 
 
 class Node(BaseModel):
